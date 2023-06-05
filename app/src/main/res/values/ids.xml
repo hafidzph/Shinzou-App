@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="emailOrTelp" type="id" />
+    <item name="tvEmailOrTelp" type="id" />
+    <item name="tvPassword" type="id" />
+    <item name="tvLupaPassword" type="id" />
+    <item name="tvNama" type="id" />
+</resources>
