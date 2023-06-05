@@ -2,4 +2,24 @@
     <string name="app_name">Final Project BINAR</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="masuk">Masuk</string>
+    <string name="email_nomor_telepon">Email / Nomor Telepon</string>
+    <string name="password">Password</string>
+    <string name="lupa_kata_sandi">Lupa Kata Sandi</string>
+    <string name="masukan_password">Masukan Password</string>
+    <string name="contoh_example_gmail_com">Contoh : Example@gmail.com</string>
+    <string name="daftar">Daftar</string>
+    <string name="nama">Nama</string>
+    <string name="buat_password">Buat Password</string>
+    <string name="belum_punya_akun">Belum punya akun? </string>
+    <string name="daftar_di_sini">Daftar di sini</string>
+    <string name="sudah_punya_akun">Sudah punya akun? </string>
+    <string name="masuk_di_sini">Masuk di sini</string>
+    <string name="nama_lengkap">Nama Lengkap</string>
+    <string name="email">Email</string>
+    <string name="nomor_telepon">Nomor Telepon</string>
+    <string name="masukkan_otp">Masukkan OTP</string>
+    <string name="ke">ke </string>
+    <string name="kirim_ulang_otp_dalam_60_detik">Kirim Ulang OTP dalam 60 detik</string>
+    <string name="minta_kode_baru_via_email">Minta kode baru via Email</string>
 </resources>

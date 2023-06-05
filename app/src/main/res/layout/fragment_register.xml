@@ -1,49 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:http="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".view.LoginRegister.RegisterFragment">
+    tools:context=".view.LoginRegister.RegisterFragment"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- TODO: Update blank fragment layout -->
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBar"
-        android:background="@color/white"
+    <ImageView
+        android:id="@+id/back"
+        android:src="@drawable/ic_back"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="10dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:contentDescription="TODO"
+        http:layout_constraintStart_toStartOf="parent"
+        http:layout_constraintTop_toTopOf="parent"/>
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <ImageView
-            android:src="@drawable/ic_back"
-            android:layout_marginLeft="35dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="TODO" />
-
-    </com.google.android.material.appbar.AppBarLayout>
-
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="22dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="20dp">
     <TextView
         android:id="@+id/tvDaftar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="40dp"
         android:layout_marginTop="20dp"
-        android:layout_below="@id/appBar"
-        android:text="Daftar"
+        android:text="@string/daftar"
         android:textColor="@color/black"
-        android:textSize="40sp"
-        android:textStyle="bold" />
+        android:textSize="28sp"
+        android:fontFamily="@font/poppins_bold" />
 
     <TextView
         android:id="@id/tvNama"
         android:layout_marginTop="15dp"
-        android:textStyle="bold"
         android:textColor="@color/black"
         android:layout_below="@id/tvDaftar"
-        android:layout_marginLeft="45dp"
-        android:text="Nama"
+        android:text="@string/nama"
+        android:textSize="14sp"
+        android:fontFamily="@font/poppins_regular"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
@@ -51,24 +52,22 @@
         android:id="@+id/nama"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="45dp"
-        android:layout_marginRight="45dp"
         android:layout_below="@+id/tvNama"
         android:layout_alignParentEnd="true"
-        app:boxCornerRadiusTopEnd="10dp"
-        app:boxCornerRadiusBottomEnd="10dp"
-        app:boxCornerRadiusBottomStart="10dp"
-        app:boxCornerRadiusTopStart="10dp"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_marginTop="5dp">
+        app:boxCornerRadiusTopEnd="16dp"
+        app:boxCornerRadiusBottomEnd="16dp"
+        app:boxCornerRadiusBottomStart="16dp"
+        app:boxCornerRadiusTopStart="16dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/masukanNama"
-            android:backgroundTint="@color/white"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="Nama Lengkap"
+            android:hint="@string/nama_lengkap"
             tools:ignore="SpeakableTextPresentCheck"
+            android:fontFamily="@font/poppins_regular"
+            android:textSize="14sp"
             android:inputType="textEmailAddress"
             android:autofillHints="" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -76,11 +75,10 @@
     <TextView
         android:id="@id/tvEmailOrTelp"
         android:layout_marginTop="15dp"
-        android:textStyle="bold"
         android:textColor="@color/black"
         android:layout_below="@id/nama"
-        android:layout_marginLeft="45dp"
-        android:text="Email"
+        android:text="@string/email"
+        android:fontFamily="@font/poppins_regular"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
@@ -88,22 +86,19 @@
         android:id="@+id/Email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="45dp"
-        android:layout_marginRight="45dp"
         app:endIconMode="custom"
-        app:endIconDrawable="@drawable/ic_check"
         android:layout_below="@+id/tvEmailOrTelp"
         android:layout_alignParentEnd="true"
-        app:boxCornerRadiusTopEnd="10dp"
-        app:boxCornerRadiusBottomEnd="10dp"
-        app:boxCornerRadiusBottomStart="10dp"
-        app:boxCornerRadiusTopStart="10dp"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_marginTop="5dp">
+        app:boxCornerRadiusTopEnd="16dp"
+        app:boxCornerRadiusBottomEnd="16dp"
+        app:boxCornerRadiusBottomStart="16dp"
+        app:boxCornerRadiusTopStart="16dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <EditText
             android:id="@+id/masukanEmail"
-            android:backgroundTint="@color/white"
+            android:fontFamily="@font/poppins_regular"
+            android:textSize="14sp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="Contoh: Example@gmail.com"
@@ -115,11 +110,10 @@
     <TextView
         android:id="@id/tvTelepon"
         android:layout_marginTop="15dp"
-        android:textStyle="bold"
         android:textColor="@color/black"
+        android:fontFamily="@font/poppins_regular"
         android:layout_below="@id/Email"
-        android:layout_marginLeft="45dp"
-        android:text="Nomor Telepon"
+        android:text="@string/nomor_telepon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
@@ -127,23 +121,20 @@
         android:id="@+id/telepon"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="45dp"
-        android:layout_marginRight="45dp"
         app:endIconMode="custom"
-        app:endIconDrawable="@drawable/ic_check"
         android:layout_below="@+id/tvTelepon"
         android:layout_alignParentEnd="true"
         app:prefixText="+62"
-        app:boxCornerRadiusTopEnd="10dp"
-        app:boxCornerRadiusBottomEnd="10dp"
-        app:boxCornerRadiusBottomStart="10dp"
-        app:boxCornerRadiusTopStart="10dp"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_marginTop="5dp">
+        app:boxCornerRadiusTopEnd="16dp"
+        app:boxCornerRadiusBottomEnd="16dp"
+        app:boxCornerRadiusBottomStart="16dp"
+        app:boxCornerRadiusTopStart="16dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <EditText
             android:id="@+id/masukanTelepon"
-            android:backgroundTint="@color/white"
+            android:fontFamily="@font/poppins_regular"
+            android:textSize="14sp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="+62"
@@ -156,10 +147,9 @@
         android:id="@id/tvPassword"
         android:layout_marginTop="15dp"
         android:textColor="@color/black"
-        android:textStyle="bold"
+        android:fontFamily="@font/poppins_regular"
         android:layout_below="@id/telepon"
-        android:layout_marginLeft="45dp"
-        android:text="Buat Password"
+        android:text="@string/buat_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
@@ -168,70 +158,63 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:endIconMode="password_toggle"
-        android:layout_marginLeft="45dp"
-        android:layout_marginRight="45dp"
         android:layout_below="@+id/tvPassword"
         android:layout_alignParentEnd="true"
-        app:boxCornerRadiusTopEnd="10dp"
-        app:boxCornerRadiusBottomEnd="10dp"
-        app:boxCornerRadiusBottomStart="10dp"
-        app:boxCornerRadiusTopStart="10dp"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_marginTop="5dp">
+        app:boxCornerRadiusTopEnd="16dp"
+        app:boxCornerRadiusBottomEnd="16dp"
+        app:boxCornerRadiusBottomStart="16dp"
+        app:boxCornerRadiusTopStart="16dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <EditText
             android:id="@+id/masukanPassword"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:autofillHints=""
-            android:backgroundTint="@color/white"
-            android:hint="Buat Password"
+            android:fontFamily="@font/poppins_regular"
+            android:textSize="14sp"
+            android:hint="@string/buat_password"
             android:inputType="textPassword"
             tools:ignore="SpeakableTextPresentCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/btnDaftar"
-        android:layout_marginLeft="100dp"
         android:background="@drawable/btn_bg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/Password"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="24dp"
         android:backgroundTint="@color/DARKBLUE04"
-        android:text="Daftar"
+        android:text="@string/daftar"
+        android:fontFamily="@font/poppins_medium"
         android:textColor="@color/white" />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerInParent="true">
-
-        <TextView
-            android:id="@+id/tvBelumPunyaAkun"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_centerInParent="true"
-            android:layout_marginBottom="70dp"
-            android:text="Sudah punya akun? "
-            android:textColor="@color/black"
-            android:textSize="15sp" />
+            android:layout_centerInParent="true">
 
-        <TextView
-            android:id="@+id/tvDaftarDisini"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerInParent="true"
-            android:layout_marginBottom="70dp"
-            android:layout_toRightOf="@id/tvBelumPunyaAkun"
-            android:text="Masuk di sini"
-            android:textStyle="bold"
-            android:textColor="@color/DARKBLUE05"
-            android:textSize="15sp" />
-    </LinearLayout>
+            <TextView
+                android:id="@+id/tvBelumPunyaAkun"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sudah_punya_akun"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:fontFamily="@font/poppins_regular"/>
 
+            <TextView
+                android:id="@+id/tvDaftarDisini"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/masuk_di_sini"
+                android:textColor="@color/DARKBLUE05"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/poppins_regular"/>
+        </LinearLayout>
 </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

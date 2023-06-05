@@ -1,34 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".view.LoginRegister.LoginFragment">
+    tools:context=".view.LoginRegister.LoginFragment"
+    android:layout_marginVertical="40dp"
+    android:layout_marginHorizontal="24dp">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    >
 
-
-    <!-- TODO: Update blank fragment layout -->
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvMasuk"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="100dp"
-        android:text="Masuk"
+        android:layout_marginTop="50dp"
+        android:text="@string/masuk"
+        android:fontFamily="@font/poppins_bold"
         android:textColor="@color/black"
-        android:textSize="40sp"
-        android:textStyle="bold" />
+        android:textSize="28sp" />
 
     <TextView
         android:id="@id/tvEmailOrTelp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="24dp"
         android:textStyle="bold"
+        android:fontFamily="@font/poppins_regular"
         android:textColor="@color/black"
         android:layout_below="@id/tvMasuk"
-        android:layout_marginLeft="25dp"
-        android:text="Email / Nomor Telepon"
+        android:textSize="12sp"
+        android:text="@string/email_nomor_telepon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
@@ -37,32 +43,32 @@
         android:id="@+id/Email"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="58dp"
         android:layout_below="@+id/tvEmailOrTelp"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="45dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="45dp"
-        android:hint="Contoh : Example@gmail.com"
+        app:boxCornerRadiusTopEnd="16dp"
+        app:boxCornerRadiusBottomEnd="16dp"
+        app:boxCornerRadiusBottomStart="16dp"
+        app:boxCornerRadiusTopStart="16dp"
+        android:hint="@string/contoh_example_gmail_com"
         app:endIconDrawable="@drawable/ic_check">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textEmailAddress" />
+            android:inputType="textEmailAddress"
+            android:textSize="14sp"
+            android:fontFamily="@font/poppins_regular"/>
 
     </com.google.android.material.textfield.TextInputLayout>
     <TextView
         android:id="@id/tvPassword"
         android:textColor="@color/black"
-        android:layout_marginTop="10dp"
-        android:textStyle="bold"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/poppins_regular"
         android:layout_below="@id/Email"
-        android:layout_marginLeft="25dp"
-        android:text="Password"
+        android:text="@string/password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
@@ -71,50 +77,46 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/Email"
-        android:layout_alignParentRight="true"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="25dp"
-        android:text="Lupa Kata Sandi"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="24dp"
+        android:text="@string/lupa_kata_sandi"
         android:textColor="@color/DARKBLUE05"
         android:textSize="15sp"
-        android:textStyle="bold" />
+        android:fontFamily="@font/poppins_medium" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/Password"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:layout_below="@+id/tvPassword"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="45dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="45dp"
-        android:hint="Masukan Password"
+        app:boxCornerRadiusTopEnd="16dp"
+        app:boxCornerRadiusBottomEnd="16dp"
+        app:boxCornerRadiusBottomStart="16dp"
+        app:boxCornerRadiusTopStart="16dp"
+        android:hint="@string/masukan_password"
         app:endIconMode="password_toggle">
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/masukanPassword"
         android:inputType="textPassword"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:fontFamily="@font/poppins_regular"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
-
-
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnLogin"
-        android:layout_marginLeft="50dp"
         style="@style/Btn"
         app:cornerRadius="16dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="58dp"
         android:layout_below="@+id/Password"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="24dp"
         android:text="Masuk"
         android:textColor="@color/white" />
 
@@ -128,25 +130,18 @@
             android:id="@+id/tvBelumPunyaAkun"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerInParent="true"
-            android:layout_marginBottom="70dp"
-            android:text="Belum punya akun? "
+            android:text="@string/belum_punya_akun"
             android:textColor="@color/black"
-            android:textSize="15sp" />
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/tvDaftarDisini"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_marginBottom="70dp"
-            android:layout_toRightOf="@id/tvBelumPunyaAkun"
-            android:text="Daftar di sini"
-            android:textStyle="bold"
+            android:text="@string/daftar_di_sini"
             android:textColor="@color/DARKBLUE05"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            android:textStyle="bold" />
     </LinearLayout>
-
-
 </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
