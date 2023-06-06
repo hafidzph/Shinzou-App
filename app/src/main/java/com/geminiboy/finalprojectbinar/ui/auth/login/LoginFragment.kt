@@ -1,4 +1,4 @@
-package com.geminiboy.finalprojectbinar.ui.login
+package com.geminiboy.finalprojectbinar.ui.auth.login
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
