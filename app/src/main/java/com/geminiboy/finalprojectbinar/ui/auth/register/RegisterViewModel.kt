@@ -6,30 +6,35 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class RegisterViewModel: ViewModel() {
-    private var _isValid = MutableLiveData<Boolean>()
-    val isValid: LiveData<Boolean> = _isValid
+    private var _isValidName = MutableLiveData<Boolean>()
+    val isValidName: LiveData<Boolean> = _isValidName
+
+    private var _isValidEmail = MutableLiveData<Boolean>()
+    val isValidEmail: LiveData<Boolean> = _isValidEmail
+
+    private var _isValidPassword = MutableLiveData<Boolean>()
+    val isValidPassword: LiveData<Boolean> = _isValidPassword
+
+    private var _isValidNoTelp = MutableLiveData<Boolean>()
+    val isValidNoTelp: LiveData<Boolean> = _isValidNoTelp
 
     fun validateEmail(email: String){
-        val validEmail = if(email.isNotEmpty()){
-            false
-        }else{
-            Patterns.EMAIL_ADDRESS.matcher(email).matches()
-        }
-        _isValid.postValue(validEmail)
+        val validEmail = email.isNotEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches()
+        _isValidEmail.postValue(validEmail)
     }
 
-    fun validatePassword(password: String){
-        val validPassword = if(password.isNotEmpty()) false else password.length <= 8
-        _isValid.postValue(validPassword)
+    fun validatePassword(password: String) {
+        val validPassword = password.isNotEmpty() && password.length >= 8
+        _isValidPassword.postValue(validPassword)
     }
 
     fun validateName(name: String){
         val validName = name.isNotEmpty()
-        _isValid.postValue(validName)
+        _isValidName.postValue(validName)
     }
 
     fun phoneNumber(number: String){
         val validNumber = number.isNotEmpty()
-        _isValid.postValue(validNumber)
+        _isValidNoTelp.postValue(validNumber)
     }
 }

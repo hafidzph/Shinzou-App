@@ -12,6 +12,7 @@ import androidx.fragment.app.viewModels
 import com.geminiboy.finalprojectbinar.R
 import com.geminiboy.finalprojectbinar.databinding.FragmentRegisterBinding
 import com.geminiboy.finalprojectbinar.utils.showCustomToast
+import com.google.android.material.textfield.TextInputLayout
 
 class RegisterFragment : Fragment() {
     private var _binding: FragmentRegisterBinding? = null
@@ -33,23 +34,44 @@ class RegisterFragment : Fragment() {
                registerVM.validateName(masukanNama.text.toString())
            }
 
-            registerVM.isValid.observe(viewLifecycleOwner){
-                if(it){
-                    nama.apply {
-                        boxStrokeColor = ContextCompat.getColor(requireContext(), R.color.Green)
-                        setEndIconDrawable(R.drawable.success)
-                        setEndIconTintList(ContextCompat.getColorStateList(requireContext(), R.color.Green))
-                    }
-                }else{
-                    nama.apply {
-                        boxStrokeColor = ContextCompat.getColor(requireContext(), R.color.Red)
-                        setEndIconDrawable(R.drawable.error)
-                        setEndIconTintList(ContextCompat.getColorStateList(requireContext(), R.color.Red))
-                    }
-                }
+            masukanEmail.addTextChangedListener {
+                registerVM.validateEmail(masukanEmail.text.toString())
             }
-        }
 
+            masukanTelepon.addTextChangedListener {
+                registerVM.phoneNumber(masukanTelepon.text.toString())
+            }
+
+            masukanPassword.addTextChangedListener {
+                registerVM.validatePassword(masukanPassword.text.toString())
+            }
+
+            registerVM.isValidName.observe(viewLifecycleOwner){
+                nama.setValidationState(it)
+            }
+
+            registerVM.isValidEmail.observe(viewLifecycleOwner){
+                Email.setValidationState(it)
+            }
+
+            registerVM.isValidPassword.observe(viewLifecycleOwner){
+                Password.setValidationState(it)
+            }
+
+            registerVM.isValidNoTelp.observe(viewLifecycleOwner){
+                telepon.setValidationState(it)
+            }
+
+        }
+    }
+
+    private fun TextInputLayout.setValidationState(isValid: Boolean) {
+        val colorResId = if (isValid) R.color.Green else R.color.Red
+        val iconResId = if (isValid) R.drawable.success else R.drawable.error
+
+        boxStrokeColor = ContextCompat.getColor(context, colorResId)
+        setEndIconDrawable(iconResId)
+        setEndIconTintList(ContextCompat.getColorStateList(context, colorResId))
     }
 
     override fun onDestroy() {
