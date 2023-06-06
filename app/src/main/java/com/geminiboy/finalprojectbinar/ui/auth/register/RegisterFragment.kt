@@ -78,13 +78,12 @@ class RegisterFragment : Fragment() {
             )
 
             for ((validator, editText) in validations) {
-                validator.observe(viewLifecycleOwner) { isValid ->
-                    editText.setValidationState(isValid)
+                validator.observe(viewLifecycleOwner) {
+                    editText.setValidationState(it)
                 }
             }
         }
     }
-
 
     private fun observeValidateAll() {
         val validationMessages = listOf(
