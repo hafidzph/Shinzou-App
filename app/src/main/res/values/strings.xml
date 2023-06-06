@@ -22,4 +22,18 @@
     <string name="ke">ke </string>
     <string name="kirim_ulang_otp_dalam_60_detik">Kirim Ulang OTP dalam 60 detik</string>
     <string name="minta_kode_baru_via_email">Minta kode baru via Email</string>
+    <string name="from">From</string>
+    <string name="jakarta_jkta">Jakarta (JKTA)</string>
+    <string name="to">To</string>
+    <string name="melbourne_mlb">Melbourne (MLB)</string>
+    <string name="pulang_pergi">Pulang-Pergi?</string>
+    <string name="departure">Departure</string>
+    <string name="_1_mei_2023">1 Mei 2023</string>
+    <string name="return_text">Return</string>
+    <string name="pilih_tanggal">Pilih Tanggal</string>
+    <string name="passengers">Passengers</string>
+    <string name="_2_penumpang">2 Penumpang</string>
+    <string name="business">Business</string>
+    <string name="seat_class">Seat Class</string>
+    <string name="cari_penerbangan">Cari Penerbangan</string>
 </resources>

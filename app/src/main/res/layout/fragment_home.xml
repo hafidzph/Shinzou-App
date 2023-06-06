@@ -1,17 +1,372 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.HomeFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.home.HomeFragment"
+    android:background="@drawable/bg_home">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:textSize="24sp"
-        android:text="Hei, Mau kemana?" />
+        android:layout_height="match_parent"
+        android:layout_marginVertical="32dp"
+        android:layout_marginHorizontal="16dp">
+        <TextView
+            android:id="@+id/tvMauKemana"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="26sp"
+            android:fontFamily="@font/poppins_bold"
+            android:text="Hei, Mau kemana?"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
-</RelativeLayout>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvContainer"
+            android:layout_width="match_parent"
+            android:layout_height="470dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:elevation="8dp"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/tvMauKemana">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/containerDeparture"
+                android:background="@drawable/bg_outline"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:layout_marginHorizontal="25dp"
+                app:layout_constraintTop_toTopOf="parent"
+               >
+                <LinearLayout
+                    android:id="@+id/containerFrom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_margin="20dp">
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/plane"
+                        android:layout_width="20dp"
+                        android:layout_height="22dp"
+                        android:src="@drawable/plane_home" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tvFrom"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/from"
+                        android:textSize="16sp"
+                        android:layout_marginStart="11dp"
+                        android:fontFamily="@font/poppins_regular"/>
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tvDestinationFrom"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/jakarta_jkta"
+                        android:textSize="18sp"
+                        android:textColor="@color/black"
+                        android:layout_marginStart="20dp"
+                        android:fontFamily="@font/poppins_medium"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/containerDivider"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginStart="35dp"
+                    android:gravity="center"
+                    app:layout_constraintTop_toBottomOf="@+id/containerFrom">
+                    <com.google.android.material.divider.MaterialDivider
+                        android:id="@+id/divider"
+                        android:layout_width="220dp"
+                        android:layout_height="1dp"/>
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/btnSwitch"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="10dp"
+                        android:src="@drawable/switch_departure"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/containerTo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/containerDivider"
+                    android:layout_marginHorizontal="20dp">
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/planeTo"
+                        android:layout_width="20dp"
+                        android:layout_height="22dp"
+                        android:src="@drawable/plane_home" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tvTo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/to"
+                        android:textSize="16sp"
+                        android:layout_marginStart="11dp"
+                        android:fontFamily="@font/poppins_regular"/>
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tvDestinationTo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/melbourne_mlb"
+                        android:textSize="18sp"
+                        android:textColor="@color/black"
+                        android:layout_marginStart="40dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:layout_marginBottom="20dp"/>
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <LinearLayout
+                android:id="@+id/containerRoundTrip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/containerDeparture"
+                android:layout_marginTop="15dp"
+                android:layout_marginHorizontal="25dp">
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/pulang_pergi"
+                    android:textSize="16sp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="@color/black"/>
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:thumbTint="@color/white"
+                    android:gravity="center"
+                    android:scaleX="1.2"
+                    android:scaleY="1.2"/>
+            </LinearLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/containerChooseCriteria"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/containerRoundTrip"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginHorizontal="25dp">
+
+                    <LinearLayout
+                        android:id="@+id/containerDepartureChoose"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/imgDeparture"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/departure"
+                        android:layout_marginEnd="10dp"/>
+                        <LinearLayout
+                            android:id="@+id/containerContentDeparture"
+                            android:orientation="vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/departure"
+                                android:layout_marginBottom="4dp"
+                                android:fontFamily="@font/poppins_regular"
+                                android:textSize="16sp"/>
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/_1_mei_2023"
+                                android:fontFamily="@font/poppins_medium"
+                                android:textColor="@color/black"
+                                android:layout_marginBottom="6dp"
+                                android:textSize="17sp"/>
+                            
+                            <com.google.android.material.divider.MaterialDivider
+                                android:layout_width="110dp"
+                                android:layout_height="2dp"/>
+                        </LinearLayout>
+                </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/containerReturn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        app:layout_constraintStart_toEndOf="@+id/containerDepartureChoose"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent">
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:id="@+id/imgReturn"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/departure"
+                            android:layout_marginEnd="10dp"/>
+                        <LinearLayout
+                            android:id="@+id/containerContentReturn"
+                            android:orientation="vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/return_text"
+                                android:layout_marginBottom="4dp"
+                                android:fontFamily="@font/poppins_regular"
+                                android:textSize="16sp"/>
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/pilih_tanggal"
+                                android:fontFamily="@font/poppins_medium"
+                                android:textColor="@color/DARKBLUE05"
+                                android:layout_marginBottom="6dp"
+                                android:textSize="17sp"/>
+
+                            <com.google.android.material.divider.MaterialDivider
+                                android:layout_width="120dp"
+                                android:layout_height="2dp"/>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/containerPassengers"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        android:layout_marginTop="20dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/containerDepartureChoose"
+                        >
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:id="@+id/imgPassenger"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/passenger"
+                            android:layout_marginEnd="10dp"/>
+                        <LinearLayout
+                            android:id="@+id/containerPassenger"
+                            android:orientation="vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/passengers"
+                                android:layout_marginBottom="4dp"
+                                android:fontFamily="@font/poppins_regular"
+                                android:textSize="16sp"/>
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/_2_penumpang"
+                                android:fontFamily="@font/poppins_medium"
+                                android:textColor="@color/black"
+                                android:layout_marginBottom="8dp"
+                                android:textSize="16sp"/>
+
+                            <com.google.android.material.divider.MaterialDivider
+                                android:layout_width="120dp"
+                                android:layout_height="1dp"/>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/containerSeat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginStart="5dp"
+                        app:layout_constraintTop_toBottomOf="@id/containerReturn"
+                        app:layout_constraintStart_toEndOf="@+id/containerPassengers">
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:id="@+id/imgSeat"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/seat"
+                            android:layout_marginEnd="10dp"/>
+                        <LinearLayout
+                            android:id="@+id/containerContentSeat"
+                            android:orientation="vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/seat_class"
+                                android:layout_marginBottom="4dp"
+                                android:fontFamily="@font/poppins_regular"
+                                android:textSize="16sp"/>
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/business"
+                                android:fontFamily="@font/poppins_medium"
+                                android:textColor="@color/black"
+                                android:layout_marginBottom="6dp"
+                                android:textSize="17sp"/>
+
+                            <com.google.android.material.divider.MaterialDivider
+                                android:layout_width="120dp"
+                                android:layout_height="1dp"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnCari"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginHorizontal="25dp"
+                    app:cornerRadius="12dp"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="@string/cari_penerbangan"
+                    android:layout_marginVertical="10dp"
+                    app:layout_constraintTop_toBottomOf="@id/containerChooseCriteria"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
