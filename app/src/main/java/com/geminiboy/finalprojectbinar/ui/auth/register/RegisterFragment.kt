@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import com.geminiboy.finalprojectbinar.R
 import com.geminiboy.finalprojectbinar.databinding.FragmentRegisterBinding
 import com.geminiboy.finalprojectbinar.utils.showCustomToast
@@ -46,23 +47,16 @@ class RegisterFragment : Fragment() {
                 registerVM.validatePassword(masukanPassword.text.toString())
             }
 
-            registerVM.isValidName.observe(viewLifecycleOwner){
-                nama.setValidationState(it)
-            }
+            btnDaftar.setOnClickListener {
+                registerVM.validateName(masukanNama.text.toString())
+                registerVM.validateEmail(masukanEmail.text.toString())
+                registerVM.phoneNumber(masukanTelepon.text.toString())
+                registerVM.validatePassword(masukanPassword.text.toString())
 
-            registerVM.isValidEmail.observe(viewLifecycleOwner){
-                Email.setValidationState(it)
+                observeValidateAll()
             }
-
-            registerVM.isValidPassword.observe(viewLifecycleOwner){
-                Password.setValidationState(it)
-            }
-
-            registerVM.isValidNoTelp.observe(viewLifecycleOwner){
-                telepon.setValidationState(it)
-            }
-
         }
+        observeValidate()
     }
 
     private fun TextInputLayout.setValidationState(isValid: Boolean) {
@@ -72,6 +66,84 @@ class RegisterFragment : Fragment() {
         boxStrokeColor = ContextCompat.getColor(context, colorResId)
         setEndIconDrawable(iconResId)
         setEndIconTintList(ContextCompat.getColorStateList(context, colorResId))
+    }
+
+    private fun observeValidate(){
+        binding.apply {
+            registerVM.isValidName.observe(viewLifecycleOwner){
+                nama.setValidationState(it)
+            }
+
+            registerVM.isValidEmail.observe(viewLifecycleOwner){
+                Email.setValidationState(it)
+            }
+
+            registerVM.isValidNoTelp.observe(viewLifecycleOwner){
+                telepon.setValidationState(it)
+            }
+
+            registerVM.isValidPassword.observe(viewLifecycleOwner){
+                Password.setValidationState(it)
+            }
+        }
+    }
+
+    private fun observeValidateAll(){
+        var isFormValid = true
+        val nameObserver = Observer<Boolean> {
+            if (!it) {
+                isFormValid = false
+                Toast(requireContext()).showCustomToast("Nama tidak valid",
+                    requireActivity(),
+                    R.layout.toast_alert_red)
+            }
+        }
+
+        val emailObserver = Observer<Boolean> {
+            if (!it) {
+                isFormValid = false
+                Toast(requireContext()).showCustomToast("Email tidak valid",
+                    requireActivity(),
+                    R.layout.toast_alert_red)
+            }
+        }
+
+        val phoneNumberObserver = Observer<Boolean> {
+            if (!it) {
+                isFormValid = false
+                Toast(requireContext()).showCustomToast("Nomor telepon tidak valid",
+                    requireActivity(),
+                    R.layout.toast_alert_red)
+            }
+        }
+
+        val passwordObserver = Observer<Boolean> {
+            if (!it) {
+                isFormValid = false
+                Toast(requireContext()).showCustomToast("Password min 8 karakter!",
+                    requireActivity(),
+                    R.layout.toast_alert_red)
+            }
+        }
+
+        registerVM.isValidName.observe(viewLifecycleOwner, nameObserver)
+        registerVM.isValidEmail.observe(viewLifecycleOwner, emailObserver)
+        registerVM.isValidNoTelp.observe(viewLifecycleOwner, phoneNumberObserver)
+        registerVM.isValidPassword.observe(viewLifecycleOwner, passwordObserver)
+
+        registerVM.isValidName.removeObserver(nameObserver)
+        registerVM.isValidEmail.removeObserver(emailObserver)
+        registerVM.isValidNoTelp.removeObserver(phoneNumberObserver)
+        registerVM.isValidPassword.removeObserver(passwordObserver)
+
+        if (isFormValid && binding.masukanNama.text.toString().isNotEmpty() &&
+                binding.masukanEmail.text.toString().isNotEmpty() &&
+                binding.masukanTelepon.text.toString().isNotEmpty() &&
+                binding.masukanPassword.text.toString().isNotEmpty()) {
+            Toast(requireContext()).showCustomToast("Form valid",
+                requireActivity(),
+                R.layout.toast_alert_green)
+        }
     }
 
     override fun onDestroy() {
