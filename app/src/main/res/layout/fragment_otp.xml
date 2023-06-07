@@ -34,20 +34,20 @@
         android:textColor="@color/black"
         android:textSize="28sp"
         android:textStyle="bold"
-        android:fontFamily="@font/poppins_medium"/>
+        android:fontFamily="@font/poppins_bold"/>
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tvKodeDigit"
-        android:textColor="@color/black"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tvMasukkanOtp"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="25dp"
-        android:fontFamily="@font/poppins_regular"
-        android:gravity="center"
-        android:text="@string/ketik_6_digit_kode_yang_dikirimkan"
-        android:textSize="14sp" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvKodeDigit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvMasukkanOtp"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="25dp"
+            android:fontFamily="@font/poppins_regular"
+            android:gravity="center"
+            android:text="@string/ketik_6_digit_kode_yang_dikirimkan"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -74,7 +74,8 @@
                 android:layout_height="wrap_content"
                 android:maxWidth="220dp"
                 android:gravity="center"
-                android:fontFamily="@font/poppins_bold"
+                android:textStyle="bold"
+                android:fontFamily="@font/poppins_regular"
                 android:text="@string/_62824244534"
                 android:textSize="14sp" />
 
@@ -241,18 +242,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/mintaKodeVertif"
-        android:layout_marginTop="41dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/kirimUlangKode"
-        android:layout_centerInParent="true"
-        android:text="@string/minta_kode_baru_via_email"
-        android:textColor="@color/DARKBLUE05"
-        android:fontFamily="@font/poppins_bold"
-        android:textSize="14sp"
-        android:textStyle="bold" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/mintaKodeVertif"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/kirimUlangKode"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="41dp"
+            android:fontFamily="@font/poppins_bold"
+            android:text="@string/minta_kode_baru_via_email"
+            android:textColor="@color/DARKBLUE05"
+            android:textSize="14sp"
+            android:textStyle="bold" />
 
 </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
