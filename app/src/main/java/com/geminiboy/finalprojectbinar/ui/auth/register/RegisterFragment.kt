@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.widget.addTextChangedListener
@@ -101,6 +102,7 @@ class RegisterFragment : Fragment() {
         )
 
         var isFormValid = true
+        var firstInvalidIndex: Int? = null
 
         for ((index, validator) in validators.withIndex()) {
             val validationMessage = validationMessages[index]
@@ -108,14 +110,17 @@ class RegisterFragment : Fragment() {
             val observer = Observer<Boolean> {
                 if (!it) {
                     isFormValid = false
-                    Toast(requireContext()).showCustomToast(validationMessage,
-                        requireActivity(),
-                        R.layout.toast_alert_red)
+                    if (firstInvalidIndex == null) firstInvalidIndex = index
+                    if (index == firstInvalidIndex) {
+                        Toast(requireContext()).showCustomToast(
+                            validationMessage,
+                            requireActivity(),
+                            R.layout.toast_alert_red
+                        )
+                    }
                 }
             }
-
             validator.observe(viewLifecycleOwner, observer)
-            validator.removeObserver(observer)
         }
 
         val fields = listOf(
@@ -128,9 +133,11 @@ class RegisterFragment : Fragment() {
         val isFieldsNotEmpty = fields.all { it.text.toString().isNotEmpty() }
 
         if (isFormValid && isFieldsNotEmpty) {
-            Toast(requireContext()).showCustomToast("Form valid",
+            Toast(requireContext()).showCustomToast(
+                "Form valid",
                 requireActivity(),
-                R.layout.toast_alert_green)
+                R.layout.toast_alert_green
+            )
         }
     }
 
