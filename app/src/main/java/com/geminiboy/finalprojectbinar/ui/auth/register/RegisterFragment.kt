@@ -13,7 +13,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.geminiboy.finalprojectbinar.R
 import com.geminiboy.finalprojectbinar.databinding.FragmentRegisterBinding
-import com.geminiboy.finalprojectbinar.utils.showCustomToast
 import com.google.android.material.textfield.TextInputLayout
 
 class RegisterFragment : Fragment() {
@@ -112,11 +111,11 @@ class RegisterFragment : Fragment() {
                     isFormValid = false
                     if (firstInvalidIndex == null) firstInvalidIndex = index
                     if (index == firstInvalidIndex) {
-                        Toast(requireContext()).showCustomToast(
-                            validationMessage,
-                            requireActivity(),
-                            R.layout.toast_alert_red
-                        )
+//                        Toast(requireContext()).showCustomToast(
+//                            validationMessage,
+//                            requireActivity(),
+//                            R.layout.toast_alert_red
+//                        )
                     }
                 }
             }
@@ -133,11 +132,11 @@ class RegisterFragment : Fragment() {
         val isFieldsNotEmpty = fields.all { it.text.toString().isNotEmpty() }
 
         if (isFormValid && isFieldsNotEmpty) {
-            Toast(requireContext()).showCustomToast(
-                "Form valid",
-                requireActivity(),
-                R.layout.toast_alert_green
-            )
+//            Toast(requireContext()).showCustomToast(
+//                "Form valid",
+//                requireActivity(),
+//                R.layout.toast_alert_green
+//            )
         }
     }
 
