@@ -58,4 +58,13 @@
     <string name="tanggal_pulang">Tanggal Pulang</string>
     <string name="sabtu_7_maret_2023">Sabtu, 7 Maret 2023</string>
     <string name="pilih">Pilih</string>
+    <string name="dewasa">Dewasa</string>
+    <string name="_12_tahun_keatas">(12 tahun keatas)</string>
+    <string name="min">-</string>
+    <string name="_2">2</string>
+    <string name="tambah">+</string>
+    <string name="anak">Anak</string>
+    <string name="_2_11_tahun">(2-11 tahun)</string>
+    <string name="bayi">Bayi</string>
+    <string name="dibawah_2_tahun">(Dibawah 2 tahun)</string>
 </resources>

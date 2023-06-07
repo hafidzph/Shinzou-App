@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="20dp">
+
+    <RelativeLayout
+        android:id="@+id/relativeDewasa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="UselessParent">
+
+        <ImageView
+            android:id="@+id/icDewasa"
+            android:src="@drawable/ic_dewasa"
+            android:layout_marginTop="10dp"
+            android:layout_width="10dp"
+            android:layout_height="20dp"
+            tools:ignore="ContentDescription" />
+        <TextView
+            android:id="@+id/tvDewasa"
+            android:text="@string/dewasa"
+            android:textSize="14sp"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppins_bold"
+            android:layout_toEndOf="@id/icDewasa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:ignore="RelativeOverlap" />
+        <TextView
+            android:id="@+id/tv12Keatas"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@id/icDewasa"
+            android:layout_below="@id/tvDewasa"
+            android:fontFamily="@font/poppins_regular"
+            android:text="@string/_12_tahun_keatas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:layout_alignParentEnd="true"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnKurangDewasa"
+                app:strokeColor="@color/DARKBLUE05"
+                app:strokeWidth="1dp"
+                android:textSize="20sp"
+                android:text="@string/min"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                style="?android:attr/buttonBarButtonStyle" />
+            
+            <EditText
+                android:id="@+id/etDewasa"
+                android:background="@drawable/searchview_bg"
+                android:gravity="center"
+                android:layout_marginStart="3dp"
+                android:layout_marginEnd="3dp"
+                android:hint="@string/_2"
+                android:layout_width="60dp"
+                android:layout_height="40dp"
+                android:inputType="number"
+                android:autofillHints="" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnTambahDewasa"
+                app:strokeColor="@color/DARKBLUE05"
+                app:strokeWidth="1dp"
+                android:textSize="20sp"
+                android:text="@string/tambah"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                style="?android:attr/buttonBarButtonStyle" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeAnak"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/relativeDewasa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="UselessParent">
+
+        <ImageView
+            android:id="@+id/icAnak"
+            android:src="@drawable/ic_anak"
+            android:layout_marginTop="10dp"
+            android:layout_width="10dp"
+            android:layout_height="20dp"
+            tools:ignore="ContentDescription" />
+        <TextView
+            android:id="@+id/tvAnak"
+            android:text="@string/anak"
+            android:textSize="14sp"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppins_bold"
+            android:layout_toEndOf="@id/icAnak"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/tv11Keatas"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@id/icAnak"
+            android:layout_below="@id/tvAnak"
+            android:fontFamily="@font/poppins_regular"
+            android:text="@string/_2_11_tahun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:layout_alignParentEnd="true"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnKurangAnak"
+                app:strokeColor="@color/DARKBLUE05"
+                app:strokeWidth="1dp"
+                android:textSize="20sp"
+                android:text="@string/min"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                style="?android:attr/buttonBarButtonStyle" />
+
+            <EditText
+                android:id="@+id/etAnak"
+                android:background="@drawable/searchview_bg"
+                android:gravity="center"
+                android:layout_marginStart="3dp"
+                android:layout_marginEnd="3dp"
+                android:hint="@string/_2"
+                android:layout_width="60dp"
+                android:layout_height="40dp"
+                android:inputType="number"
+                android:autofillHints="" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnTambahAnak"
+                app:strokeColor="@color/DARKBLUE05"
+                app:strokeWidth="1dp"
+                android:textSize="20sp"
+                android:text="@string/tambah"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                style="?android:attr/buttonBarButtonStyle" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeBayi"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/relativeAnak"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="UselessParent">
+
+        <ImageView
+            android:id="@+id/icBayi"
+            android:src="@drawable/ic_bayi"
+
+            android:layout_marginTop="10dp"
+            android:layout_width="10dp"
+            android:layout_height="20dp"
+            tools:ignore="ContentDescription" />
+        <TextView
+            android:id="@+id/tvBayi"
+            android:text="@string/bayi"
+            android:textSize="14sp"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppins_bold"
+            android:layout_toEndOf="@id/icBayi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:ignore="RelativeOverlap" />
+        <TextView
+            android:id="@+id/tv2Keatas"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@id/icBayi"
+            android:layout_below="@id/tvBayi"
+            android:fontFamily="@font/poppins_regular"
+            android:text="@string/dibawah_2_tahun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:layout_alignParentEnd="true"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnKurangBayi"
+                app:strokeColor="@color/DARKBLUE05"
+                app:strokeWidth="1dp"
+                android:textSize="20sp"
+                android:text="@string/min"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                style="?android:attr/buttonBarButtonStyle" />
+
+            <EditText
+                android:id="@+id/etBayi"
+                android:background="@drawable/searchview_bg"
+                android:layout_marginStart="3dp"
+                android:layout_marginEnd="3dp"
+                android:gravity="center"
+                android:hint="@string/_2"
+                android:layout_width="60dp"
+                android:layout_height="40dp"
+                android:inputType="number"
+                android:autofillHints="" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnTambahBayi"
+                app:strokeColor="@color/DARKBLUE05"
+                app:strokeWidth="1dp"
+                android:textSize="20sp"
+                android:text="@string/tambah"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                style="?android:attr/buttonBarButtonStyle" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

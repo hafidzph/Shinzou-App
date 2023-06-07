@@ -5,30 +5,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="10dp">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/PENCARIAN"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="330dp"
-        android:layout_height="wrap_content"
-        app:boxCornerRadiusTopEnd="16dp"
-        app:boxCornerRadiusBottomEnd="16dp"
-        app:boxCornerRadiusBottomStart="16dp"
-        app:boxCornerRadiusTopStart="16dp"
-        app:startIconDrawable="@drawable/ic_search">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etMasukanPencarian"
-            android:inputType="text"
-            android:layout_width="330dp"
-            android:text="@string/masukan_kota_atau_negara"
-            android:layout_height="wrap_content"
-            android:textSize="14sp"
-            android:fontFamily="@font/poppins_regular"/>
-
-    </com.google.android.material.textfield.TextInputLayout>
+    <SearchView
+        android:id="@+id/pencarian"
+        android:queryHint="Masukan Nama Kota Atau Negara"
+        android:iconifiedByDefault="false"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/searchview_bg"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"/>
 
     <ImageView
         android:id="@+id/btnClosePencarian"
+        android:layout_toRightOf="@id/pencarian"
+        android:layout_alignParentTop="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -44,7 +33,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins_bold"
         android:text="@string/pencarian_terkini"
-        android:layout_below="@id/PENCARIAN"
+        android:layout_below="@id/pencarian"
         android:textColor="@color/black"
         android:layout_marginTop="10dp"
         android:textSize="20sp"/>
@@ -58,7 +47,7 @@
         android:fontFamily="@font/poppins_bold"
         android:textColor="@color/Red"
         android:layout_alignParentEnd="true"
-        android:layout_below="@id/PENCARIAN"
+        android:layout_below="@id/pencarian"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"/>
 
