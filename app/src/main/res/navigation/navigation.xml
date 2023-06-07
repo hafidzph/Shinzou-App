@@ -3,13 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/registerFragment">
 
     <fragment
         android:id="@+id/registerFragment"
         android:name="com.geminiboy.finalprojectbinar.ui.auth.register.RegisterFragment"
         android:label="fragment_register"
-        tools:layout="@layout/fragment_register" />
+        tools:layout="@layout/fragment_register" >
+        <action
+            android:id="@+id/action_registerFragment_to_homeFragment3"
+            app:destination="@id/homeFragment"
+            app:enterAnim="@anim/anim" />
+    </fragment>
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.geminiboy.finalprojectbinar.ui.home.HomeFragment"

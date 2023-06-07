@@ -11,8 +11,11 @@ import androidx.core.content.ContextCompat
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
+import com.geminiboy.finalprojectbinar.MainActivity
 import com.geminiboy.finalprojectbinar.R
 import com.geminiboy.finalprojectbinar.databinding.FragmentRegisterBinding
+import com.geminiboy.finalprojectbinar.utils.showCustomToast
 import com.google.android.material.textfield.TextInputLayout
 
 class RegisterFragment : Fragment() {
@@ -30,6 +33,7 @@ class RegisterFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (activity as MainActivity).setBottomNavigationVisibility(View.GONE)
         binding.apply {
            masukanNama.addTextChangedListener {
                registerVM.validateName(masukanNama.text.toString())
@@ -52,7 +56,7 @@ class RegisterFragment : Fragment() {
                 registerVM.validateEmail(masukanEmail.text.toString())
                 registerVM.phoneNumber(masukanTelepon.text.toString())
                 registerVM.validatePassword(masukanPassword.text.toString())
-
+                findNavController().navigate(R.id.action_registerFragment_to_homeFragment3)
                 observeValidateAll()
             }
         }
@@ -111,15 +115,17 @@ class RegisterFragment : Fragment() {
                     isFormValid = false
                     if (firstInvalidIndex == null) firstInvalidIndex = index
                     if (index == firstInvalidIndex) {
-//                        Toast(requireContext()).showCustomToast(
-//                            validationMessage,
-//                            requireActivity(),
-//                            R.layout.toast_alert_red
-//                        )
+                        Toast(requireContext()).showCustomToast(
+                            validationMessage,
+                            requireActivity(),
+                            R.layout.toast_alert_red
+                        )
                     }
                 }
             }
+
             validator.observe(viewLifecycleOwner, observer)
+            validator.removeObserver(observer)
         }
 
         val fields = listOf(
@@ -132,11 +138,11 @@ class RegisterFragment : Fragment() {
         val isFieldsNotEmpty = fields.all { it.text.toString().isNotEmpty() }
 
         if (isFormValid && isFieldsNotEmpty) {
-//            Toast(requireContext()).showCustomToast(
-//                "Form valid",
-//                requireActivity(),
-//                R.layout.toast_alert_green
-//            )
+            Toast(requireContext()).showCustomToast(
+                "Form valid",
+                requireActivity(),
+                R.layout.toast_alert_green
+            )
         }
     }
 
