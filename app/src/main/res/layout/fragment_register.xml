@@ -16,7 +16,7 @@
         android:layout_marginTop="10dp"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:contentDescription="TODO"
+        android:contentDescription="@string/todo"
         http:layout_constraintStart_toStartOf="parent"
         http:layout_constraintTop_toTopOf="parent"/>
 
@@ -102,7 +102,7 @@
             android:textSize="14sp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="Contoh: Example@gmail.com"
+            android:hint="@string/contoh_example_gmail_com"
             tools:ignore="SpeakableTextPresentCheck"
             android:inputType="textEmailAddress"
             android:autofillHints="" />
@@ -138,7 +138,7 @@
             android:textSize="14sp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="+62"
+            android:hint="@string/_62"
             tools:ignore="SpeakableTextPresentCheck"
             android:inputType="phone"
             android:autofillHints="" />

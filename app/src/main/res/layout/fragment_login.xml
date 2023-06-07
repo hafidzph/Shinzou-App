@@ -9,11 +9,10 @@
     tools:context=".ui.auth.login.LoginFragment"
     android:layout_marginVertical="40dp"
     android:layout_marginHorizontal="24dp">
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white"
-    >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white">
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvMasuk"
@@ -117,8 +116,9 @@
         android:layout_below="@+id/Password"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="24dp"
-        android:text="Masuk"
-        android:textColor="@color/white" />
+        android:text="@string/masuk"
+        android:textColor="@color/white"
+        android:fontFamily="@font/poppins_regular"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -133,7 +133,8 @@
             android:text="@string/belum_punya_akun"
             android:layout_marginEnd="5dp"
             android:textColor="@color/black"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:fontFamily="@font/poppins_regular"/>
 
         <TextView
             android:id="@+id/tvDaftarDisini"
@@ -142,7 +143,8 @@
             android:text="@string/daftar_di_sini"
             android:textColor="@color/DARKBLUE05"
             android:textSize="15sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:fontFamily="@font/poppins_regular"/>
     </LinearLayout>
 </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
