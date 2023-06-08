@@ -49,6 +49,7 @@
         app:boxCornerRadiusBottomEnd="16dp"
         app:boxCornerRadiusBottomStart="16dp"
         app:boxCornerRadiusTopStart="16dp"
+        app:errorIconDrawable="@null"
         android:hint="@string/contoh_example_gmail_com"
         app:endIconDrawable="@drawable/ic_check">
 
@@ -95,6 +96,7 @@
         app:boxCornerRadiusBottomStart="16dp"
         app:boxCornerRadiusTopStart="16dp"
         android:hint="@string/masukan_password"
+        app:errorIconDrawable="@null"
         app:endIconMode="password_toggle">
 
     <com.google.android.material.textfield.TextInputEditText

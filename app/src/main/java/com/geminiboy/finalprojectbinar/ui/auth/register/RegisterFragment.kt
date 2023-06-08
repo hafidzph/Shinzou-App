@@ -10,7 +10,11 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
+import androidx.lifecycle.OnLifecycleEvent
 import androidx.navigation.fragment.findNavController
 import com.geminiboy.finalprojectbinar.MainActivity
 import com.geminiboy.finalprojectbinar.R
@@ -56,7 +60,6 @@ class RegisterFragment : Fragment() {
                 registerVM.validateEmail(masukanEmail.text.toString())
                 registerVM.phoneNumber(masukanTelepon.text.toString())
                 registerVM.validatePassword(masukanPassword.text.toString())
-                findNavController().navigate(R.id.action_registerFragment_to_homeFragment3)
                 observeValidateAll()
             }
         }
@@ -66,10 +69,12 @@ class RegisterFragment : Fragment() {
     private fun TextInputLayout.setValidationState(isValid: Boolean) {
         val colorResId = if (isValid) R.color.Green else R.color.Red
         val iconResId = if (isValid) R.drawable.success else R.drawable.error
+        val color = ContextCompat.getColor(context, colorResId)
+        val colorState = ContextCompat.getColorStateList(context, colorResId)
 
-        boxStrokeColor = ContextCompat.getColor(context, colorResId)
+        boxStrokeColor = color
         setEndIconDrawable(iconResId)
-        setEndIconTintList(ContextCompat.getColorStateList(context, colorResId))
+        setEndIconTintList(colorState)
     }
 
     private fun observeValidate() {
@@ -81,9 +86,9 @@ class RegisterFragment : Fragment() {
                 registerVM.isValidPassword to Password
             )
 
-            for ((validator, editText) in validations) {
+            for ((validator, textInputLayout) in validations) {
                 validator.observe(viewLifecycleOwner) {
-                    editText.setValidationState(it)
+                    textInputLayout.setValidationState(it)
                 }
             }
         }
@@ -105,35 +110,31 @@ class RegisterFragment : Fragment() {
         )
 
         var isFormValid = true
-        var firstInvalidIndex: Int? = null
-
-        for ((index, validator) in validators.withIndex()) {
-            val validationMessage = validationMessages[index]
-
-            val observer = Observer<Boolean> {
-                if (!it) {
-                    isFormValid = false
-                    if (firstInvalidIndex == null) firstInvalidIndex = index
-                    if (index == firstInvalidIndex) {
-                        Toast(requireContext()).showCustomToast(
-                            validationMessage,
-                            requireActivity(),
-                            R.layout.toast_alert_red
-                        )
-                    }
-                }
-            }
-
-            validator.observe(viewLifecycleOwner, observer)
-            validator.removeObserver(observer)
-        }
-
         val fields = listOf(
             binding.masukanNama,
             binding.masukanEmail,
             binding.masukanTelepon,
             binding.masukanPassword
         )
+
+        val validationMessageList = validators.mapIndexedTo(mutableListOf()) { index, _ ->
+            MutableLiveData<String>().apply {
+                value = validationMessages[index]
+            }
+        }
+
+        for ((index, validator) in validators.withIndex()) {
+            val validationMessage = validationMessageList[index]
+
+            val observer = Observer<Boolean> { isValid ->
+                if (!isValid) {
+                    isFormValid = false
+                }
+                validationMessage.value = if (isValid) null else validationMessages[index]
+            }
+
+            validator.observe(viewLifecycleOwner, observer)
+        }
 
         val isFieldsNotEmpty = fields.all { it.text.toString().isNotEmpty() }
 
@@ -143,8 +144,18 @@ class RegisterFragment : Fragment() {
                 requireActivity(),
                 R.layout.toast_alert_green
             )
+        } else {
+            val invalidMessage = validationMessageList.find { it.value != null }?.value
+            if (invalidMessage != null) {
+                Toast(requireContext()).showCustomToast(
+                    invalidMessage,
+                    requireActivity(),
+                    R.layout.toast_alert_red
+                )
+            }
         }
     }
+
 
     override fun onDestroy() {
         super.onDestroy()
