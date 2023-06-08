@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="10dp">
+
+    <SearchView
+        android:id="@+id/pencarian"
+        android:queryHint="Masukan Nama Kota Atau Negara"
+        android:iconifiedByDefault="false"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/searchview_bg"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"/>
+
+    <ImageView
+        android:id="@+id/btnClosePencarian"
+        android:layout_toRightOf="@id/pencarian"
+        android:layout_alignParentTop="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/white"
+        android:contentDescription="@string/todo"
+        android:src="@drawable/ic_close" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvPencarianTerkini"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_bold"
+        android:text="@string/pencarian_terkini"
+        android:layout_below="@id/pencarian"
+        android:textColor="@color/black"
+        android:layout_marginTop="10dp"
+        android:textSize="20sp"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvHapus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:text="@string/hapus"
+        android:fontFamily="@font/poppins_bold"
+        android:textColor="@color/Red"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/pencarian"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvPencarianTerkini"
+        android:layout_below="@+id/tvPencarianTerkini"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</RelativeLayout>

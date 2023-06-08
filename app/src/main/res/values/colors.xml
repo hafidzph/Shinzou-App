@@ -34,5 +34,6 @@
     <color name="NEUTRAL02">#D0D0D0</color>
     <color name="NEUTRAL01">#FFFFFF</color>
 
+    <color name="background_shimmer">#dddddd</color>
     <color name="background">#E4E4E4</color>
 </resources>

@@ -16,7 +16,7 @@
         android:layout_marginTop="10dp"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:contentDescription="TODO"
+        android:contentDescription="@string/todo"
         http:layout_constraintStart_toStartOf="parent"
         http:layout_constraintTop_toTopOf="parent"/>
 
@@ -59,6 +59,7 @@
         app:boxCornerRadiusBottomStart="16dp"
         app:boxCornerRadiusTopStart="16dp"
         app:endIconMode="custom"
+        app:errorIconDrawable="@null"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -68,7 +69,7 @@
             android:hint="@string/nama_lengkap"
             tools:ignore="SpeakableTextPresentCheck"
             android:fontFamily="@font/poppins_regular"
-            android:textSize="14sp"
+            android:textSize="16sp"
             android:inputType="textEmailAddress"
             android:autofillHints="" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -94,15 +95,16 @@
         app:boxCornerRadiusBottomEnd="16dp"
         app:boxCornerRadiusBottomStart="16dp"
         app:boxCornerRadiusTopStart="16dp"
+        app:errorIconDrawable="@null"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <EditText
             android:id="@+id/masukanEmail"
             android:fontFamily="@font/poppins_regular"
-            android:textSize="14sp"
+            android:textSize="16sp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="Contoh: Example@gmail.com"
+            android:hint="@string/contoh_example_gmail_com"
             tools:ignore="SpeakableTextPresentCheck"
             android:inputType="textEmailAddress"
             android:autofillHints="" />
@@ -118,33 +120,34 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/telepon"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:endIconMode="custom"
-        android:layout_below="@+id/tvTelepon"
-        android:layout_alignParentEnd="true"
-        app:prefixText="+62"
-        app:boxCornerRadiusTopEnd="16dp"
-        app:boxCornerRadiusBottomEnd="16dp"
-        app:boxCornerRadiusBottomStart="16dp"
-        app:boxCornerRadiusTopStart="16dp"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-
-        <EditText
-            android:id="@+id/masukanTelepon"
-            android:fontFamily="@font/poppins_regular"
-            android:textSize="14sp"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/telepon"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:hint="+62"
-            tools:ignore="SpeakableTextPresentCheck"
-            android:inputType="phone"
-            android:autofillHints="" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_height="wrap_content"
+            app:endIconMode="custom"
+            android:layout_below="@+id/tvTelepon"
+            android:layout_alignParentEnd="true"
+            android:gravity="center"
+            app:boxCornerRadiusTopEnd="16dp"
+            app:boxCornerRadiusBottomEnd="16dp"
+            app:boxCornerRadiusBottomStart="16dp"
+            app:boxCornerRadiusTopStart="16dp"
+            app:errorIconDrawable="@null"
+            app:prefixText="+62"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
-    <TextView
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/masukanTelepon"
+                android:fontFamily="@font/poppins_regular"
+                android:textSize="16sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/_62"
+                android:inputType="phone"
+                android:autofillHints="" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
         android:id="@id/tvPassword"
         android:layout_marginTop="15dp"
         android:textColor="@color/black"
@@ -165,6 +168,7 @@
         app:boxCornerRadiusBottomEnd="16dp"
         app:boxCornerRadiusBottomStart="16dp"
         app:boxCornerRadiusTopStart="16dp"
+        app:errorIconDrawable="@null"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <EditText
@@ -173,7 +177,7 @@
             android:layout_height="match_parent"
             android:autofillHints=""
             android:fontFamily="@font/poppins_regular"
-            android:textSize="14sp"
+            android:textSize="16sp"
             android:hint="@string/buat_password"
             android:inputType="textPassword"
             tools:ignore="SpeakableTextPresentCheck" />
