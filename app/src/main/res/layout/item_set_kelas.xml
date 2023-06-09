@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="15dp"
+    android:padding="10dp">
+
+    <RelativeLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvNamaSetKelas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="First Class"
+            android:fontFamily="@font/poppins_bold"
+            android:textSize="14sp"
+            android:textColor="@color/NEUTRAL05"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvHargaSetKelas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvNamaSetKelas"
+            android:text="IDR 87.620.000"
+            android:fontFamily="@font/poppins_medium"
+            android:textSize="14sp"
+            android:textColor="#7126B5"/>
+
+        <ImageView
+            android:id="@+id/icChek4"
+            android:visibility="gone"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_check"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="10dp"/>
+
+        <View
+            android:id="@+id/outlinedHorizontal4"
+            android:layout_width="375dp"
+            android:layout_height="1dp"
+            android:layout_below="@id/tvHargaSetKelas"
+            android:background="@color/NEUTRAL03"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginEnd="1dp"/>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

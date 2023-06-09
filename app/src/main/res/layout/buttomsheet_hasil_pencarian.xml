@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp">
+
+    <ImageView
+        android:id="@+id/btnCLoseSetKelas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/ic_close"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvHargaTermurah"
+        android:layout_below="@id/btnCLoseSetKelas"
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Harga - Termurah"
+        android:layout_marginLeft="4dp"
+        android:fontFamily="@font/poppins_medium"
+        android:textSize="14sp"
+        android:textColor="@color/NEUTRAL05"/>
+
+    <View
+        android:id="@+id/outlinedHorizontal1"
+        android:layout_width="375dp"
+        android:layout_height="1dp"
+        android:layout_below="@id/tvHargaTermurah"
+        android:background="@color/NEUTRAL03"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvKeberangkatanPalingAwal"
+        android:layout_below="@id/outlinedHorizontal1"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Keberangkatan - Paling Awal"
+        android:layout_marginLeft="4dp"
+        android:fontFamily="@font/poppins_medium"
+        android:textSize="14sp"
+        android:textColor="@color/NEUTRAL05"/>
+
+    <View
+        android:id="@+id/outlinedHorizontal2"
+        android:layout_width="375dp"
+        android:layout_height="1dp"
+        android:layout_below="@id/tvKeberangkatanPalingAwal"
+        android:background="@color/NEUTRAL03"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvKeberangkatanPalingAkhir"
+        android:layout_below="@id/outlinedHorizontal2"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Keberangkatan - Paling Akhir"
+        android:layout_marginLeft="4dp"
+        android:fontFamily="@font/poppins_medium"
+        android:textSize="14sp"
+        android:textColor="@color/NEUTRAL05"/>
+
+    <View
+        android:id="@+id/outlinedHorizontal3"
+        android:layout_width="375dp"
+        android:layout_height="1dp"
+        android:layout_below="@id/tvKeberangkatanPalingAkhir"
+        android:background="@color/NEUTRAL03"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvKedatanganPalingAwal"
+        android:layout_below="@id/outlinedHorizontal3"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kedatangan - Paling Awal"
+        android:layout_marginLeft="4dp"
+        android:fontFamily="@font/poppins_medium"
+        android:textSize="14sp"
+        android:textColor="@color/NEUTRAL05"/>
+
+    <View
+        android:id="@+id/outlinedHorizontal4"
+        android:layout_width="375dp"
+        android:layout_height="1dp"
+        android:layout_below="@id/tvKedatanganPalingAwal"
+        android:background="@color/NEUTRAL03"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvKedatanganPalingAkhir"
+        android:layout_below="@id/outlinedHorizontal4"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kedatangan - Paling Akhir"
+        android:layout_marginLeft="4dp"
+        android:fontFamily="@font/poppins_medium"
+        android:textSize="14sp"
+        android:textColor="@color/NEUTRAL05"/>
+
+    <View
+        android:id="@+id/outlinedHorizontal5"
+        android:layout_width="375dp"
+        android:layout_height="1dp"
+        android:layout_below="@id/tvKedatanganPalingAkhir"
+        android:background="@color/NEUTRAL03"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"/>
+
+
+    <Button
+        android:layout_width="347dp"
+        android:layout_height="48dp"
+        android:layout_below="@id/outlinedHorizontal5"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/btn_bg"
+        android:text="Pilih"
+        android:textAllCaps="false" />
+
+</RelativeLayout>
