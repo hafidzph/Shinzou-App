@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="10dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp">
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvNamaKotaPencarian"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Jakarta"
+            android:textSize="14sp"
+            android:fontFamily="@font/poppins_regular"
+            android:textColor="@color/NEUTRAL05"/>
+
+        <View
+            android:id="@+id/outlinedHorizontalDua"
+            android:layout_width="385dp"
+            android:layout_height="1dp"
+            android:layout_below="@id/tvNamaKotaPencarian"
+            android:background="@color/NEUTRAL03"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="7dp"
+            android:layout_marginEnd="7dp"/>
+        
+        <ImageView
+            android:id="@+id/btnCLosePencarianKota"
+            android:layout_marginRight="20dp"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:src="@drawable/ic_close"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="15dp"/>
+        
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

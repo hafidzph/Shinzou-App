@@ -6,8 +6,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="20dp">
 
+    <ImageView
+        android:id="@+id/btnCLoseSetPenumpang"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/ic_close"
+        android:contentDescription="@string/todo" />
+
+    <View
+        android:id="@+id/outlinedHorizontalDua"
+        android:layout_width="355dp"
+        android:layout_height="1dp"
+        android:layout_below="@id/btnCLoseSetPenumpang"
+        android:background="@color/NEUTRAL03"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="7dp"
+        android:layout_marginEnd="7dp"/>
+
     <RelativeLayout
         android:id="@+id/relativeDewasa"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/outlinedHorizontalDua"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:ignore="UselessParent">
@@ -240,6 +261,7 @@
             android:layout_height="wrap_content"/>
 
         <LinearLayout
+            android:id="@+id/linearBayi"
             android:layout_alignParentEnd="true"
             android:orientation="horizontal"
             android:gravity="center"
@@ -297,11 +319,21 @@
         </LinearLayout>
 
     </RelativeLayout>
-
     <com.google.android.material.divider.MaterialDivider
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="8dp"
         android:layout_below="@id/relativeBayi"/>
+
+    <Button
+        android:layout_width="347dp"
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:background="@drawable/btn_bg"
+        android:text="Simpan"
+        android:textAllCaps="false"
+        android:textSize="16sp" />
+
 
 </RelativeLayout>

@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp">
+
+    <ImageView
+        android:id="@+id/btnCLoseSetKelas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/ic_close"/>
+
+    <RelativeLayout
+        android:id="@+id/relativEconomy"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/btnCLoseSetKelas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvEconomy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Economy"
+            android:fontFamily="@font/poppins_bold"
+            android:textSize="14sp"
+            android:textColor="@color/NEUTRAL05"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvHargaEconomy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvEconomy"
+            android:text="IDR 4.950.000"
+            android:fontFamily="@font/poppins_medium"
+            android:textSize="14sp"
+            android:textColor="#7126B5"/>
+
+        <ImageView
+            android:id="@+id/icChek"
+            android:visibility="gone"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_check"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="10dp"/>
+
+        <View
+            android:id="@+id/outlinedHorizontal1"
+            android:layout_width="375dp"
+            android:layout_height="1dp"
+            android:layout_below="@id/tvHargaEconomy"
+            android:background="@color/NEUTRAL03"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginEnd="1dp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativePremiumeconomy"
+        android:layout_below="@id/relativEconomy"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvPremiumeconomy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Premium Economy"
+            android:fontFamily="@font/poppins_bold"
+            android:textSize="14sp"
+            android:textColor="@color/NEUTRAL05"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvHargaPremiumEconomy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvPremiumeconomy"
+            android:text="IDR 7.550.000"
+            android:fontFamily="@font/poppins_medium"
+            android:textSize="14sp"
+            android:textColor="#7126B5"/>
+
+        <ImageView
+            android:id="@+id/icChek2"
+            android:visibility="gone"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_check"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="10dp"/>
+
+        <View
+            android:id="@+id/outlinedHorizontal2"
+            android:layout_width="375dp"
+            android:layout_height="1dp"
+            android:layout_below="@id/tvHargaPremiumEconomy"
+            android:background="@color/NEUTRAL03"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginEnd="1dp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeBusiness"
+        android:layout_below="@id/relativePremiumeconomy"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvBusiness"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Business"
+            android:fontFamily="@font/poppins_bold"
+            android:textSize="14sp"
+            android:textColor="@color/NEUTRAL05"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvHargaBusiness"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvBusiness"
+            android:text="IDR 29.220.000"
+            android:fontFamily="@font/poppins_medium"
+            android:textSize="14sp"
+            android:textColor="#7126B5"/>
+
+        <ImageView
+            android:id="@+id/icChek3"
+            android:visibility="gone"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_check"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="10dp"/>
+
+        <View
+            android:id="@+id/outlinedHorizontal3"
+            android:layout_width="375dp"
+            android:layout_height="1dp"
+            android:layout_below="@id/tvHargaBusiness"
+            android:background="@color/NEUTRAL03"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginEnd="1dp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeFirstClass"
+        android:layout_below="@id/relativeBusiness"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvFirstClass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="First Class"
+            android:fontFamily="@font/poppins_bold"
+            android:textSize="14sp"
+            android:textColor="@color/NEUTRAL05"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvHargaFirstClass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvFirstClass"
+            android:text="IDR 87.620.000"
+            android:fontFamily="@font/poppins_medium"
+            android:textSize="14sp"
+            android:textColor="#7126B5"/>
+
+        <ImageView
+            android:id="@+id/icChek4"
+            android:visibility="gone"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_check"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="10dp"/>
+
+        <View
+            android:id="@+id/outlinedHorizontal4"
+            android:layout_width="375dp"
+            android:layout_height="1dp"
+            android:layout_below="@id/tvHargaFirstClass"
+            android:background="@color/NEUTRAL03"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginEnd="1dp"/>
+
+    </RelativeLayout>
+    
+    <Button
+        android:layout_width="347dp"
+        android:layout_height="48dp"
+        android:text="Simpan"
+        android:layout_below="@id/relativeFirstClass"
+        android:layout_centerInParent="true"
+        android:textAllCaps="false"
+        android:background="@drawable/btn_bg"
+        android:layout_marginTop="100dp"/>
+
+</RelativeLayout>
