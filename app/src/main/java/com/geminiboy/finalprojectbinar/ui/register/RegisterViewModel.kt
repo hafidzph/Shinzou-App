@@ -1,4 +1,4 @@
-package com.geminiboy.finalprojectbinar.ui.auth.register
+package com.geminiboy.finalprojectbinar.ui.register
 
 import android.util.Patterns
 import androidx.lifecycle.LiveData

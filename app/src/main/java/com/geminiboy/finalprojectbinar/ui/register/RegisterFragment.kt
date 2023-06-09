@@ -1,4 +1,4 @@
-package com.geminiboy.finalprojectbinar.ui.auth.register
+package com.geminiboy.finalprojectbinar.ui.register
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -88,8 +88,11 @@ class RegisterFragment : Fragment() {
 
             for ((validator, textInputLayout) in validations) {
                 validator.observe(viewLifecycleOwner) {
-                    textInputLayout.setValidationState(it)
-                }
+                    if (!it) {
+                        textInputLayout.error = " "
+                    } else {
+                        textInputLayout.error = null
+                    }                }
             }
         }
     }

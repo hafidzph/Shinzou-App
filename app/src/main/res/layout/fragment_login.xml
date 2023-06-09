@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.auth.login.LoginFragment"
+    tools:context=".ui.login.LoginFragment"
     android:layout_marginVertical="40dp"
     android:layout_marginHorizontal="24dp">
         <RelativeLayout
@@ -42,7 +42,7 @@
         android:id="@+id/Email"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
-        android:layout_height="58dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/tvEmailOrTelp"
         android:layout_alignParentEnd="true"
         app:boxCornerRadiusTopEnd="16dp"
@@ -54,9 +54,10 @@
         app:endIconDrawable="@drawable/ic_check">
 
         <com.google.android.material.textfield.TextInputEditText
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:id="@+id/etEmail"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:inputType="textEmailAddress"
             android:textSize="14sp"
             android:fontFamily="@font/poppins_regular"/>
@@ -88,7 +89,7 @@
         android:id="@+id/Password"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/tvPassword"
         android:layout_alignParentEnd="true"
         app:boxCornerRadiusTopEnd="16dp"
@@ -100,10 +101,11 @@
         app:endIconMode="password_toggle">
 
     <com.google.android.material.textfield.TextInputEditText
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:id="@+id/masukanPassword"
         android:inputType="textPassword"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:textSize="14sp"
         android:fontFamily="@font/poppins_regular"/>
 
@@ -114,7 +116,7 @@
         style="@style/Btn"
         app:cornerRadius="16dp"
         android:layout_width="match_parent"
-        android:layout_height="58dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/Password"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="24dp"

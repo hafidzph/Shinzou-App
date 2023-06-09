@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.geminiboy.finalprojectbinar.R
 import com.geminiboy.finalprojectbinar.databinding.FragmentHomeBinding
+import com.geminiboy.finalprojectbinar.ui.bottomsheet.setpassenger.SetPassengerSheet
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
@@ -23,5 +24,9 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.layoutDetailContentShimmer.startShimmer()
+
+        binding.containerPassenger.setOnClickListener {
+            SetPassengerSheet().show(requireActivity().supportFragmentManager, "passengerTag")
+        }
     }
 }

@@ -85,8 +85,7 @@
         android:fontFamily="@font/poppins_medium"
         android:background="@drawable/btn_bg"
         android:text="@string/pilih"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginVertical="20dp"
         android:layout_below="@id/calender"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>

@@ -1,4 +1,4 @@
-package com.geminiboy.finalprojectbinar.ui.auth.login
+package com.geminiboy.finalprojectbinar.ui.login
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import com.geminiboy.finalprojectbinar.R
 import com.geminiboy.finalprojectbinar.databinding.FragmentLoginBinding
@@ -42,9 +43,7 @@ class LoginFragment : Fragment() {
     private fun observeValidateAll() {
         val validationMessages = listOf(
             "Alamat email tidak terdaftar!",
-            "Maaf, kata sandi salah",
-            "Nomor telepon tidak valid",
-            "Inputan yang anda masukkan tidak valid/akun belum terdaftar"
+            "Maaf, kata sandi salah"
         )
 
         val validators = listOf(
@@ -52,33 +51,25 @@ class LoginFragment : Fragment() {
             loginVM.isValidPassword
         )
 
+        observeValidateInput()
         var isFormValid = true
-        var firstInvalidIndex: Int? = null
+        val validationMessageList = validators.mapIndexedTo(mutableListOf()) { index, _ ->
+            MutableLiveData<String>().apply {
+                value = validationMessages[index]
+            }
+        }
 
         for ((index, validator) in validators.withIndex()) {
-            val validationMessage = validationMessages[index]
+            val validationMessage = validationMessageList[index]
 
-            val observer = Observer<Boolean> {
-                if (!it) {
+            val observer = Observer<Boolean> { isValid ->
+                if (!isValid) {
                     isFormValid = false
-                    if (firstInvalidIndex == null) firstInvalidIndex = index
-                    if (index == firstInvalidIndex) {
-                        Toast(requireContext()).showCustomToast(
-                            validationMessage,
-                            requireActivity(),
-                            R.layout.toast_alert_red
-                        )
-                        observeValidateInput()
-                    }
                 }
+                validationMessage.value = if (isValid) null else validationMessages[index]
             }
 
             validator.observe(viewLifecycleOwner, observer)
-        }
-
-        binding.apply {
-            loginVM.validateEmailPhone(etEmail.text.toString())
-            loginVM.validatePassword(masukanPassword.text.toString())
         }
 
         val fields = listOf(
@@ -87,13 +78,21 @@ class LoginFragment : Fragment() {
         )
 
         val isFieldsNotEmpty = fields.all { it.text.toString().isNotEmpty() }
-
         if (isFormValid && isFieldsNotEmpty) {
             Toast(requireContext()).showCustomToast(
                 "Form valid",
                 requireActivity(),
                 R.layout.toast_alert_green
             )
+        }else {
+            val invalidMessage = validationMessageList.find { it.value != null }?.value
+            if (invalidMessage != null) {
+                Toast(requireContext()).showCustomToast(
+                    invalidMessage,
+                    requireActivity(),
+                    R.layout.toast_alert_red
+                )
+            }
         }
     }
 

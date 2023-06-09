@@ -1,4 +1,4 @@
-package com.geminiboy.finalprojectbinar.ui.auth.login
+package com.geminiboy.finalprojectbinar.ui.login
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
