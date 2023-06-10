@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.bottomsheet.setpassenger.SetPassengerSheet">
     <com.google.android.material.imageview.ShapeableImageView
@@ -54,6 +54,7 @@
             android:layout_below="@id/tvDewasa"
             android:fontFamily="@font/poppins_regular"
             android:text="@string/_12_tahun_keatas"
+            android:textColor="@color/NEUTRAL03"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
@@ -66,51 +67,46 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnMinDewasa"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 app:strokeColor="@color/DARKBLUE05"
                 app:strokeWidth="1dp"
+                android:textColor="@color/DARKBLUE05"
                 android:gravity="center"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:text="@string/min"
                 android:layout_width="40dp"
-                android:layout_height="49dp"
-                style="?android:attr/buttonBarButtonStyle" />
+                android:layout_height="49dp" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilDewasa"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etDewasa"
+                android:layout_width="60dp"
+                android:layout_height="40dp"
                 android:layout_marginStart="3dp"
                 android:layout_marginEnd="3dp"
                 android:layout_marginBottom="3dp"
-                android:hint="@string/_2"
-                android:layout_width="60dp"
-                android:layout_height="43dp"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:text="2"
                 android:inputType="number"
-                android:autofillHints=""
-                app:boxCornerRadiusTopEnd="4dp"
-                app:boxCornerRadiusBottomEnd="4dp"
-                app:boxCornerRadiusBottomStart="4dp"
-                app:boxCornerRadiusTopStart="4dp">
+                android:textColor="@color/black"
+                android:paddingTop="3dp"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/shape_passenger"
+                android:fontFamily="@font/poppins_regular"/>
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etDewasa"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:gravity="center"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/poppins_regular"/>
-
-            </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnPlusDewasa"
                 app:strokeColor="@color/DARKBLUE05"
                 app:strokeWidth="1dp"
-                android:textSize="20sp"
+                android:textColor="@color/DARKBLUE05"
+                android:textSize="18sp"
                 android:text="@string/tambah"
                 android:layout_width="40dp"
                 android:layout_height="49dp"
-                style="?android:attr/buttonBarButtonStyle" />
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                />
 
         </LinearLayout>
 
@@ -153,6 +149,7 @@
             android:layout_below="@id/tvAnak"
             android:fontFamily="@font/poppins_regular"
             android:text="@string/_2_11_tahun"
+            android:textColor="@color/NEUTRAL03"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
@@ -165,54 +162,47 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnMinAnak"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 app:strokeColor="@color/DARKBLUE05"
                 app:strokeWidth="1dp"
+                android:textColor="@color/DARKBLUE05"
                 android:gravity="center"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:text="@string/min"
                 android:layout_width="40dp"
-                android:layout_height="49dp"
-                style="?android:attr/buttonBarButtonStyle" />
+                android:layout_height="49dp" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilAnak"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etAnak"
+                android:layout_width="60dp"
+                android:layout_height="40dp"
                 android:layout_marginStart="3dp"
                 android:layout_marginEnd="3dp"
                 android:layout_marginBottom="3dp"
-                android:hint="@string/_2"
-                android:layout_width="60dp"
-                android:layout_height="43dp"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:text="2"
                 android:inputType="number"
-                android:autofillHints=""
-                app:boxCornerRadiusTopEnd="4dp"
-                app:boxCornerRadiusBottomEnd="4dp"
-                app:boxCornerRadiusBottomStart="4dp"
-                app:boxCornerRadiusTopStart="4dp">
+                android:textColor="@color/black"
+                android:paddingTop="3dp"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/shape_passenger"
+                android:fontFamily="@font/poppins_regular"/>
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etAnak"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:gravity="center"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/poppins_regular"/>
-
-            </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnPlusAnak"
                 app:strokeColor="@color/DARKBLUE05"
                 app:strokeWidth="1dp"
-                android:textSize="20sp"
+                android:textColor="@color/DARKBLUE05"
+                android:textSize="18sp"
                 android:text="@string/tambah"
                 android:layout_width="40dp"
                 android:layout_height="49dp"
-                style="?android:attr/buttonBarButtonStyle" />
-
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                />
         </LinearLayout>
-
     </RelativeLayout>
 
     <com.google.android.material.divider.MaterialDivider
@@ -254,6 +244,7 @@
             android:layout_below="@id/tvBayi"
             android:fontFamily="@font/poppins_regular"
             android:text="@string/dibawah_2_tahun"
+            android:textColor="@color/NEUTRAL03"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
@@ -266,60 +257,68 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnMinBayi"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 app:strokeColor="@color/DARKBLUE05"
                 app:strokeWidth="1dp"
+                android:textColor="@color/DARKBLUE05"
                 android:gravity="center"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:text="@string/min"
                 android:layout_width="40dp"
-                android:layout_height="49dp"
-                style="?android:attr/buttonBarButtonStyle" />
+                android:layout_height="49dp" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilBayi"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etBayi"
+                android:layout_width="60dp"
+                android:layout_height="40dp"
                 android:layout_marginStart="3dp"
                 android:layout_marginEnd="3dp"
                 android:layout_marginBottom="3dp"
-                android:hint="@string/_2"
-                android:layout_width="60dp"
-                android:layout_height="43dp"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:text="2"
                 android:inputType="number"
-                android:autofillHints=""
-                app:boxCornerRadiusTopEnd="4dp"
-                app:boxCornerRadiusBottomEnd="4dp"
-                app:boxCornerRadiusBottomStart="4dp"
-                app:boxCornerRadiusTopStart="4dp">
+                android:textColor="@color/black"
+                android:paddingTop="3dp"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/shape_passenger"
+                android:fontFamily="@font/poppins_regular"/>
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etBayi"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:gravity="center"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/poppins_regular"/>
-
-            </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnPlusBayi"
                 app:strokeColor="@color/DARKBLUE05"
                 app:strokeWidth="1dp"
-                android:textSize="20sp"
+                android:textColor="@color/DARKBLUE05"
+                android:textSize="18sp"
                 android:text="@string/tambah"
                 android:layout_width="40dp"
                 android:layout_height="49dp"
-                style="?android:attr/buttonBarButtonStyle" />
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                />
 
         </LinearLayout>
 
     </RelativeLayout>
 
     <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/divider"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="8dp"
         android:layout_below="@id/relativeBayi"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="147dp"
+            android:fontFamily="@font/poppins_medium"
+            app:cornerRadius="12dp"
+            android:textSize="16sp"
+            android:paddingTop="10dp"
+            android:backgroundTint="@color/DARKBLUE05"
+            android:text="Simpan"
+            android:layout_below="@id/divider"/>
     </RelativeLayout>
 </RelativeLayout>
