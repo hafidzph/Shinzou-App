@@ -12,7 +12,7 @@ class SetDestinationPreferences @Inject constructor(private val dataStore: DataS
     private val dateDepartureKey = stringPreferencesKey("dateDeparture")
     private val dateReturnKey = stringPreferencesKey("dateReturn")
     private val passengerKey = stringPreferencesKey("passenger")
-    private val seatKey = stringPreferencesKey("seat")
+    private val seatKey = stringPreferencesKey("seatClass")
 
     fun getDeparture(): Flow<String> = dataStore.data.map {
         it[dateDepartureKey] ?: ""

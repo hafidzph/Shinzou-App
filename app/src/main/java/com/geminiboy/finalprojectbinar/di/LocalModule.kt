@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
+import com.geminiboy.finalprojectbinar.data.local.datastore.SetDestinationPreferences
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -23,4 +24,9 @@ class LocalModule {
     @Singleton
     @Provides
     fun provideDataStore(@ApplicationContext context: Context): DataStore<Preferences> = context.counterDataStore
+
+    @Singleton
+    @Provides
+    fun provideSetDestinationPreferences(dataStore: DataStore<Preferences>): SetDestinationPreferences =
+        SetDestinationPreferences(dataStore)
 }
