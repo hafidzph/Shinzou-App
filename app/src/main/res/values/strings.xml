@@ -67,4 +67,6 @@
     <string name="_2_11_tahun">(2-11 tahun)</string>
     <string name="bayi">Bayi</string>
     <string name="dibawah_2_tahun">(Dibawah 2 tahun)</string>
+    <string name="biodata_pemesan">Biodata Pemesan</string>
+    <string name="mulai_dari">Mulai Dari</string>
 </resources>

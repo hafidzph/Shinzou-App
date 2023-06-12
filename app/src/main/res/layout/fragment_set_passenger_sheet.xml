@@ -5,15 +5,19 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.bottomsheet.setpassenger.SetPassengerSheet">
+
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/btnClose"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:backgroundTint="@color/black"
-        android:layout_margin="10dp"
         android:layout_alignParentEnd="true"
-        android:src="@drawable/ic_close"
-        android:contentDescription="@string/todo" />
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="@color/black"
+        android:contentDescription="@string/todo"
+        android:src="@drawable/ic_close" />
 
     <com.google.android.material.divider.MaterialDivider
         android:layout_width="match_parent"
@@ -316,9 +320,9 @@
             android:fontFamily="@font/poppins_medium"
             app:cornerRadius="12dp"
             android:textSize="16sp"
-            android:paddingTop="10dp"
+            android:padding="12dp"
             android:backgroundTint="@color/DARKBLUE05"
-            android:text="Simpan"
+            android:text="@string/simpan"
             android:layout_below="@id/divider"/>
     </RelativeLayout>
 </RelativeLayout>

@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.geminiboy.finalprojectbinar.R
 import com.geminiboy.finalprojectbinar.databinding.FragmentHomeBinding
+import com.geminiboy.finalprojectbinar.ui.bottomsheet.choosedate.SetDateSheet
+import com.geminiboy.finalprojectbinar.ui.bottomsheet.setclass.SetClassSheet
 import com.geminiboy.finalprojectbinar.ui.bottomsheet.setpassenger.SetPassengerSheet
 
 class HomeFragment : Fragment() {
@@ -23,10 +25,19 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.layoutDetailContentShimmer.startShimmer()
 
-        binding.containerPassenger.setOnClickListener {
-            SetPassengerSheet().show(requireActivity().supportFragmentManager, "passengerTag")
+        binding.apply {
+            containerPassenger.setOnClickListener {
+                SetPassengerSheet().show(requireActivity().supportFragmentManager, "passengerTag")
+            }
+
+            containerContentDeparture.setOnClickListener {
+                SetDateSheet().show(requireActivity().supportFragmentManager, "dateTag")
+            }
+
+            containerContentSeat.setOnClickListener {
+                SetClassSheet().show(requireActivity().supportFragmentManager, "setClassTag")
+            }
         }
     }
 }

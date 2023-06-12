@@ -18,6 +18,7 @@
         app:layout_constraintBottom_toBottomOf="parent"/>
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnNext"
         android:layout_width="60dp"
         android:layout_height="54dp"
         android:layout_marginVertical="55dp"
