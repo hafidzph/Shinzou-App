@@ -1,5 +1,6 @@
 package com.geminiboy.finalprojectbinar.di
 
+import com.geminiboy.finalprojectbinar.data.remote.service.UserService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,10 +23,13 @@ class NetworkModule {
             .addInterceptor(loggingInterceptor)
             .build()
         return Retrofit.Builder()
-            .baseUrl("")
+            .baseUrl("https://condemned-umbrella-production.up.railway.app/")
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build()
     }
 
+    @Provides
+    @Singleton
+    fun provideUserService(retrofit: Retrofit): UserService = retrofit.create(UserService::class.java)
 }

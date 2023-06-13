@@ -9,10 +9,11 @@ import com.archit.calendardaterangepicker.customviews.CalendarListener
 import com.geminiboy.finalprojectbinar.R
 import com.geminiboy.finalprojectbinar.databinding.FragmentSetDateBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
-
+@AndroidEntryPoint
 class SetDateSheet : BottomSheetDialogFragment() {
     private var _binding: FragmentSetDateBinding? = null
     private val binding get() = _binding!!

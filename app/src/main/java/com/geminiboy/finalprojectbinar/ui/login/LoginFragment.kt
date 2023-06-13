@@ -16,7 +16,9 @@ import com.geminiboy.finalprojectbinar.databinding.FragmentLoginBinding
 import com.geminiboy.finalprojectbinar.databinding.FragmentRegisterBinding
 import com.geminiboy.finalprojectbinar.utils.showCustomToast
 import com.google.android.material.textfield.TextInputLayout
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class LoginFragment : Fragment() {
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!

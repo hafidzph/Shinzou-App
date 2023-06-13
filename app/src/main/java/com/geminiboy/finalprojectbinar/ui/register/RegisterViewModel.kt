@@ -4,8 +4,18 @@ import android.util.Patterns
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.geminiboy.finalprojectbinar.data.remote.service.UserService
+import com.geminiboy.finalprojectbinar.model.user.ResponseUser
+import com.geminiboy.finalprojectbinar.model.user.SignUpBody
+import com.geminiboy.finalprojectbinar.wrapper.Resource
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class RegisterViewModel: ViewModel() {
+@HiltViewModel
+class RegisterViewModel @Inject constructor(private val api: UserService): ViewModel() {
     private var _isValidName = MutableLiveData<Boolean>()
     val isValidName: LiveData<Boolean> = _isValidName
 
@@ -17,6 +27,19 @@ class RegisterViewModel: ViewModel() {
 
     private var _isValidNoTelp = MutableLiveData<Boolean>()
     val isValidNoTelp: LiveData<Boolean> = _isValidNoTelp
+
+    private val _userRegister = MutableLiveData<Resource<ResponseUser>>()
+    val userRegister: LiveData<Resource<ResponseUser>> = _userRegister
+
+    fun postUser(user: SignUpBody) = viewModelScope.launch(Dispatchers.IO){
+        try {
+            _userRegister.postValue(Resource.Loading())
+            val response = api.postUser(user)
+            _userRegister.postValue(Resource.Success(response))
+        }catch (e: Exception){
+            _userRegister.postValue(Resource.Error(e.message!!))
+        }
+    }
 
     fun validateEmail(email: String){
         val validEmail = email.isNotEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches()

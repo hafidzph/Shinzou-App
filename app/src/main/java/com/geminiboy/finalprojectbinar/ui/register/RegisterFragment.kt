@@ -19,9 +19,13 @@ import androidx.navigation.fragment.findNavController
 import com.geminiboy.finalprojectbinar.MainActivity
 import com.geminiboy.finalprojectbinar.R
 import com.geminiboy.finalprojectbinar.databinding.FragmentRegisterBinding
+import com.geminiboy.finalprojectbinar.model.user.SignUpBody
 import com.geminiboy.finalprojectbinar.utils.showCustomToast
+import com.geminiboy.finalprojectbinar.wrapper.Resource
 import com.google.android.material.textfield.TextInputLayout
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class RegisterFragment : Fragment() {
     private var _binding: FragmentRegisterBinding? = null
     private val binding get() = _binding!!
@@ -38,6 +42,30 @@ class RegisterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         (activity as MainActivity).setBottomNavigationVisibility(View.GONE)
+
+        registerVM.userRegister.observe(viewLifecycleOwner) { resource ->
+            when (resource) {
+                is Resource.Loading -> {
+                }
+                is Resource.Success -> {
+                    Toast(requireContext()).showCustomToast(
+                        "Register successfull!",
+                        requireActivity(),
+                        R.layout.toast_alert_green
+                    )
+                    findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
+                }
+                is Resource.Error -> {
+                    val errorMessage = resource.message
+                    Toast(requireContext()).showCustomToast(
+                        errorMessage!!,
+                        requireActivity(),
+                        R.layout.toast_alert_red
+                    )
+                }
+            }
+        }
+
         binding.apply {
            masukanNama.addTextChangedListener {
                registerVM.validateName(masukanNama.text.toString())
@@ -142,11 +170,11 @@ class RegisterFragment : Fragment() {
         val isFieldsNotEmpty = fields.all { it.text.toString().isNotEmpty() }
 
         if (isFormValid && isFieldsNotEmpty) {
-            Toast(requireContext()).showCustomToast(
-                "Form valid",
-                requireActivity(),
-                R.layout.toast_alert_green
-            )
+            val name = binding.masukanNama.text.toString()
+            val email = binding.masukanEmail.text.toString()
+            val nomorTelepon = binding.masukanTelepon.text.toString()
+            val password = binding.masukanPassword.text.toString()
+            registerVM.postUser(SignUpBody(name, email, nomorTelepon, password))
         } else {
             val invalidMessage = validationMessageList.find { it.value != null }?.value
             if (invalidMessage != null) {

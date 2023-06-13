@@ -10,7 +10,9 @@ import com.geminiboy.finalprojectbinar.databinding.FragmentHomeBinding
 import com.geminiboy.finalprojectbinar.ui.bottomsheet.choosedate.SetDateSheet
 import com.geminiboy.finalprojectbinar.ui.bottomsheet.setclass.SetClassSheet
 import com.geminiboy.finalprojectbinar.ui.bottomsheet.setpassenger.SetPassengerSheet
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!

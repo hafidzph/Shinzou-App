@@ -9,7 +9,9 @@ import com.geminiboy.finalprojectbinar.R
 import com.geminiboy.finalprojectbinar.databinding.FragmentSetPassengerSheetBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SetPassengerSheet : BottomSheetDialogFragment() {
     private var _binding: FragmentSetPassengerSheetBinding? = null
     private val binding get() = _binding!!

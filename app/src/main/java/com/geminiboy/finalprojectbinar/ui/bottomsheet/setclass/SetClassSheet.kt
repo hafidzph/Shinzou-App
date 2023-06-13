@@ -8,7 +8,9 @@ import android.view.ViewGroup
 import com.geminiboy.finalprojectbinar.R
 import com.geminiboy.finalprojectbinar.databinding.FragmentSetClassSheetBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SetClassSheet : BottomSheetDialogFragment() {
     private var _binding: FragmentSetClassSheetBinding? = null
     private val binding get() = _binding!!
