@@ -5,9 +5,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.geminiboy.finalprojectbinar.data.remote.service.UserService
-import com.geminiboy.finalprojectbinar.model.user.ResponseUser
-import com.geminiboy.finalprojectbinar.model.user.SignUpBody
+import com.geminiboy.finalprojectbinar.data.repository.AuthRepository
+import com.geminiboy.finalprojectbinar.model.user.RegisterResponse
+import com.geminiboy.finalprojectbinar.model.user.RegisterBody
 import com.geminiboy.finalprojectbinar.wrapper.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -15,7 +15,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class RegisterViewModel @Inject constructor(private val api: UserService): ViewModel() {
+class RegisterViewModel @Inject constructor(private val authRepository: AuthRepository): ViewModel() {
     private var _isValidName = MutableLiveData<Boolean>()
     val isValidName: LiveData<Boolean> = _isValidName
 
@@ -28,14 +28,13 @@ class RegisterViewModel @Inject constructor(private val api: UserService): ViewM
     private var _isValidNoTelp = MutableLiveData<Boolean>()
     val isValidNoTelp: LiveData<Boolean> = _isValidNoTelp
 
-    private val _userRegister = MutableLiveData<Resource<ResponseUser>>()
-    val userRegister: LiveData<Resource<ResponseUser>> = _userRegister
+    private val _userRegister = MutableLiveData<Resource<RegisterResponse>>()
+    val userRegister: LiveData<Resource<RegisterResponse>> = _userRegister
 
-    fun postUser(user: SignUpBody) = viewModelScope.launch(Dispatchers.IO){
+    fun postUser(user: RegisterBody) = viewModelScope.launch(Dispatchers.IO){
         try {
-            _userRegister.postValue(Resource.Loading())
-            val response = api.postUser(user)
-            _userRegister.postValue(Resource.Success(response))
+            val response = authRepository.register(user)
+            _userRegister.postValue(response)
         }catch (e: Exception){
             _userRegister.postValue(Resource.Error(e.message!!))
         }

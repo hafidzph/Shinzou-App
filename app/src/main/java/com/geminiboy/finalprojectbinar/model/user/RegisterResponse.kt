@@ -3,7 +3,7 @@ package com.geminiboy.finalprojectbinar.model.user
 
 import com.google.gson.annotations.SerializedName
 
-data class ResponseUser(
+data class RegisterResponse(
     @SerializedName("email")
     val email: String,
     @SerializedName("name")

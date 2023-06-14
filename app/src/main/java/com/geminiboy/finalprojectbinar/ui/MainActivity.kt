@@ -1,4 +1,4 @@
-package com.geminiboy.finalprojectbinar
+package com.geminiboy.finalprojectbinar.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

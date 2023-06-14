@@ -11,10 +11,14 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.geminiboy.finalprojectbinar.R
 import com.geminiboy.finalprojectbinar.databinding.FragmentLoginBinding
 import com.geminiboy.finalprojectbinar.databinding.FragmentRegisterBinding
+import com.geminiboy.finalprojectbinar.model.user.LoginBody
+import com.geminiboy.finalprojectbinar.ui.MainActivity
 import com.geminiboy.finalprojectbinar.utils.showCustomToast
+import com.geminiboy.finalprojectbinar.wrapper.Resource
 import com.google.android.material.textfield.TextInputLayout
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -34,89 +38,82 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (activity as MainActivity).setBottomNavigationVisibility(View.GONE)
 
         binding.apply {
             btnLogin.setOnClickListener {
-                observeValidateAll()
+                if(isValid()){
+                    val email = binding.etEmail.text.toString().trim()
+                    val password = binding.masukanPassword.text.toString().trim()
+                    loginVM.login(LoginBody(email, password))
+                    observe()
+                }
+            }
+
+            tvDaftarDisini.setOnClickListener {
+                findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
             }
         }
     }
 
-    private fun observeValidateAll() {
-        val validationMessages = listOf(
-            "Alamat email tidak terdaftar!",
-            "Maaf, kata sandi salah"
-        )
+    private fun isValid(): Boolean {
+        var isValid = true
 
-        val validators = listOf(
-            loginVM.isValidEmailPhone,
-            loginVM.isValidPassword
-        )
+        val email = binding.etEmail.text.toString().trim()
+        val password = binding.masukanPassword.text.toString().trim()
 
-        observeValidateInput()
-        var isFormValid = true
-        val validationMessageList = validators.mapIndexedTo(mutableListOf()) { index, _ ->
-            MutableLiveData<String>().apply {
-                value = validationMessages[index]
-            }
-        }
-
-        for ((index, validator) in validators.withIndex()) {
-            val validationMessage = validationMessageList[index]
-
-            val observer = Observer<Boolean> { isValid ->
-                if (!isValid) {
-                    isFormValid = false
-                }
-                validationMessage.value = if (isValid) null else validationMessages[index]
-            }
-
-            validator.observe(viewLifecycleOwner, observer)
-        }
-
-        val fields = listOf(
-            binding.etEmail,
-            binding.masukanPassword
-        )
-
-        val isFieldsNotEmpty = fields.all { it.text.toString().isNotEmpty() }
-        if (isFormValid && isFieldsNotEmpty) {
+        if (email.isEmpty() && password.isEmpty()) {
             Toast(requireContext()).showCustomToast(
-                "Form valid",
+                "Email dan Password tidak valid!",
                 requireActivity(),
-                R.layout.toast_alert_green
+                R.layout.toast_alert_red
             )
-        }else {
-            val invalidMessage = validationMessageList.find { it.value != null }?.value
-            if (invalidMessage != null) {
-                Toast(requireContext()).showCustomToast(
-                    invalidMessage,
-                    requireActivity(),
-                    R.layout.toast_alert_red
-                )
-            }
+            binding.etEmail.background = ContextCompat.getDrawable(requireContext(), R.drawable.bg_error_state)
+            binding.masukanPassword.background = ContextCompat.getDrawable(requireContext(), R.drawable.bg_error_state)
+            isValid = false
+        }else if(email.isEmpty()){
+            Toast(requireContext()).showCustomToast(
+                "Email tidak valid!",
+                requireActivity(),
+                R.layout.toast_alert_red
+            )
+            binding.etEmail.background = ContextCompat.getDrawable(requireContext(), R.drawable.bg_error_state)
+            isValid = false
+        }else if(password.isEmpty()){
+            Toast(requireContext()).showCustomToast(
+                "Password tidak valid!",
+                requireActivity(),
+                R.layout.toast_alert_red
+            )
+            binding.masukanPassword.background = ContextCompat.getDrawable(requireContext(), R.drawable.bg_error_state)
+            isValid = false
         }
+
+        return isValid
     }
 
-    private fun observeValidateInput() {
-        binding.apply {
-            val validations = listOf(
-                loginVM.isValidEmailPhone to Email,
-                loginVM.isValidPassword to Password
-            )
-
-            for ((validator, textInputLayout) in validations) {
-                validator.observe(viewLifecycleOwner) {
-                    if (!it) {
-                        textInputLayout.error = " "
-                    } else {
-                        textInputLayout.error = null
-                    }
+    fun observe(){
+        loginVM.login.observe(viewLifecycleOwner) { resource ->
+            when (resource) {
+                is Resource.Loading -> {}
+                is Resource.Success -> {
+                    Toast(requireContext()).showCustomToast(
+                        "Login berhasil",
+                        requireActivity(),
+                        R.layout.toast_alert_green
+                    )
+                    findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+                }
+                is Resource.Error -> {
+                        Toast(requireContext()).showCustomToast(
+                            "Email atau kata sandi salah",
+                            requireActivity(),
+                            R.layout.toast_alert_red
+                        )
                 }
             }
         }
     }
-
 
     override fun onDestroy() {
         super.onDestroy()

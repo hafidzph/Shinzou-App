@@ -5,6 +5,7 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import com.geminiboy.finalprojectbinar.data.local.datastore.SetDestinationPreferences
+import com.geminiboy.finalprojectbinar.data.local.datastore.UserPreferences
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -29,4 +30,8 @@ class LocalModule {
     @Provides
     fun provideSetDestinationPreferences(dataStore: DataStore<Preferences>): SetDestinationPreferences =
         SetDestinationPreferences(dataStore)
+    @Singleton
+    @Provides
+    fun provideUserPreferences(dataStore: DataStore<Preferences>): UserPreferences =
+        UserPreferences(dataStore)
 }

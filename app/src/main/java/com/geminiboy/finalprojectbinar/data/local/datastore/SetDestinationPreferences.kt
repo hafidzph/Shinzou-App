@@ -5,6 +5,7 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
@@ -14,8 +15,8 @@ class SetDestinationPreferences @Inject constructor(private val dataStore: DataS
     private val passengerKey = stringPreferencesKey("passenger")
     private val seatKey = stringPreferencesKey("seatClass")
 
-    fun getDeparture(): Flow<String> = dataStore.data.map {
-        it[dateDepartureKey] ?: ""
+    suspend fun getDeparture(): String?{
+        return dataStore.data.first()[dateDepartureKey]
     }
     fun getReturn(): Flow<String> = dataStore.data.map {
         it[dateReturnKey] ?: ""
