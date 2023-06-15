@@ -24,7 +24,6 @@
             app:layout_anchorGravity="center"
             app:navigationIcon="@drawable/baseline_arrow_back_24"
             app:title="JKT > MLB - 2 Penumpang - Economy"/>
-
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -69,4 +69,7 @@
     <string name="dibawah_2_tahun">(Dibawah 2 tahun)</string>
     <string name="biodata_pemesan">Biodata Pemesan</string>
     <string name="mulai_dari">Mulai Dari</string>
+    <string name="selamat">Selamat</string>
+    <string name="transaksi_pembayaran_tiket_sukses">Transaksi Pembayaran Tiket Sukses!</string>
+    <string name="bayar">Bayar</string>
 </resources>
