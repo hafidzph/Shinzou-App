@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.viewModels
 import com.archit.calendardaterangepicker.customviews.CalendarListener
 import com.geminiboy.finalprojectbinar.R
 import com.geminiboy.finalprojectbinar.databinding.FragmentSetDateBinding
@@ -18,6 +19,7 @@ import java.util.Locale
 class SetDateSheet : BottomSheetDialogFragment() {
     private var _binding: FragmentSetDateBinding? = null
     private val binding get() = _binding!!
+    private val setDateVM: SetDateViewModel by viewModels()
     private val dateFormat = SimpleDateFormat("EEEE, d MMMM yyyy", Locale("id", "ID"))
     private var startDateString = ""
     private var endDateString = ""
@@ -48,6 +50,10 @@ class SetDateSheet : BottomSheetDialogFragment() {
             btnPilihTanggal.setOnClickListener {
                 tanggalBerangkat.text = startDateString
                 tanggalPulang.text = endDateString
+                setDateVM.apply {
+                    setDepartureDate(startDateString)
+                    if(endDateString != "-") setReturnDate(endDateString)
+                }
             }
         }
         setDateRange()
