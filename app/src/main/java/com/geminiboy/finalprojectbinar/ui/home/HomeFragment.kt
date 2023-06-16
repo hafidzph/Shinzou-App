@@ -17,6 +17,10 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
+    companion object{
+        var isRoundTrip = false
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -39,6 +43,10 @@ class HomeFragment : Fragment() {
 
             containerContentSeat.setOnClickListener {
                 SetClassSheet().show(requireActivity().supportFragmentManager, "setClassTag")
+            }
+
+            switchToggle.setOnCheckedChangeListener{_, isChecked ->
+                isRoundTrip = isChecked
             }
         }
     }

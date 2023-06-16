@@ -23,6 +23,7 @@
     <style name="AppModalStyle"
         parent="Widget.Design.BottomSheet.Modal">
         <item name="android:background">@drawable/shape_bottom_sheet</item>
+        <item name="behavior_peekHeight">700dp</item>
     </style>
 
     <style name="Btn" parent="Widget.Material3.Button">

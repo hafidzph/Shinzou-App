@@ -103,28 +103,45 @@
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <com.archit.calendardaterangepicker.customviews.DateRangeCalendarView
-        android:id="@+id/calendar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        custom:disable_date_color="#ABABAB"
-        custom:range_color="@color/DARKBLUE02"
-        android:layout_below="@+id/linearTanggalPP"
-        custom:selected_date_circle_color="@color/DARKBLUE04"
-        custom:title_color="@color/black">
-    </com.archit.calendardaterangepicker.customviews.DateRangeCalendarView>
+        <LinearLayout
+            android:id="@+id/containerDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/linearTanggalPP"
+            android:orientation="vertical">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnPilihTanggal"
-        android:fontFamily="@font/poppins_medium"
-        android:text="@string/pilih"
-        app:cornerRadius="12dp"
-        android:textSize="16sp"
-        android:backgroundTint="@color/DARKBLUE05"
-        android:layout_marginTop="100dp"
-        android:padding="12dp"
-        android:layout_below="@id/calendar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+            <com.archit.calendardaterangepicker.customviews.DateRangeCalendarView
+                android:id="@+id/calendarRange"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                custom:disable_date_color="#ABABAB"
+                custom:range_color="@color/DARKBLUE02"
+                custom:date_selection_mode="free_range"
+                custom:selected_date_circle_color="@color/DARKBLUE04"
+                custom:title_color="@color/black" />
+
+            <com.archit.calendardaterangepicker.customviews.DateRangeCalendarView
+                android:id="@+id/calendarSingle"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                custom:disable_date_color="#ABABAB"
+                custom:range_color="@color/DARKBLUE02"
+                custom:date_selection_mode="single"
+                custom:selected_date_circle_color="@color/DARKBLUE04"
+                custom:title_color="@color/black" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnPilihTanggal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="100dp"
+                android:padding="12dp"
+                android:text="@string/pilih"
+                android:textSize="16sp"
+                android:fontFamily="@font/poppins_medium"
+                android:backgroundTint="@color/DARKBLUE05"
+                app:cornerRadius="12dp" />
+        </LinearLayout>
     </RelativeLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

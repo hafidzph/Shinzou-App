@@ -92,7 +92,7 @@ class LoginFragment : Fragment() {
         return isValid
     }
 
-    fun observe(){
+    private fun observe(){
         loginVM.login.observe(viewLifecycleOwner) { resource ->
             when (resource) {
                 is Resource.Loading -> {}
@@ -105,11 +105,11 @@ class LoginFragment : Fragment() {
                     findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
                 }
                 is Resource.Error -> {
-                        Toast(requireContext()).showCustomToast(
-                            "Email atau kata sandi salah",
-                            requireActivity(),
-                            R.layout.toast_alert_red
-                        )
+                    Toast(requireContext()).showCustomToast(
+                        "Email atau kata sandi salah",
+                        requireActivity(),
+                        R.layout.toast_alert_red
+                    )
                 }
             }
         }
