@@ -201,7 +201,7 @@
     </RelativeLayout>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnPilihTanggal"
+        android:id="@+id/btnPilih"
         android:fontFamily="@font/poppins_medium"
         android:text="@string/pilih"
         app:cornerRadius="12dp"

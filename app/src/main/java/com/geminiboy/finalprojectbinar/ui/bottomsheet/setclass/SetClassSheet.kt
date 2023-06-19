@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import com.geminiboy.finalprojectbinar.R
 import com.geminiboy.finalprojectbinar.databinding.FragmentSetClassSheetBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -16,7 +17,8 @@ import dagger.hilt.android.AndroidEntryPoint
 class SetClassSheet : BottomSheetDialogFragment() {
     private var _binding: FragmentSetClassSheetBinding? = null
     private val binding get() = _binding!!
-
+    private val seatClassVM: SetClassViewModel by viewModels()
+    private lateinit var seatClassName: String
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -35,6 +37,11 @@ class SetClassSheet : BottomSheetDialogFragment() {
             relativePremiumEconomy.setOnClickListener { selectSeatClass(1) }
             relativeBusiness.setOnClickListener { selectSeatClass(2) }
             relativeFirstClass.setOnClickListener { selectSeatClass(3) }
+
+            btnPilih.setOnClickListener {
+                seatClassVM.setSeat(seatClassName)
+                dismiss()
+            }
         }
     }
 
@@ -55,6 +62,9 @@ class SetClassSheet : BottomSheetDialogFragment() {
             seatClass.findViewById<MaterialTextView>(getSeatClassTextViewId(index)).setTextColor(resources.getColor(textColorRes))
             seatClass.findViewById<MaterialTextView>(getSeatClassHargaTextViewId(index)).setTextColor(resources.getColor(textColorRes))
             seatClass.findViewById<ShapeableImageView>(getSeatClassSuccessImageViewId(index)).visibility = if (isSelected) View.VISIBLE else View.GONE
+            if (isSelected) {
+                seatClassName = seatClass.findViewById<MaterialTextView>(getSeatClassTextViewId(index)).text.toString()
+            }
         }
     }
 

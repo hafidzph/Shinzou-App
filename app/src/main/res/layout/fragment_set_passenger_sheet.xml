@@ -91,8 +91,8 @@
                 android:layout_marginBottom="3dp"
                 android:textSize="16sp"
                 android:gravity="center"
-                android:text="2"
-                android:inputType="number"
+                android:text="0"
+                android:enabled="false"
                 android:textColor="@color/black"
                 android:paddingTop="3dp"
                 android:layout_marginTop="3dp"
@@ -186,8 +186,8 @@
                 android:layout_marginBottom="3dp"
                 android:textSize="16sp"
                 android:gravity="center"
-                android:text="2"
-                android:inputType="number"
+                android:text="0"
+                android:enabled="false"
                 android:textColor="@color/black"
                 android:paddingTop="3dp"
                 android:layout_marginTop="3dp"
@@ -271,7 +271,6 @@
                 android:layout_width="40dp"
                 android:layout_height="49dp" />
 
-
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etBayi"
                 android:layout_width="60dp"
@@ -281,8 +280,8 @@
                 android:layout_marginBottom="3dp"
                 android:textSize="16sp"
                 android:gravity="center"
-                android:text="2"
-                android:inputType="number"
+                android:text="0"
+                android:enabled="false"
                 android:textColor="@color/black"
                 android:paddingTop="3dp"
                 android:layout_marginTop="3dp"
@@ -314,6 +313,7 @@
         android:layout_below="@id/relativeBayi"/>
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSimpan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="147dp"

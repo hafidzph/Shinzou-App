@@ -72,4 +72,6 @@
     <string name="selamat">Selamat</string>
     <string name="transaksi_pembayaran_tiket_sukses">Transaksi Pembayaran Tiket Sukses!</string>
     <string name="bayar">Bayar</string>
+    <string name="pilih_seat_class">Pilih Seat Class</string>
+    <string name="set_penumpang">Set Penumpang</string>
 </resources>
