@@ -10,6 +10,6 @@ data class RegisterResponse(
     val name: String,
     @SerializedName("password")
     val password: String,
-    @SerializedName("phoneNumber")
+    @SerializedName("phone_number")
     val phoneNumber: String
 )

@@ -56,6 +56,12 @@ class HomeFragment : Fragment() {
             btnCari.setOnClickListener {
                 homeVM.clear()
             }
+
+            btnSwitch.setOnClickListener {
+                val temp = tvDestinationFrom.text
+                tvDestinationFrom.text = tvDestinationTo.text
+                tvDestinationTo.text = temp
+            }
         }
         setPassenger()
         setSeatClass()
@@ -78,7 +84,7 @@ class HomeFragment : Fragment() {
         homeVM.getDateReturn().observe(viewLifecycleOwner){
             if(it != ""){
                 binding.apply {
-                    tvReturn.text = it.substringAfter(", ")
+                    tvReturn.text = if(it != "-") it.substringAfter(", ") else "-"
                     tvReturn.setTextColor(ContextCompat.getColor(requireContext(), R.color.NEUTRAL05))
                 }
             }

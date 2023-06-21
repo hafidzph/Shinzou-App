@@ -1,4 +1,4 @@
-package com.geminiboy.finalprojectbinar.ui.detailpenerbangan
+package com.geminiboy.finalprojectbinar.ui.bottomsheet.searchingdestination
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,15 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.geminiboy.finalprojectbinar.R
-import dagger.hilt.android.AndroidEntryPoint
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-@AndroidEntryPoint
-class FragmentDetailPenerbangan : Fragment() {
+class SearchingDestinationSheet : BottomSheetDialogFragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {7
+    ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_detail_penerbangan, container, false)
+        return inflater.inflate(R.layout.fragment_searching_destination_sheet, container, false)
     }
 }

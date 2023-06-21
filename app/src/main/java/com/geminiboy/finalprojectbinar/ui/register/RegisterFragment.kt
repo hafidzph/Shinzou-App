@@ -146,7 +146,7 @@ class RegisterFragment : Fragment() {
             val email = binding.masukanEmail.text.toString()
             val nomorTelepon = binding.masukanTelepon.text.toString()
             val password = binding.masukanPassword.text.toString()
-            registerVM.postUser(RegisterBody(name, email, nomorTelepon, password))
+            registerVM.postUser(RegisterBody(email, name, password, nomorTelepon))
             observe()
         } else {
             val invalidMessage = validationMessageList.find { it.value != null }?.value

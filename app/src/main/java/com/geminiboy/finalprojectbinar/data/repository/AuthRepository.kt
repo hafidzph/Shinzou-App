@@ -4,8 +4,8 @@ import com.geminiboy.finalprojectbinar.data.local.datastore.UserPreferences
 import com.geminiboy.finalprojectbinar.data.remote.service.UserService
 import com.geminiboy.finalprojectbinar.model.user.LoginBody
 import com.geminiboy.finalprojectbinar.model.user.LoginResponse
-import com.geminiboy.finalprojectbinar.model.user.RegisterResponse
 import com.geminiboy.finalprojectbinar.model.user.RegisterBody
+import com.geminiboy.finalprojectbinar.model.user.RegisterResponse
 import com.geminiboy.finalprojectbinar.wrapper.Resource
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject

@@ -6,12 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.archit.calendardaterangepicker.customviews.CalendarListener
 import com.geminiboy.finalprojectbinar.R
 import com.geminiboy.finalprojectbinar.databinding.FragmentSetDateBinding
 import com.geminiboy.finalprojectbinar.ui.home.HomeFragment
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
@@ -48,12 +51,12 @@ class SetDateSheet : BottomSheetDialogFragment() {
             }
 
             btnPilihTanggal.setOnClickListener {
-                tanggalBerangkat.text = startDateString
-                tanggalPulang.text = endDateString
                 setDateVM.apply {
                     setDepartureDate(startDateString)
-                    if(endDateString != "-") setReturnDate(endDateString)
+                    if(endDateString != "-") setReturnDate(endDateString) else setReturnDate("-")
+                    lifecycleScope.launch { delay(500) }
                 }
+                dismiss()
             }
         }
         setDateRange()

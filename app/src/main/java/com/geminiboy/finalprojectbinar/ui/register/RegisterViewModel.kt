@@ -6,8 +6,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.geminiboy.finalprojectbinar.data.repository.AuthRepository
-import com.geminiboy.finalprojectbinar.model.user.RegisterResponse
 import com.geminiboy.finalprojectbinar.model.user.RegisterBody
+import com.geminiboy.finalprojectbinar.model.user.RegisterResponse
 import com.geminiboy.finalprojectbinar.wrapper.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
