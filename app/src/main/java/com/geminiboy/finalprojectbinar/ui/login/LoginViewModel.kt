@@ -16,7 +16,7 @@ import javax.inject.Inject
 @HiltViewModel
 class LoginViewModel @Inject constructor(private val authRepository: AuthRepository): ViewModel() {
     private val _login = MutableLiveData<Resource<LoginResponse>>()
-    val login: LiveData<Resource<LoginResponse>> = _login
+    val login: LiveData<Resource<LoginResponse>> get() = _login
 
     fun login(body: LoginBody) = viewModelScope.launch(Dispatchers.IO) {
         try {
@@ -25,5 +25,9 @@ class LoginViewModel @Inject constructor(private val authRepository: AuthReposit
         }catch (e: Exception){
             _login.postValue(Resource.Error(e.message!!))
         }
+    }
+
+    fun setToken(token: String) = viewModelScope.launch {
+        authRepository.setToken(token)
     }
 }

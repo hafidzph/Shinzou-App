@@ -57,9 +57,9 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:id="@+id/etEmail"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="60dp"
             android:inputType="textEmailAddress"
-            android:textSize="14sp"
+            android:textSize="16sp"
             android:fontFamily="@font/poppins_regular"/>
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -105,8 +105,8 @@
         android:id="@+id/masukanPassword"
         android:inputType="textPassword"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textSize="14sp"
+        android:layout_height="60dp"
+        android:textSize="16sp"
         android:fontFamily="@font/poppins_regular"/>
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -114,15 +114,15 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnLogin"
         style="@style/Btn"
-        app:cornerRadius="16dp"
+        app:cornerRadius="14dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="55dp"
         android:layout_below="@+id/Password"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="24dp"
         android:text="@string/masuk"
         android:textColor="@color/white"
-        android:fontFamily="@font/poppins_regular"/>
+        android:fontFamily="@font/poppins_medium"/>
 
     <LinearLayout
         android:layout_width="wrap_content"

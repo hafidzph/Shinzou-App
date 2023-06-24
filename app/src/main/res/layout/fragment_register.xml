@@ -31,7 +31,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:text="@string/daftar"
         android:textColor="@color/black"
         android:textSize="28sp"
@@ -65,13 +65,13 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/masukanNama"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:hint="@string/nama_lengkap"
-            tools:ignore="SpeakableTextPresentCheck"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
             android:fontFamily="@font/poppins_regular"
-            android:textSize="16sp"
+            android:hint="@string/nama_lengkap"
             android:inputType="textEmailAddress"
-            android:autofillHints="" />
+            android:textSize="16sp"
+            tools:ignore="SpeakableTextPresentCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
@@ -103,7 +103,7 @@
             android:fontFamily="@font/poppins_regular"
             android:textSize="16sp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:hint="@string/contoh_example_gmail_com"
             tools:ignore="SpeakableTextPresentCheck"
             android:inputType="textEmailAddress"
@@ -133,16 +133,16 @@
             app:boxCornerRadiusBottomStart="16dp"
             app:boxCornerRadiusTopStart="16dp"
             app:errorIconDrawable="@null"
-            app:prefixText="+62"
+            http:prefixText="+62"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/masukanTelepon"
                 android:fontFamily="@font/poppins_regular"
                 android:textSize="16sp"
+                android:hint="@string/_62"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/_62"
                 android:inputType="phone"
                 android:autofillHints="" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -174,27 +174,27 @@
         <EditText
             android:id="@+id/masukanPassword"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:autofillHints=""
             android:fontFamily="@font/poppins_regular"
-            android:textSize="16sp"
             android:hint="@string/buat_password"
             android:inputType="textPassword"
+            android:textSize="15sp"
             tools:ignore="SpeakableTextPresentCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
-        android:id="@+id/btnDaftar"
-        android:background="@drawable/btn_bg"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/Password"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="24dp"
-        android:backgroundTint="@color/DARKBLUE04"
-        android:text="@string/daftar"
-        android:fontFamily="@font/poppins_medium"
-        android:textColor="@color/white" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnDaftar"
+            style="@style/Btn"
+            app:cornerRadius="14dp"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_below="@+id/Password"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="24dp"
+            android:text="@string/daftar"
+            android:textColor="@color/white"
+            android:fontFamily="@font/poppins_medium"/>
 
         <LinearLayout
             android:layout_width="wrap_content"

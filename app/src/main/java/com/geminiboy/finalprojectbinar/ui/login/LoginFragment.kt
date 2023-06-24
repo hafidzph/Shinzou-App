@@ -11,6 +11,7 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.geminiboy.finalprojectbinar.R
 import com.geminiboy.finalprojectbinar.databinding.FragmentLoginBinding
@@ -21,6 +22,8 @@ import com.geminiboy.finalprojectbinar.utils.showCustomToast
 import com.geminiboy.finalprojectbinar.wrapper.Resource
 import com.google.android.material.textfield.TextInputLayout
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class LoginFragment : Fragment() {
@@ -46,14 +49,18 @@ class LoginFragment : Fragment() {
                     val email = binding.etEmail.text.toString().trim()
                     val password = binding.masukanPassword.text.toString().trim()
                     loginVM.login(LoginBody(email, password))
-                    observe()
                 }
             }
 
             tvDaftarDisini.setOnClickListener {
                 findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
             }
+
+            tvLupaPassword.setOnClickListener {
+                findNavController().navigate(R.id.action_loginFragment_to_forgetPasswordFragment)
+            }
         }
+        observe()
     }
 
     private fun isValid(): Boolean {
@@ -102,6 +109,8 @@ class LoginFragment : Fragment() {
                         requireActivity(),
                         R.layout.toast_alert_green
                     )
+                    loginVM.setToken(resource.data!!.token)
+                    lifecycleScope.launch { delay(500) }
                     findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
                 }
                 is Resource.Error -> {

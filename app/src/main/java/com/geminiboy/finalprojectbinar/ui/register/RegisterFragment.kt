@@ -11,6 +11,7 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.geminiboy.finalprojectbinar.ui.MainActivity
 import com.geminiboy.finalprojectbinar.R
@@ -20,6 +21,8 @@ import com.geminiboy.finalprojectbinar.utils.showCustomToast
 import com.geminiboy.finalprojectbinar.wrapper.Resource
 import com.google.android.material.textfield.TextInputLayout
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class RegisterFragment : Fragment() {
@@ -63,7 +66,12 @@ class RegisterFragment : Fragment() {
                 registerVM.validatePassword(masukanPassword.text.toString())
                 observeValidateAll()
             }
+
+            back.setOnClickListener {
+                findNavController().popBackStack()
+            }
         }
+        observeRegister()
         observeValidate()
     }
 
@@ -87,11 +95,9 @@ class RegisterFragment : Fragment() {
                 registerVM.isValidPassword to Password
             )
 
-            for ((validator, textInputLayout) in validations) {
-                validator.observe(viewLifecycleOwner) {
-                    if (!it) {
-                        textInputLayout.error = " "
-                    }
+            validations.forEach { (validator, textInputLayout) ->
+                validator.observe(viewLifecycleOwner) { isValid ->
+                    textInputLayout.setValidationState(isValid)
                 }
             }
         }
@@ -144,10 +150,9 @@ class RegisterFragment : Fragment() {
         if (isFormValid && isFieldsNotEmpty) {
             val name = binding.masukanNama.text.toString()
             val email = binding.masukanEmail.text.toString()
-            val nomorTelepon = binding.masukanTelepon.text.toString()
+            val nomorTelepon = "0" + binding.masukanTelepon.text.toString()
             val password = binding.masukanPassword.text.toString()
             registerVM.postUser(RegisterBody(email, name, password, nomorTelepon))
-            observe()
         } else {
             val invalidMessage = validationMessageList.find { it.value != null }?.value
             if (invalidMessage != null) {
@@ -160,22 +165,25 @@ class RegisterFragment : Fragment() {
         }
     }
 
-    fun observe(){
+    private fun observeRegister(){
         registerVM.userRegister.observe(viewLifecycleOwner) { resource ->
             when (resource) {
                 is Resource.Loading -> {}
                 is Resource.Success -> {
                     Toast(requireContext()).showCustomToast(
-                        "Register successfull!",
+                        "Kode OTP telah dikirim!",
                         requireActivity(),
                         R.layout.toast_alert_green
                     )
-                    findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
+                    val bundle = Bundle().apply {
+                        putString("email", binding.masukanEmail.text.toString())
+                    }
+                    lifecycleScope.launch { delay(500) }
+                    findNavController().navigate(R.id.action_registerFragment_to_otpFragment, bundle)
                 }
                 is Resource.Error -> {
-                    val errorMessage = resource.message
                     Toast(requireContext()).showCustomToast(
-                        errorMessage!!,
+                        "Email sudah terpakai!!",
                         requireActivity(),
                         R.layout.toast_alert_red
                     )

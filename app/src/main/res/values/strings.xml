@@ -75,4 +75,9 @@
     <string name="pilih_seat_class">Pilih Seat Class</string>
     <string name="set_penumpang">Set Penumpang</string>
     <string name="beranda">Beranda</string>
+    <string name="pilih_tujuan">Pilih Tujuan</string>
+    <string name="masukkan_email">Masukkan Email</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="send">Send</string>
+    <string name="kirim">Kirim</string>
 </resources>

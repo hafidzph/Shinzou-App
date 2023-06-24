@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.geminiboy.finalprojectbinar.R
 import com.geminiboy.finalprojectbinar.databinding.FragmentHomeBinding
 import com.geminiboy.finalprojectbinar.ui.bottomsheet.choosedate.SetDateSheet
@@ -54,7 +55,7 @@ class HomeFragment : Fragment() {
             }
 
             btnCari.setOnClickListener {
-                homeVM.clear()
+                findNavController().navigate(R.id.action_homeFragment_to_searchResultFragment)
             }
 
             btnSwitch.setOnClickListener {

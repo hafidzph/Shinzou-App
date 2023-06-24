@@ -11,6 +11,7 @@ import com.archit.calendardaterangepicker.customviews.CalendarListener
 import com.geminiboy.finalprojectbinar.R
 import com.geminiboy.finalprojectbinar.databinding.FragmentSetDateBinding
 import com.geminiboy.finalprojectbinar.ui.home.HomeFragment
+import com.geminiboy.finalprojectbinar.utils.showCustomToast
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
@@ -26,6 +27,7 @@ class SetDateSheet : BottomSheetDialogFragment() {
     private val dateFormat = SimpleDateFormat("EEEE, d MMMM yyyy", Locale("id", "ID"))
     private var startDateString = ""
     private var endDateString = ""
+    private val currentDate = Calendar.getInstance()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -67,9 +69,16 @@ class SetDateSheet : BottomSheetDialogFragment() {
         binding.apply {
             calendarSingle.setCalendarListener(object : CalendarListener {
                 override fun onDateRangeSelected(startDate: Calendar, endDate: Calendar) {
-                    startDateString = dateFormat.format(startDate.time)
-                    tanggalBerangkat.text = startDateString
-                    tanggalPulang.text = "-"
+                    if(startDate.before(currentDate)) {
+                        Toast(requireContext()).showCustomToast(
+                            "Tanggal sudah kadaluarsa!!",
+                            requireActivity(),
+                            R.layout.toast_alert_red)
+                    }else {
+                        startDateString = dateFormat.format(startDate.time)
+                        tanggalBerangkat.text = startDateString
+                        tanggalPulang.text = "-"
+                    }
                 }
                 override fun onFirstDateSelected(startDate: Calendar) {}
             })
@@ -80,10 +89,17 @@ class SetDateSheet : BottomSheetDialogFragment() {
         binding.apply {
             calendarRange.setCalendarListener(object : CalendarListener {
                 override fun onDateRangeSelected(startDate: Calendar, endDate: Calendar) {
-                    startDateString = dateFormat.format(startDate.time)
-                    endDateString = dateFormat.format(endDate.time)
-                    tanggalBerangkat.text = startDateString
-                    tanggalPulang.text = endDateString
+                    if(startDate.before(currentDate)) {
+                        Toast(requireContext()).showCustomToast(
+                            "Tanggal sudah kadaluarsa!!",
+                            requireActivity(),
+                            R.layout.toast_alert_red)
+                    }else{
+                        startDateString = dateFormat.format(startDate.time)
+                        endDateString = dateFormat.format(endDate.time)
+                        tanggalBerangkat.text = startDateString
+                        tanggalPulang.text = endDateString
+                    }
                 }
 
                 override fun onFirstDateSelected(startDate: Calendar) {}

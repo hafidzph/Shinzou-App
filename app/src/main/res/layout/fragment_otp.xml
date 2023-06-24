@@ -68,7 +68,7 @@
                 android:textSize="14sp" />
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tvNomor"
+                android:id="@+id/tvEmail"
                 android:textColor="@color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -76,7 +76,6 @@
                 android:gravity="center"
                 android:textStyle="bold"
                 android:fontFamily="@font/poppins_regular"
-                android:text="@string/_62824244534"
                 android:textSize="14sp" />
 
         </LinearLayout>
@@ -97,9 +96,8 @@
             android:layout_height="50dp"
             android:inputType="number"
             android:maxLength="1"
-            android:text="1"
             android:gravity="center"
-            android:layout_marginEnd="10dp"
+            android:layout_marginEnd="5dp"
             android:paddingTop="5dp"
             android:textColor="@color/black"
             android:fontFamily="@font/poppins_medium"
@@ -111,10 +109,9 @@
             android:layout_height="50dp"
             android:inputType="number"
             android:maxLength="1"
-            android:text="1"
             android:gravity="center"
             android:paddingTop="5dp"
-            android:layout_marginEnd="10dp"
+            android:layout_marginEnd="5dp"
             android:textColor="@color/black"
             android:fontFamily="@font/poppins_medium"
             android:background="@drawable/shape_otp"/>
@@ -125,10 +122,9 @@
             android:layout_height="50dp"
             android:inputType="number"
             android:maxLength="1"
-            android:text="1"
             android:gravity="center"
             android:paddingTop="5dp"
-            android:layout_marginEnd="10dp"
+            android:layout_marginEnd="5dp"
             android:textColor="@color/black"
             android:fontFamily="@font/poppins_medium"
             android:background="@drawable/shape_otp"/>
@@ -139,10 +135,9 @@
             android:layout_height="50dp"
             android:inputType="number"
             android:maxLength="1"
-            android:text="1"
             android:gravity="center"
             android:paddingTop="5dp"
-            android:layout_marginEnd="10dp"
+            android:layout_marginEnd="5dp"
             android:textColor="@color/black"
             android:fontFamily="@font/poppins_medium"
             android:background="@drawable/shape_otp"/>
@@ -153,11 +148,9 @@
             android:layout_height="50dp"
             android:inputType="number"
             android:maxLength="1"
-            android:text="1"
             android:paddingTop="5dp"
-
             android:gravity="center"
-            android:layout_marginEnd="10dp"
+            android:layout_marginEnd="5dp"
             android:textColor="@color/black"
             android:fontFamily="@font/poppins_medium"
             android:background="@drawable/shape_otp"/>
@@ -168,9 +161,7 @@
             android:layout_height="50dp"
             android:inputType="number"
             android:maxLength="1"
-            android:text="2"
             android:gravity="center"
-            android:layout_marginEnd="5dp"
             android:paddingTop="5dp"
             android:textColor="@color/black"
             android:fontFamily="@font/poppins_medium"

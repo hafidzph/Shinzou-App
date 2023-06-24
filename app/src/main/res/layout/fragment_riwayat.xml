@@ -38,7 +38,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="90dp"
             android:fontFamily="@font/poppins_medium"
-            android:text="Maaf, anda harus login terlebih dahulu<"
+            android:text="Maaf, anda harus login terlebih dahulu"
             android:textColor="#151515"
 
             />

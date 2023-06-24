@@ -23,7 +23,7 @@ class NetworkModule {
             .addInterceptor(loggingInterceptor)
             .build()
         return Retrofit.Builder()
-            .baseUrl("https://condemned-umbrella-production.up.railway.app/")
+            .baseUrl("https://shinzou-api.up.railway.app/api/v1/")
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build()

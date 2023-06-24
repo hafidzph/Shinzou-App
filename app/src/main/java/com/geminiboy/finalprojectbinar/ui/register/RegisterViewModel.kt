@@ -17,19 +17,19 @@ import javax.inject.Inject
 @HiltViewModel
 class RegisterViewModel @Inject constructor(private val authRepository: AuthRepository): ViewModel() {
     private var _isValidName = MutableLiveData<Boolean>()
-    val isValidName: LiveData<Boolean> = _isValidName
+    val isValidName: LiveData<Boolean> get() = _isValidName
 
     private var _isValidEmail = MutableLiveData<Boolean>()
-    val isValidEmail: LiveData<Boolean> = _isValidEmail
+    val isValidEmail: LiveData<Boolean> get() = _isValidEmail
 
     private var _isValidPassword = MutableLiveData<Boolean>()
-    val isValidPassword: LiveData<Boolean> = _isValidPassword
+    val isValidPassword: LiveData<Boolean> get() = _isValidPassword
 
     private var _isValidNoTelp = MutableLiveData<Boolean>()
-    val isValidNoTelp: LiveData<Boolean> = _isValidNoTelp
+    val isValidNoTelp: LiveData<Boolean> get() = _isValidNoTelp
 
     private val _userRegister = MutableLiveData<Resource<RegisterResponse>>()
-    val userRegister: LiveData<Resource<RegisterResponse>> = _userRegister
+    val userRegister: LiveData<Resource<RegisterResponse>> get() = _userRegister
 
     fun postUser(user: RegisterBody) = viewModelScope.launch(Dispatchers.IO){
         try {

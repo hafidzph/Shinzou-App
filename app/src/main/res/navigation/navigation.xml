@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/invoiceSuccessFragment">
+    app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/registerFragment"
@@ -23,7 +23,11 @@
         android:id="@+id/homeFragment"
         android:name="com.geminiboy.finalprojectbinar.ui.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_searchResultFragment"
+            app:destination="@id/searchResultFragment" />
+    </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.geminiboy.finalprojectbinar.ui.login.LoginFragment"
@@ -35,7 +39,8 @@
             app:enterAnim="@android:anim/slide_in_left" />
         <action
             android:id="@+id/action_loginFragment_to_forgetPasswordFragment"
-            app:destination="@id/forgetPasswordFragment" />
+            app:destination="@id/forgetPasswordFragment"
+            app:enterAnim="@android:anim/slide_in_left" />
         <action
             android:id="@+id/action_loginFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
@@ -54,12 +59,16 @@
         android:id="@+id/otpFragment"
         android:name="com.geminiboy.finalprojectbinar.ui.otp.OtpFragment"
         android:label="fragment_otp"
-        tools:layout="@layout/fragment_otp" />
+        tools:layout="@layout/fragment_otp" >
+        <action
+            android:id="@+id/action_otpFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
     <fragment
         android:id="@+id/forgetPasswordFragment"
-        android:name="com.geminiboy.finalprojectbinar.ui.forgetpassword.ForgetPasswordFragment"
+        android:name="com.geminiboy.finalprojectbinar.ui.forgotpassword.ForgotPasswordFragment"
         android:label="fragment_forget_password"
-        tools:layout="@layout/fragment_forget_password" />
+        tools:layout="@layout/fragment_forgot_password" />
     <fragment
         android:id="@+id/resetPasswordFragment"
         android:name="com.geminiboy.finalprojectbinar.ui.resetpassword.ResetPasswordFragment"
@@ -75,4 +84,13 @@
         android:name="com.geminiboy.finalprojectbinar.ui.invoicesuccces.InvoiceSuccessFragment"
         android:label="fragment_invoice_success"
         tools:layout="@layout/fragment_invoice_success" />
+    <fragment
+        android:id="@+id/searchResultFragment"
+        android:name="com.geminiboy.finalprojectbinar.ui.searchresult.SearchResultFragment"
+        android:label="fragment_search_result"
+        tools:layout="@layout/fragment_search_result" >
+        <action
+            android:id="@+id/action_searchResultFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
 </navigation>

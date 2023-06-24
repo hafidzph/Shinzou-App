@@ -5,15 +5,16 @@ import android.widget.TextView
 import android.widget.Toast
 import com.geminiboy.finalprojectbinar.R
 
-fun Toast.showCustomToast(message: String, activity: Activity, layoutResId: Int)
-{
-    val layout = activity.layoutInflater.inflate (
+fun Toast.showCustomToast(message: String, activity: Activity, layoutResId: Int) {
+    val layout = activity.layoutInflater.inflate(
         layoutResId,
         activity.findViewById(R.id.toast_container)
     )
 
     val textView = layout.findViewById<TextView>(R.id.toast_text)
     textView.text = message
+    textView.setLines(2)
+    textView.gravity = Gravity.CENTER
 
     this.apply {
         setGravity(Gravity.BOTTOM, 0, 40)
