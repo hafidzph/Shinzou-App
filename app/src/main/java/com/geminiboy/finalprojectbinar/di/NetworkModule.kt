@@ -1,5 +1,6 @@
 package com.geminiboy.finalprojectbinar.di
 
+import com.geminiboy.finalprojectbinar.data.remote.service.FlightService
 import com.geminiboy.finalprojectbinar.data.remote.service.UserService
 import dagger.Module
 import dagger.Provides
@@ -32,4 +33,8 @@ class NetworkModule {
     @Provides
     @Singleton
     fun provideUserService(retrofit: Retrofit): UserService = retrofit.create(UserService::class.java)
+
+    @Provides
+    @Singleton
+    fun provideFlightService(retrofit: Retrofit): FlightService = retrofit.create(FlightService::class.java)
 }

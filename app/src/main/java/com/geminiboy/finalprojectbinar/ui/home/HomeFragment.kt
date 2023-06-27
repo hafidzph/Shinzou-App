@@ -2,18 +2,25 @@ package com.geminiboy.finalprojectbinar.ui.home
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.geminiboy.finalprojectbinar.R
 import com.geminiboy.finalprojectbinar.databinding.FragmentHomeBinding
 import com.geminiboy.finalprojectbinar.ui.bottomsheet.choosedate.SetDateSheet
+import com.geminiboy.finalprojectbinar.ui.bottomsheet.searchingdestination.SearchingDestinationSheet
 import com.geminiboy.finalprojectbinar.ui.bottomsheet.setclass.SetClassSheet
 import com.geminiboy.finalprojectbinar.ui.bottomsheet.setpassenger.SetPassengerSheet
+import com.geminiboy.finalprojectbinar.ui.home.adapter.FavouriteDestinationAdapter
+import com.geminiboy.finalprojectbinar.utils.showCustomToast
+import com.geminiboy.finalprojectbinar.wrapper.Resource
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -21,6 +28,7 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private val homeVM: HomeViewModel by viewModels()
+    private val favouriteDestinationAdapter: FavouriteDestinationAdapter = FavouriteDestinationAdapter()
 
     companion object{
         var isRoundTrip = false
@@ -54,8 +62,13 @@ class HomeFragment : Fragment() {
                 isRoundTrip = isChecked
             }
 
+            containerFrom.setOnClickListener {
+                SearchingDestinationSheet().show(requireActivity().supportFragmentManager, "searchingTag")
+            }
+
             btnCari.setOnClickListener {
                 findNavController().navigate(R.id.action_homeFragment_to_searchResultFragment)
+                homeVM.clear()
             }
 
             btnSwitch.setOnClickListener {
@@ -68,6 +81,42 @@ class HomeFragment : Fragment() {
         setSeatClass()
         setDateDeparture()
         setDateReturn()
+        observeFavDestination()
+    }
+
+    private fun observeFavDestination(){
+        homeVM.getToken().observe(viewLifecycleOwner){
+            homeVM.getFlight(it)
+        }
+        homeVM.favDestination.observe(viewLifecycleOwner){
+            when(it){
+                is Resource.Loading -> {
+                    binding.apply {
+                        rvDestinasiFav.visibility = View.GONE
+                        destinationShimmer.visibility = View.VISIBLE
+                    }
+                }
+                is Resource.Success -> {
+                    binding.apply {
+                        rvDestinasiFav.visibility = View.VISIBLE
+                        destinationShimmer.visibility = View.GONE
+                        favouriteDestinationAdapter.submitData(it.data?.data!!)
+                        rvDestinasiFav.adapter = favouriteDestinationAdapter
+                        rvDestinasiFav.layoutManager = LinearLayoutManager(requireContext(),
+                            LinearLayoutManager.HORIZONTAL,
+                            false)
+                    }
+                }
+                is Resource.Error -> {
+                    Toast(requireContext()).showCustomToast(
+                        it.message!!,
+                        requireActivity(),
+                        R.layout.toast_alert_red
+                    )
+                    Log.d("error destination", it.message)
+                }
+            }
+        }
     }
 
     private fun setDateDeparture(){

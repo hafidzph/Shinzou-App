@@ -28,289 +28,292 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="70dp"
         android:layout_marginHorizontal="20dp">
-    <RelativeLayout
-        android:id="@+id/relativeDewasa"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:ignore="UselessParent">
-
-        <ImageView
-            android:id="@+id/icDewasa"
-            android:src="@drawable/ic_dewasa"
-            android:layout_width="12dp"
-            android:layout_height="20dp"
-            tools:ignore="ContentDescription" />
-        <TextView
-            android:id="@+id/tvDewasa"
-            android:text="@string/dewasa"
-            android:textSize="14sp"
-            android:layout_marginStart="10dp"
-            android:textColor="@color/black"
-            android:fontFamily="@font/poppins_bold"
-            android:layout_toEndOf="@id/icDewasa"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:id="@+id/relativeDewasa"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:ignore="RelativeOverlap" />
-        <TextView
-            android:id="@+id/tv12Keatas"
-            android:layout_marginStart="10dp"
-            android:layout_toEndOf="@id/icDewasa"
-            android:layout_below="@id/tvDewasa"
-            android:fontFamily="@font/poppins_regular"
-            android:text="@string/_12_tahun_keatas"
-            android:textColor="@color/NEUTRAL03"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            tools:ignore="UselessParent">
 
-        <LinearLayout
-            android:layout_alignParentEnd="true"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnMinDewasa"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                app:strokeColor="@color/DARKBLUE05"
-                app:strokeWidth="1dp"
-                android:textColor="@color/DARKBLUE05"
-                android:gravity="center"
-                android:textSize="18sp"
-                android:text="@string/min"
-                android:layout_width="40dp"
-                android:layout_height="49dp" />
-
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etDewasa"
-                android:layout_width="60dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="3dp"
-                android:layout_marginEnd="3dp"
-                android:layout_marginBottom="3dp"
-                android:textSize="16sp"
-                android:gravity="center"
-                android:text="0"
-                android:enabled="false"
+            <ImageView
+                android:id="@+id/icDewasa"
+                android:src="@drawable/ic_dewasa"
+                android:layout_width="12dp"
+                android:layout_height="20dp"
+                tools:ignore="ContentDescription" />
+            <TextView
+                android:id="@+id/tvDewasa"
+                android:text="@string/dewasa"
+                android:textSize="14sp"
+                android:layout_marginStart="10dp"
                 android:textColor="@color/black"
-                android:paddingTop="3dp"
-                android:layout_marginTop="3dp"
-                android:background="@drawable/shape_passenger"
-                android:fontFamily="@font/poppins_regular"/>
+                android:fontFamily="@font/poppins_bold"
+                android:layout_toEndOf="@id/icDewasa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:ignore="RelativeOverlap" />
+            <TextView
+                android:id="@+id/tv12Keatas"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@id/icDewasa"
+                android:layout_below="@id/tvDewasa"
+                android:fontFamily="@font/poppins_regular"
+                android:text="@string/_12_tahun_keatas"
+                android:textColor="@color/NEUTRAL03"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnPlusDewasa"
-                app:strokeColor="@color/DARKBLUE05"
-                app:strokeWidth="1dp"
-                android:textColor="@color/DARKBLUE05"
-                android:textSize="18sp"
-                android:text="@string/tambah"
-                android:layout_width="40dp"
-                android:layout_height="49dp"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                />
-
-        </LinearLayout>
-
-    </RelativeLayout>
-
-    <com.google.android.material.divider.MaterialDivider
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="8dp"
-        android:layout_below="@id/relativeDewasa"/>
-
-    <RelativeLayout
-        android:id="@+id/relativeAnak"
-        android:layout_marginTop="20dp"
-        android:layout_below="@id/relativeDewasa"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:ignore="UselessParent">
-
-        <ImageView
-            android:id="@+id/icAnak"
-            android:src="@drawable/ic_anak"
-            android:layout_width="12dp"
-            android:layout_height="20dp"
-            tools:ignore="ContentDescription" />
-        <TextView
-            android:id="@+id/tvAnak"
-            android:text="@string/anak"
-            android:textSize="14sp"
-            android:layout_marginStart="10dp"
-            android:textColor="@color/black"
-            android:fontFamily="@font/poppins_bold"
-            android:layout_toEndOf="@id/icAnak"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:id="@+id/tv11Keatas"
-            android:layout_marginStart="10dp"
-            android:layout_toEndOf="@id/icAnak"
-            android:layout_below="@id/tvAnak"
-            android:fontFamily="@font/poppins_regular"
-            android:text="@string/_2_11_tahun"
-            android:textColor="@color/NEUTRAL03"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-        <LinearLayout
-            android:layout_alignParentEnd="true"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnMinAnak"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                app:strokeColor="@color/DARKBLUE05"
-                app:strokeWidth="1dp"
-                android:textColor="@color/DARKBLUE05"
+            <LinearLayout
+                android:layout_alignParentEnd="true"
+                android:orientation="horizontal"
                 android:gravity="center"
-                android:textSize="18sp"
-                android:text="@string/min"
-                android:layout_width="40dp"
-                android:layout_height="49dp" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnMinDewasa"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    app:strokeColor="@color/DARKBLUE05"
+                    app:strokeWidth="1dp"
+                    android:textColor="@color/DARKBLUE05"
+                    android:gravity="center"
+                    android:textSize="18sp"
+                    android:text="@string/min"
+                    android:layout_width="40dp"
+                    android:layout_height="49dp" />
 
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etAnak"
-                android:layout_width="60dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="3dp"
-                android:layout_marginEnd="3dp"
-                android:layout_marginBottom="3dp"
-                android:textSize="16sp"
-                android:gravity="center"
-                android:text="0"
-                android:enabled="false"
-                android:textColor="@color/black"
-                android:paddingTop="3dp"
-                android:layout_marginTop="3dp"
-                android:background="@drawable/shape_passenger"
-                android:fontFamily="@font/poppins_regular"/>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etDewasa"
+                    android:layout_width="60dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginEnd="3dp"
+                    android:layout_marginBottom="3dp"
+                    android:textSize="16sp"
+                    android:gravity="center"
+                    android:text="0"
+                    android:enabled="false"
+                    android:textColor="@color/black"
+                    android:paddingTop="3dp"
+                    android:layout_marginTop="3dp"
+                    android:background="@drawable/shape_passenger"
+                    android:fontFamily="@font/poppins_regular"/>
 
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnPlusAnak"
-                app:strokeColor="@color/DARKBLUE05"
-                app:strokeWidth="1dp"
-                android:textColor="@color/DARKBLUE05"
-                android:textSize="18sp"
-                android:text="@string/tambah"
-                android:layout_width="40dp"
-                android:layout_height="49dp"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                />
-        </LinearLayout>
-    </RelativeLayout>
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnPlusDewasa"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    app:strokeColor="@color/DARKBLUE05"
+                    app:strokeWidth="1dp"
+                    android:textColor="@color/DARKBLUE05"
+                    android:gravity="center"
+                    android:textSize="18sp"
+                    android:text="@string/tambah"
+                    android:layout_width="40dp"
+                    android:layout_height="49dp"
+                    />
 
-    <com.google.android.material.divider.MaterialDivider
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="8dp"
-        android:layout_below="@id/relativeAnak"/>
+            </LinearLayout>
 
-    <RelativeLayout
-        android:id="@+id/relativeBayi"
-        android:layout_marginTop="20dp"
-        android:layout_below="@id/relativeAnak"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:ignore="UselessParent">
+        </RelativeLayout>
 
-        <ImageView
-            android:layout_alignParentTop="true"
-            android:id="@+id/icBayi"
-            android:src="@drawable/ic_bayi"
-            android:layout_width="12dp"
-            android:layout_height="20dp"
-            tools:ignore="ContentDescription" />
-        <TextView
-            android:id="@+id/tvBayi"
-            android:text="@string/bayi"
-            android:textSize="14sp"
-            android:layout_marginStart="10dp"
-            android:textColor="@color/black"
-            android:fontFamily="@font/poppins_bold"
-            android:layout_toEndOf="@id/icBayi"
-            android:layout_width="wrap_content"
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:layout_below="@id/relativeDewasa"/>
+
+        <RelativeLayout
+            android:id="@+id/relativeAnak"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/relativeDewasa"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:ignore="RelativeOverlap" />
-        <TextView
-            android:id="@+id/tv2Keatas"
-            android:layout_marginStart="10dp"
-            android:layout_toEndOf="@id/icBayi"
-            android:layout_below="@id/tvBayi"
-            android:fontFamily="@font/poppins_regular"
-            android:text="@string/dibawah_2_tahun"
-            android:textColor="@color/NEUTRAL03"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            tools:ignore="UselessParent">
 
-        <LinearLayout
-            android:layout_alignParentEnd="true"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnMinBayi"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                app:strokeColor="@color/DARKBLUE05"
-                app:strokeWidth="1dp"
-                android:textColor="@color/DARKBLUE05"
-                android:gravity="center"
-                android:textSize="18sp"
-                android:text="@string/min"
-                android:layout_width="40dp"
-                android:layout_height="49dp" />
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etBayi"
-                android:layout_width="60dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="3dp"
-                android:layout_marginEnd="3dp"
-                android:layout_marginBottom="3dp"
-                android:textSize="16sp"
-                android:gravity="center"
-                android:text="0"
-                android:enabled="false"
+            <ImageView
+                android:id="@+id/icAnak"
+                android:src="@drawable/ic_anak"
+                android:layout_width="12dp"
+                android:layout_height="20dp"
+                tools:ignore="ContentDescription" />
+            <TextView
+                android:id="@+id/tvAnak"
+                android:text="@string/anak"
+                android:textSize="14sp"
+                android:layout_marginStart="10dp"
                 android:textColor="@color/black"
-                android:paddingTop="3dp"
-                android:layout_marginTop="3dp"
-                android:background="@drawable/shape_passenger"
-                android:fontFamily="@font/poppins_regular"/>
+                android:fontFamily="@font/poppins_bold"
+                android:layout_toEndOf="@id/icAnak"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/tv11Keatas"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@id/icAnak"
+                android:layout_below="@id/tvAnak"
+                android:fontFamily="@font/poppins_regular"
+                android:text="@string/_2_11_tahun"
+                android:textColor="@color/NEUTRAL03"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                android:layout_alignParentEnd="true"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnMinAnak"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    app:strokeColor="@color/DARKBLUE05"
+                    app:strokeWidth="1dp"
+                    android:textColor="@color/DARKBLUE05"
+                    android:gravity="center"
+                    android:textSize="18sp"
+                    android:text="@string/min"
+                    android:layout_width="40dp"
+                    android:layout_height="49dp" />
 
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnPlusBayi"
-                app:strokeColor="@color/DARKBLUE05"
-                app:strokeWidth="1dp"
-                android:textColor="@color/DARKBLUE05"
-                android:textSize="18sp"
-                android:text="@string/tambah"
-                android:layout_width="40dp"
-                android:layout_height="49dp"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etAnak"
+                    android:layout_width="60dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginEnd="3dp"
+                    android:layout_marginBottom="3dp"
+                    android:textSize="16sp"
+                    android:gravity="center"
+                    android:text="0"
+                    android:enabled="false"
+                    android:textColor="@color/black"
+                    android:paddingTop="3dp"
+                    android:layout_marginTop="3dp"
+                    android:background="@drawable/shape_passenger"
+                    android:fontFamily="@font/poppins_regular"/>
 
-        </LinearLayout>
 
-    </RelativeLayout>
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnPlusAnak"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    app:strokeColor="@color/DARKBLUE05"
+                    app:strokeWidth="1dp"
+                    android:textColor="@color/DARKBLUE05"
+                    android:gravity="center"
+                    android:textSize="18sp"
+                    android:text="@string/tambah"
+                    android:layout_width="40dp"
+                    android:layout_height="49dp"
+                    />
+            </LinearLayout>
+        </RelativeLayout>
 
-    <com.google.android.material.divider.MaterialDivider
-        android:id="@+id/divider"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="8dp"
-        android:layout_below="@id/relativeBayi"/>
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:layout_below="@id/relativeAnak"/>
+
+        <RelativeLayout
+            android:id="@+id/relativeBayi"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/relativeAnak"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="UselessParent">
+
+            <ImageView
+                android:layout_alignParentTop="true"
+                android:id="@+id/icBayi"
+                android:src="@drawable/ic_bayi"
+                android:layout_width="12dp"
+                android:layout_height="20dp"
+                tools:ignore="ContentDescription" />
+            <TextView
+                android:id="@+id/tvBayi"
+                android:text="@string/bayi"
+                android:textSize="14sp"
+                android:layout_marginStart="10dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/poppins_bold"
+                android:layout_toEndOf="@id/icBayi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:ignore="RelativeOverlap" />
+            <TextView
+                android:id="@+id/tv2Keatas"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@id/icBayi"
+                android:layout_below="@id/tvBayi"
+                android:fontFamily="@font/poppins_regular"
+                android:text="@string/dibawah_2_tahun"
+                android:textColor="@color/NEUTRAL03"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                android:layout_alignParentEnd="true"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnMinBayi"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    app:strokeColor="@color/DARKBLUE05"
+                    app:strokeWidth="1dp"
+                    android:textColor="@color/DARKBLUE05"
+                    android:gravity="center"
+                    android:textSize="18sp"
+                    android:text="@string/min"
+                    android:layout_width="40dp"
+                    android:layout_height="49dp" />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etBayi"
+                    android:layout_width="60dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginEnd="3dp"
+                    android:layout_marginBottom="3dp"
+                    android:textSize="16sp"
+                    android:gravity="center"
+                    android:text="0"
+                    android:enabled="false"
+                    android:textColor="@color/black"
+                    android:paddingTop="3dp"
+                    android:layout_marginTop="3dp"
+                    android:background="@drawable/shape_passenger"
+                    android:fontFamily="@font/poppins_regular"/>
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnPlusBayi"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    app:strokeColor="@color/DARKBLUE05"
+                    app:strokeWidth="1dp"
+                    android:textColor="@color/DARKBLUE05"
+                    android:gravity="center"
+                    android:textSize="18sp"
+                    android:text="@string/tambah"
+                    android:layout_width="40dp"
+                    android:layout_height="49dp"
+                    />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:layout_below="@id/relativeBayi"/>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSimpan"
@@ -318,6 +321,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="147dp"
             android:fontFamily="@font/poppins_medium"
+            android:textColor="@color/white"
             app:cornerRadius="12dp"
             android:textSize="16sp"
             android:padding="12dp"

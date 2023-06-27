@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.geminiboy.finalprojectbinar.R
 import com.geminiboy.finalprojectbinar.databinding.FragmentSplashScreenBinding
@@ -17,6 +18,8 @@ import dagger.hilt.android.AndroidEntryPoint
 class SplashScreenFragment : Fragment() {
     private var _binding: FragmentSplashScreenBinding? = null
     private val binding get() = _binding!!
+    private val splashVM: SplashViewModel by viewModels()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -28,8 +31,18 @@ class SplashScreenFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         (activity as MainActivity).setBottomNavigationVisibility(View.GONE)
+        observeIsLoggedIn()
+    }
+
+    private fun observeIsLoggedIn(){
         binding.btnNext.setOnClickListener {
-            findNavController().navigate(R.id.action_splashScreenFragment_to_homeFragment)
+            splashVM.getToken().observe(viewLifecycleOwner) {
+                if (it.isNotEmpty()) {
+                    findNavController().navigate(R.id.action_splashScreenFragment_to_homeFragment)
+                } else {
+                    findNavController().navigate(R.id.action_splashScreenFragment_to_loginFragment)
+                }
+            }
         }
     }
 
