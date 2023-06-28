@@ -110,4 +110,14 @@
         android:name="com.geminiboy.finalprojectbinar.ui.bottomsheet.paymentsuccess.BottomSheetPaymentSuccessFragment"
         android:label="fragment_bottom_sheet_payment_success"
         tools:layout="@layout/fragment_bottom_sheet_payment_success" />
+    <fragment
+        android:id="@+id/fragmentRiwayat2"
+        android:name="com.geminiboy.finalprojectbinar.ui.riwayat.FragmentRiwayat"
+        android:label="fragment_riwayat"
+        tools:layout="@layout/fragment_riwayat" />
+    <fragment
+        android:id="@+id/fragmentNotifikasi"
+        android:name="com.geminiboy.finalprojectbinar.ui.FragmentNotifikasi"
+        android:label="fragment_notifikasi"
+        tools:layout="@layout/fragment_notifikasi" />
 </navigation>

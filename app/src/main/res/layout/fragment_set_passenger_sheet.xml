@@ -81,7 +81,6 @@
                     android:layout_width="40dp"
                     android:layout_height="49dp" />
 
-
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etDewasa"
                     android:layout_width="60dp"
@@ -99,12 +98,10 @@
                     android:background="@drawable/shape_passenger"
                     android:fontFamily="@font/poppins_regular"/>
 
-
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnPlusDewasa"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                    app:strokeColor="@color/DARKBLUE05"
                     app:strokeWidth="1dp"
+                    android:backgroundTint="@color/white"
                     android:textColor="@color/DARKBLUE05"
                     android:gravity="center"
                     android:textSize="18sp"
@@ -198,9 +195,8 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnPlusAnak"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                    app:strokeColor="@color/DARKBLUE05"
                     app:strokeWidth="1dp"
+                    android:backgroundTint="@color/white"
                     android:textColor="@color/DARKBLUE05"
                     android:gravity="center"
                     android:textSize="18sp"
@@ -293,9 +289,8 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnPlusBayi"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                    app:strokeColor="@color/DARKBLUE05"
                     app:strokeWidth="1dp"
+                    android:backgroundTint="@color/white"
                     android:textColor="@color/DARKBLUE05"
                     android:gravity="center"
                     android:textSize="18sp"

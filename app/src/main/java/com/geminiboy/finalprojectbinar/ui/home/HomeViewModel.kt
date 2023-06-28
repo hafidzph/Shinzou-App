@@ -1,6 +1,7 @@
 package com.geminiboy.finalprojectbinar.ui.home
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
@@ -27,14 +28,16 @@ class HomeViewModel @Inject constructor(private val preferences: SetDestinationP
     fun getDateDeparture(): LiveData<String> = preferences.getDateDeparture().asLiveData()
     fun getDateReturn(): LiveData<String> = preferences.getDateReturn().asLiveData()
     fun getSeatClass(): LiveData<String> = preferences.getSeat().asLiveData()
+    fun getFrom(): LiveData<String> = preferences.getFromJoin().asLiveData()
+    fun getTo(): LiveData<String> = preferences.getToJoin().asLiveData()
     fun clear() = viewModelScope.launch(Dispatchers.IO){
         preferences.clearPreferences()
     }
 
-    fun getFlight(token: String) {
+    fun getFlight() {
         _favDestination.postValue(Resource.Loading())
         viewModelScope.launch {
-            _favDestination.postValue(flightRepository.getFlight("Bearer $token"))
+            _favDestination.postValue(flightRepository.getFlight())
         }
     }
 }

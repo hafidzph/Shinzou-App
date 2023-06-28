@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.geminiboy.finalprojectbinar.R
 import com.geminiboy.finalprojectbinar.databinding.FragmentSearchingDestinationSheetBinding
@@ -15,9 +16,11 @@ import com.geminiboy.finalprojectbinar.ui.bottomsheet.searchingdestination.adapt
 import com.geminiboy.finalprojectbinar.wrapper.Resource
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class SearchingDestinationSheet : BottomSheetDialogFragment() {
+class SearchingDestinationSheet(private val isFrom: Boolean) : BottomSheetDialogFragment() {
     private var _binding: FragmentSearchingDestinationSheetBinding? = null
     private val binding get() = _binding!!
     private val searchDestinationVM: SearchingDestinationViewModel by viewModels()
@@ -36,17 +39,28 @@ class SearchingDestinationSheet : BottomSheetDialogFragment() {
         fetchDataAirport()
         setupRecyclerViews()
         search()
+        setCity()
+    }
+
+    private fun setCity(){
+        searchingAdapter.onItemClick = {
+            if(isFrom){
+                searchDestinationVM.setCityFrom(it.location, it.locationAcronym)
+                dismiss()
+            }else{
+                searchDestinationVM.setCityTo(it.location, it.locationAcronym)
+                dismiss()
+            }
+        }
     }
 
     private fun search() {
         binding.btnSearch.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                // Tindakan yang akan dilakukan saat pengguna menekan tombol "Submit" pada keyboard
                 return true
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                // Tindakan yang akan dilakukan saat teks pencarian berubah
                 newText?.let { query ->
                     searchingAdapter.filterData(query)
                 }
@@ -63,9 +77,7 @@ class SearchingDestinationSheet : BottomSheetDialogFragment() {
     }
 
     private fun fetchDataAirport() {
-        searchDestinationVM.getToken().observe(viewLifecycleOwner) { token ->
-            searchDestinationVM.getAirport(token)
-        }
+        searchDestinationVM.getAirport()
         searchDestinationVM.airport.observe(viewLifecycleOwner) { resource ->
             when (resource) {
                 is Resource.Loading -> {

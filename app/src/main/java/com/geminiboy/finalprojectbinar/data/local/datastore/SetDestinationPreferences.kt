@@ -3,6 +3,7 @@ package com.geminiboy.finalprojectbinar.data.local.datastore
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.preferencesOf
 import androidx.datastore.preferences.core.stringPreferencesKey
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
@@ -16,6 +17,10 @@ class SetDestinationPreferences @Inject constructor(private val dataStore: DataS
     private val childrenPassengerKey = stringPreferencesKey("children")
     private val adultPassengerKey = stringPreferencesKey("adult")
     private val seatKey = stringPreferencesKey("seatClass")
+    private val fromCity = stringPreferencesKey("fromCity")
+    private val toCity = stringPreferencesKey("toCity")
+    private val fromCityCode = stringPreferencesKey("fromCityCode")
+    private val toCityCode = stringPreferencesKey("toCityCode")
 
     fun getPassenger(): Flow<Int> = dataStore.data.map { preferences ->
         val babyPassenger = preferences[babyPassengerKey]?.toIntOrNull() ?: 0
@@ -24,16 +29,32 @@ class SetDestinationPreferences @Inject constructor(private val dataStore: DataS
         babyPassenger + childrenPassenger + adultPassenger
     }
 
-    suspend fun getBabyPassenger(): String? {
-        return dataStore.data.first()[babyPassengerKey]
+    fun getFromJoin(): Flow<String> = dataStore.data.map {
+        "${getFrom().first()} (${getFromCityCode().first()})"
     }
 
-    suspend fun getChildrenPassenger(): String? {
-        return dataStore.data.first()[childrenPassengerKey]
+    fun getToJoin(): Flow<String> = dataStore.data.map {
+        "${getTo().first()} (${getToCityCode().first()})"
     }
 
-    suspend fun getAdultPassenger(): String? {
-        return dataStore.data.first()[adultPassengerKey]
+    fun getCodeCityJoin(): Flow<String> = dataStore.data.map {
+        "${getFromCityCode().first()} > ${getToCityCode().first()}"
+    }
+
+    fun getPassengerJoinSeat(): Flow<String> = dataStore.data.map {
+        "- ${getPassenger().first()} Penumpang - ${getSeat().first()}"
+    }
+
+    fun getBabyPassenger(): Flow<String> = dataStore.data.map { preferences ->
+        preferences[babyPassengerKey] ?: ""
+    }
+
+    fun getChildrenPassenger(): Flow<String> = dataStore.data.map { preferences ->
+        preferences[childrenPassengerKey] ?: ""
+    }
+
+    fun getAdultPassenger(): Flow<String> = dataStore.data.map { preferences ->
+        preferences[adultPassengerKey] ?: ""
     }
 
     fun getDateDeparture(): Flow<String> = dataStore.data.map { preferences ->
@@ -48,15 +69,33 @@ class SetDestinationPreferences @Inject constructor(private val dataStore: DataS
         preferences[seatKey] ?: ""
     }
 
-    suspend fun setDeparture(date: String){
-        dataStore.edit {
-            it[dateDepartureKey] = date
+    fun getFrom(): Flow<String> = dataStore.data.map { preferences ->
+        preferences[fromCity] ?: ""
+    }
+
+    fun getTo(): Flow<String> = dataStore.data.map { preferences ->
+        preferences[toCity] ?: ""
+    }
+
+    fun getFromCityCode(): Flow<String> = dataStore.data.map { preferences ->
+        preferences[fromCityCode] ?: ""
+    }
+
+    fun getToCityCode(): Flow<String> = dataStore.data.map { preferences ->
+        preferences[toCityCode] ?: ""
+    }
+
+    suspend fun setFromCity(city: String, code: String) {
+        dataStore.edit { preferences ->
+            preferences[fromCity] = city
+            preferences[fromCityCode] = code
         }
     }
 
-    suspend fun setReturn(date: String){
-        dataStore.edit {
-            it[dateReturnKey] = date
+    suspend fun setToCity(city: String, code: String) {
+        dataStore.edit { preferences ->
+            preferences[toCity] = city
+            preferences[toCityCode] = code
         }
     }
 

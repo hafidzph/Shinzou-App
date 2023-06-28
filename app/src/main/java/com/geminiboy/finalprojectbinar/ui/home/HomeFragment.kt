@@ -14,6 +14,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.geminiboy.finalprojectbinar.R
 import com.geminiboy.finalprojectbinar.databinding.FragmentHomeBinding
+import com.geminiboy.finalprojectbinar.ui.MainActivity
 import com.geminiboy.finalprojectbinar.ui.bottomsheet.choosedate.SetDateSheet
 import com.geminiboy.finalprojectbinar.ui.bottomsheet.searchingdestination.SearchingDestinationSheet
 import com.geminiboy.finalprojectbinar.ui.bottomsheet.setclass.SetClassSheet
@@ -42,8 +43,10 @@ class HomeFragment : Fragment() {
         return binding.root
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (activity as MainActivity).setBottomNavigationVisibility(View.VISIBLE)
 
         binding.apply {
             containerPassenger.setOnClickListener {
@@ -63,12 +66,15 @@ class HomeFragment : Fragment() {
             }
 
             containerFrom.setOnClickListener {
-                SearchingDestinationSheet().show(requireActivity().supportFragmentManager, "searchingTag")
+                SearchingDestinationSheet(true).show(requireActivity().supportFragmentManager, "searchingTag")
+            }
+
+            containerTo.setOnClickListener {
+                SearchingDestinationSheet(false).show(requireActivity().supportFragmentManager, "searchingTag")
             }
 
             btnCari.setOnClickListener {
                 findNavController().navigate(R.id.action_homeFragment_to_searchResultFragment)
-                homeVM.clear()
             }
 
             btnSwitch.setOnClickListener {
@@ -77,17 +83,30 @@ class HomeFragment : Fragment() {
                 tvDestinationTo.text = temp
             }
         }
+
         setPassenger()
         setSeatClass()
         setDateDeparture()
         setDateReturn()
         observeFavDestination()
+        setTextFrom()
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun setTextFrom(){
+        binding.apply {
+            homeVM.getFrom().observe(viewLifecycleOwner){
+                if(it != null) tvDestinationFrom.text = it
+            }
+
+            homeVM.getTo().observe(viewLifecycleOwner){
+                if(it != null) tvDestinationTo.text = it
+            }
+        }
     }
 
     private fun observeFavDestination(){
-        homeVM.getToken().observe(viewLifecycleOwner){
-            homeVM.getFlight(it)
-        }
+        homeVM.getFlight()
         homeVM.favDestination.observe(viewLifecycleOwner){
             when(it){
                 is Resource.Loading -> {

@@ -115,29 +115,50 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:src="@drawable/ic_filter_harga"/>
 
-    <ScrollView
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvHasilPencarian"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/icFilter"
-        app:layout_constraintStart_toStartOf="parent"
+        android:visibility="gone"
+        android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        >
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/icFilter"
+        tools:itemCount="7"
+        tools:listitem="@layout/item_result_ticket" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation_view"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:elevation="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_rawRes="@raw/airplane_loading" />
+
+    <LinearLayout
+        android:id="@+id/containerEmpty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center"
+        android:orientation="vertical">
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            >
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvHasilPencarian"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:itemCount="7"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                tools:listitem="@layout/item_result_ticket"/>
+            android:src="@drawable/illustration_search_engine_not_found"/>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
-
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/maaf_pencarian_tidak_ditemukan"/>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

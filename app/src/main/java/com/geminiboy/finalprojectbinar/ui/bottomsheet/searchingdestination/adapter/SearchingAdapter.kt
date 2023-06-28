@@ -11,12 +11,14 @@ import java.util.Locale
 class SearchingAdapter : RecyclerView.Adapter<SearchingAdapter.ViewHolder>() {
     private val originalData: MutableList<Data> = mutableListOf()
     private val filteredData: MutableList<Data> = mutableListOf()
+    var onItemClick: ((Data) -> Unit)? = null
 
     inner class ViewHolder(private val binding: ItemSearchBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Data) {
             binding.apply {
                 tvCity.text = item.location
+                tvCity.setOnClickListener { onItemClick?.invoke(item) }
             }
         }
     }

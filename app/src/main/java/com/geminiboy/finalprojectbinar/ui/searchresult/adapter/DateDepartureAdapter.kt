@@ -1,5 +1,6 @@
 package com.geminiboy.finalprojectbinar.ui.searchresult.adapter
 
+import android.annotation.SuppressLint
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
@@ -11,10 +12,12 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.geminiboy.finalprojectbinar.R
 import com.geminiboy.finalprojectbinar.databinding.ItemListLoadingDateBinding
+import com.geminiboy.finalprojectbinar.model.airport.AirportResponse
 import com.geminiboy.finalprojectbinar.model.date.DateDeparture
+import com.geminiboy.finalprojectbinar.ui.searchresult.SearchResultViewModel
 
 @Suppress("DEPRECATION")
-class DateDepartureAdapter : RecyclerView.Adapter<DateDepartureAdapter.DateViewHolder>() {
+class DateDepartureAdapter: RecyclerView.Adapter<DateDepartureAdapter.DateViewHolder>() {
     private var diffCallback = object : DiffUtil.ItemCallback<DateDeparture>(){
         override fun areItemsTheSame(oldItem: DateDeparture, newItem: DateDeparture): Boolean {
             return oldItem == newItem
@@ -26,10 +29,12 @@ class DateDepartureAdapter : RecyclerView.Adapter<DateDepartureAdapter.DateViewH
     }
     private var selectedPosition = -1
     private val differ = AsyncListDiffer(this, diffCallback)
+    var onItemClick: ((DateDeparture) -> Unit)? = null
 
     fun submitData(value: ArrayList<DateDeparture>) = differ.submitList(value)
 
     inner class DateViewHolder(private val binding: ItemListLoadingDateBinding): RecyclerView.ViewHolder(binding.root){
+        @SuppressLint("NotifyDataSetChanged")
         fun bind(item: DateDeparture, isLastItem: Boolean){
             binding.apply {
                 tvHari.text = item.dayDeparture
@@ -41,8 +46,13 @@ class DateDepartureAdapter : RecyclerView.Adapter<DateDepartureAdapter.DateViewH
                     divider.visibility = View.VISIBLE
                 }
 
-                if (position == selectedPosition) {
+                if (position == 0 && selectedPosition == -1) {
+                    selectedPosition = 0
                     containerDate.setBackgroundResource(R.drawable.shape_date_departure);
+                    tvHari.setTextColor(Color.WHITE)
+                    tvTanggal.setTextColor(Color.WHITE)
+                }else if (position == selectedPosition) {
+                    containerDate.setBackgroundResource(R.drawable.shape_date_departure)
                     tvHari.setTextColor(Color.WHITE)
                     tvTanggal.setTextColor(Color.WHITE)
                 } else {
@@ -57,6 +67,7 @@ class DateDepartureAdapter : RecyclerView.Adapter<DateDepartureAdapter.DateViewH
                         selectedPosition = position
                         notifyItemChanged(previousSelectedPosition)
                         notifyItemChanged(selectedPosition)
+                        onItemClick?.invoke(item)
                     }
                 }
             }
