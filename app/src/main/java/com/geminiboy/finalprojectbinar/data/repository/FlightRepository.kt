@@ -2,6 +2,7 @@ package com.geminiboy.finalprojectbinar.data.repository
 
 import com.geminiboy.finalprojectbinar.data.remote.service.FlightService
 import com.geminiboy.finalprojectbinar.model.airport.AirportResponse
+import com.geminiboy.finalprojectbinar.model.flight.DetailFlightResponse
 import com.geminiboy.finalprojectbinar.model.flight.FlightResponse
 import com.geminiboy.finalprojectbinar.model.flight.SearchFlightOneTrip
 import com.geminiboy.finalprojectbinar.wrapper.Resource
@@ -15,6 +16,7 @@ interface FlightRepository {
                                 departureDate: String,
                                 passengers: Int,
                                 seatClass: String) : Resource<SearchFlightOneTrip>
+    suspend fun getFlightById(id: String): Resource<DetailFlightResponse>
 }
 
 class FlightRepositoryImpl @Inject constructor(private val api: FlightService): FlightRepository{
@@ -45,6 +47,15 @@ class FlightRepositoryImpl @Inject constructor(private val api: FlightService): 
     ): Resource<SearchFlightOneTrip> {
         return try {
             val response = api.oneTripFlight(locationFrom, locationTo, departureDate, passengers, seatClass)
+            Resource.Success(response)
+        }catch (e: Exception){
+            Resource.Error(e.message!!)
+        }
+    }
+
+    override suspend fun getFlightById(id: String): Resource<DetailFlightResponse> {
+        return try {
+            val response = api.getFlightById(id)
             Resource.Success(response)
         }catch (e: Exception){
             Resource.Error(e.message!!)

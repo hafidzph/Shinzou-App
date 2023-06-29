@@ -95,6 +95,9 @@
         <action
             android:id="@+id/action_searchResultFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_searchResultFragment_to_fragmentDetailPenerbangan"
+            app:destination="@id/fragmentDetailPenerbangan" />
     </fragment>
     <fragment
         android:id="@+id/paymentFragment"
@@ -120,4 +123,23 @@
         android:name="com.geminiboy.finalprojectbinar.ui.FragmentNotifikasi"
         android:label="fragment_notifikasi"
         tools:layout="@layout/fragment_notifikasi" />
+    <fragment
+        android:id="@+id/fragmentDetailPenerbangan"
+        android:name="com.geminiboy.finalprojectbinar.ui.detailpenerbangan.FragmentDetailPenerbangan"
+        android:label="fragment_detail_penerbangan"
+        tools:layout="@layout/fragment_detail_penerbangan" >
+        <action
+            android:id="@+id/action_fragmentDetailPenerbangan_to_fragmentBiodataPemesan"
+            app:destination="@id/fragmentBiodataPemesan" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentBiodataPemesan"
+        android:name="com.geminiboy.finalprojectbinar.ui.biodatapemesanan.FragmentBiodataPemesan"
+        android:label="fragment_biodata_pemesan"
+        tools:layout="@layout/fragment_biodata_pemesan" />
+    <fragment
+        android:id="@+id/fragmentAkun2"
+        android:name="com.geminiboy.finalprojectbinar.ui.akun.FragmentAkun"
+        android:label="fragment_akun"
+        tools:layout="@layout/fragment_akun" />
 </navigation>

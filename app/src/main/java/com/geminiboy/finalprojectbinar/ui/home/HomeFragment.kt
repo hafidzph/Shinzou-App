@@ -96,11 +96,11 @@ class HomeFragment : Fragment() {
     private fun setTextFrom(){
         binding.apply {
             homeVM.getFrom().observe(viewLifecycleOwner){
-                if(it != null) tvDestinationFrom.text = it
+                if (it.contains("[A-Za-z]".toRegex())) tvDestinationFrom.text = it
             }
 
             homeVM.getTo().observe(viewLifecycleOwner){
-                if(it != null) tvDestinationTo.text = it
+                if (it.contains("[A-Za-z]".toRegex())) tvDestinationTo.text = it
             }
         }
     }
@@ -179,8 +179,8 @@ class HomeFragment : Fragment() {
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
         _binding = null
     }
 }

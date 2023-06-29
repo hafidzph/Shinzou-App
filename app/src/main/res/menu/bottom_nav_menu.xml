@@ -13,7 +13,7 @@
         android:title="Notifikasi"
         android:icon="@drawable/ic_notif"/>
     <item
-        android:id="@+id/fragmentAkun"
+        android:id="@+id/fragmentAkun2"
         android:title="Akun"
         android:icon="@drawable/ic_akun"/>
 </menu>

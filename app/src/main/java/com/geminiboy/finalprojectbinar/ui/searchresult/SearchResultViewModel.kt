@@ -26,7 +26,7 @@ class SearchResultViewModel @Inject constructor(private val preferences: SetDest
     fun getDate(): LiveData<String> = preferences.getDateDeparture().asLiveData()
     fun getDestinationCode(): LiveData<String> = preferences.getCodeCityJoin().asLiveData()
     fun getPassengerJoinSeat(): LiveData<String> = preferences.getPassengerJoinSeat().asLiveData()
-    fun getSearch(date: String) = viewModelScope.launch {
+    fun getSearch(date: String) {
         _search.postValue(Resource.Loading())
         viewModelScope.launch {
             _search.postValue(flightRepository.getSearchFlight(
@@ -36,12 +36,5 @@ class SearchResultViewModel @Inject constructor(private val preferences: SetDest
                 preferences.getPassenger().first(),
                 preferences.getSeat().first()))
         }
-    }
-
-    private fun formatDateApi(dateString: String): String {
-        val inputFormat = SimpleDateFormat("dd MMMM yyyy", Locale("id", "ID"))
-        val date = inputFormat.parse(dateString) as Date
-        val outputFormat = SimpleDateFormat("yyyy-MM-dd", Locale("id", "ID"))
-        return outputFormat.format(date)
     }
 }

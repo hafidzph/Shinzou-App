@@ -1,4 +1,4 @@
-package com.geminiboy.finalprojectbinar.ui.riwayat
+package com.geminiboy.finalprojectbinar.ui.akun
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,21 +8,21 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.geminiboy.finalprojectbinar.R
-import com.geminiboy.finalprojectbinar.databinding.FragmentRiwayatBinding
+import com.geminiboy.finalprojectbinar.databinding.FragmentAkunBinding
 import com.geminiboy.finalprojectbinar.ui.MainActivity
 import com.geminiboy.finalprojectbinar.ui.bottomsheet.login.LoginRequiredSheet
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class FragmentRiwayat : Fragment() {
-    private var _binding: FragmentRiwayatBinding? = null
+class FragmentAkun : Fragment() {
+    private var _binding: FragmentAkunBinding? = null
     private val binding get() = _binding!!
-    private val riwayatVM: RiwayatViewModel by viewModels()
+    private val akunVM: AkunViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentRiwayatBinding.inflate(inflater, container, false)
+    ): View? {
+        _binding = FragmentAkunBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -33,17 +33,17 @@ class FragmentRiwayat : Fragment() {
     }
 
     private fun observeIsLoggedIn(){
-        riwayatVM.getToken().observe(viewLifecycleOwner) {
+        akunVM.getToken().observe(viewLifecycleOwner) {
             if (it.isNotEmpty()) {
                 binding.apply {
-                    linearLayoutAfterData.visibility = View.VISIBLE
+                    layoutUserLogged.visibility = View.VISIBLE
                     layoutNonLogin.visibility = View.GONE
                 }
             } else {
                 binding.apply {
-                    linearLayoutAfterData.visibility = View.GONE
+                    layoutUserLogged.visibility = View.GONE
                     layoutNonLogin.visibility = View.VISIBLE
-                    btnMasukRiwayat.setOnClickListener {
+                    btnLogin.setOnClickListener {
                         findNavController().navigate(R.id.loginFragment)
                     }
                 }

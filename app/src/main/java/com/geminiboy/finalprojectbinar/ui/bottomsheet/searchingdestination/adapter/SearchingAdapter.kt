@@ -43,12 +43,12 @@ class SearchingAdapter : RecyclerView.Adapter<SearchingAdapter.ViewHolder>() {
     @SuppressLint("NotifyDataSetChanged")
     fun filterData(query: String) {
         filteredData.clear()
-        val trimmedQuery = query.trim().toLowerCase(Locale.ROOT)
+        val trimmedQuery = query.trim().lowercase(Locale.ROOT)
         if (trimmedQuery.isEmpty()) {
             filteredData.addAll(originalData)
         } else {
             for (item in originalData) {
-                if (item.location.toLowerCase(Locale.ROOT).contains(trimmedQuery)) {
+                if (item.location.lowercase(Locale.ROOT).contains(trimmedQuery)) {
                     filteredData.add(item)
                 }
             }

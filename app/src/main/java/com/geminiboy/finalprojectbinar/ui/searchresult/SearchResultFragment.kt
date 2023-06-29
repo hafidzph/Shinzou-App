@@ -17,6 +17,7 @@ import com.geminiboy.finalprojectbinar.model.date.DateDeparture
 import com.geminiboy.finalprojectbinar.ui.MainActivity
 import com.geminiboy.finalprojectbinar.ui.searchresult.adapter.DateDepartureAdapter
 import com.geminiboy.finalprojectbinar.ui.searchresult.adapter.SearchFlightAdapter
+import com.geminiboy.finalprojectbinar.utils.Utils
 import com.geminiboy.finalprojectbinar.utils.showCustomToast
 import com.geminiboy.finalprojectbinar.wrapper.Resource
 import dagger.hilt.android.AndroidEntryPoint
@@ -66,13 +67,13 @@ class SearchResultFragment : Fragment() {
 
     private fun getAnotherResponseTicket(){
         dateAdapter.onItemClick = {
-            searchVM.getSearch(formatDate2(it.dateDeparture))
+            searchVM.getSearch(Utils().formatDate2(it.dateDeparture))
         }
     }
 
     private fun observeTicket() {
         searchVM.getDate().observe(viewLifecycleOwner){
-            searchVM.getSearch(formatDate(it.substringAfter(", ")))
+            searchVM.getSearch(Utils().formatDate(it.substringAfter(", ")))
         }
         searchVM.search.observe(viewLifecycleOwner) {
             when (it) {
@@ -142,22 +143,8 @@ class SearchResultFragment : Fragment() {
         }
     }
 
-    private fun formatDate2(dateString: String): String {
-        val inputFormat = SimpleDateFormat("dd/MM/yyyy", Locale("id", "ID"))
-        val date = inputFormat.parse(dateString) as Date
-        val outputFormat = SimpleDateFormat("yyyy-MM-dd", Locale("id", "ID"))
-        return outputFormat.format(date)
-    }
-
-    private fun formatDate(dateString: String): String {
-        val inputFormat = SimpleDateFormat("dd MMMM yyyy", Locale("id", "ID"))
-        val date = inputFormat.parse(dateString) as Date
-        val outputFormat = SimpleDateFormat("yyyy-MM-dd", Locale("id", "ID"))
-        return outputFormat.format(date)
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
         _binding = null
     }
 }

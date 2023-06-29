@@ -4,37 +4,43 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.FragmentAkun">
+    tools:context=".ui.akun.FragmentAkun">
 
     <RelativeLayout
-        android:id="@+id/layoutUserNotLogged"
+        android:id="@+id/layoutNonLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginHorizontal="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:visibility="gone">
+        android:visibility="visible">
 
         <TextView
-            android:id="@+id/TitleAkunHarusLogin"
+            android:id="@+id/TitleRiwayatPesanan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="24dp"
             android:fontFamily="@font/poppins_bold"
             android:text="Akun"
-            android:textColor="#151515"
-            android:textSize="24sp" />
+            android:textColor="@color/NEUTRAL05"
+            android:textSize="26sp"
+
+            />
 
         <TextView
             android:id="@+id/txt_harus_login_riwayat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/TitleAkunHarusLogin"
+            android:layout_below="@+id/TitleRiwayatPesanan"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="70dp"
+            android:textSize="16sp"
             android:fontFamily="@font/poppins_medium"
-            android:text="Maaf, Harus Login Dahulu"
-            android:textColor="#151515" />
+            android:text="Maaf, anda harus login terlebih dahulu"
+            android:textColor="@color/black"
+
+            />
 
         <ImageView
             android:id="@+id/imageView"
@@ -42,21 +48,23 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/txt_harus_login_riwayat"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="30dp"
             android:src="@drawable/ic_illustration_man" />
 
-        <Button
-            android:id="@+id/btnMasukAkun"
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnLogin"
             style="@style/Btn"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:layout_below="@+id/imageView"
             android:layout_marginTop="50dp"
             android:fontFamily="@font/poppins_bold"
-            android:lineHeight="20dp"
-            android:text="@string/masuk"
+            app:cornerRadius="16dp"
+            android:text="Masuk"
             android:textAlignment="center"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+
+            />
 
     </RelativeLayout>
 
@@ -65,6 +73,7 @@
         android:id="@+id/layoutUserLogged"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         app:layout_constraintTop_toTopOf="parent"
         android:orientation="vertical">
         <TextView

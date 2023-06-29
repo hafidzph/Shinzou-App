@@ -1,15 +1,20 @@
 package com.geminiboy.finalprojectbinar.data.remote.service
 
 import com.geminiboy.finalprojectbinar.model.airport.AirportResponse
+import com.geminiboy.finalprojectbinar.model.flight.DetailFlightResponse
 import com.geminiboy.finalprojectbinar.model.flight.FlightResponse
 import com.geminiboy.finalprojectbinar.model.flight.SearchFlightOneTrip
 import retrofit2.http.GET
 import retrofit2.http.Header
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface FlightService {
     @GET("flight")
     suspend fun getFlight(): FlightResponse
+
+    @GET("flight/{id}")
+    suspend fun getFlightById(@Path("id") id: String): DetailFlightResponse
 
     @GET("airport")
     suspend fun getAirport(): AirportResponse

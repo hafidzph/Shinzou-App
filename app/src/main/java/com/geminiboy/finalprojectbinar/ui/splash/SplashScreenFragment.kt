@@ -18,7 +18,6 @@ import dagger.hilt.android.AndroidEntryPoint
 class SplashScreenFragment : Fragment() {
     private var _binding: FragmentSplashScreenBinding? = null
     private val binding get() = _binding!!
-    private val splashVM: SplashViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,18 +35,12 @@ class SplashScreenFragment : Fragment() {
 
     private fun observeIsLoggedIn(){
         binding.btnNext.setOnClickListener {
-            splashVM.getToken().observe(viewLifecycleOwner) {
-                if (it.isNotEmpty()) {
-                    findNavController().navigate(R.id.action_splashScreenFragment_to_homeFragment)
-                } else {
-                    findNavController().navigate(R.id.action_splashScreenFragment_to_loginFragment)
-                }
-            }
+            findNavController().navigate(R.id.action_splashScreenFragment_to_homeFragment)
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
         _binding = null
     }
 }

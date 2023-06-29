@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "878281422999",
+    "project_id": "shinzou-flight",
+    "storage_bucket": "shinzou-flight.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:878281422999:android:01d4ec8f53cb5f292e11d2",
+        "android_client_info": {
+          "package_name": "com.geminiboy.finalprojectbinar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "878281422999-eumtqpcm8pfnftsp65t9h1qgkr0tso3n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.geminiboy.finalprojectbinar",
+            "certificate_hash": "03cf410d4e3a175c2f9297418f6c62141b235a02"
+          }
+        },
+        {
+          "client_id": "878281422999-qjn40v1gbttdm9tuk90r66juj0tfqjbs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADs8VucUGtfzSkRbP2lkkoqj5UXuZI7lc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "878281422999-qjn40v1gbttdm9tuk90r66juj0tfqjbs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

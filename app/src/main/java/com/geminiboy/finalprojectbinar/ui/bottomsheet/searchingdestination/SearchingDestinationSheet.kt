@@ -80,9 +80,7 @@ class SearchingDestinationSheet(private val isFrom: Boolean) : BottomSheetDialog
         searchDestinationVM.getAirport()
         searchDestinationVM.airport.observe(viewLifecycleOwner) { resource ->
             when (resource) {
-                is Resource.Loading -> {
-                    // Tindakan yang akan dilakukan saat sedang memuat data
-                }
+                is Resource.Loading -> {}
                 is Resource.Success -> {
                     searchingAdapter.submitData(resource.data?.data!!)
                 }
