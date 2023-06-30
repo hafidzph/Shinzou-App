@@ -30,9 +30,6 @@ class HomeViewModel @Inject constructor(private val preferences: SetDestinationP
     fun getSeatClass(): LiveData<String> = preferences.getSeat().asLiveData()
     fun getFrom(): LiveData<String> = preferences.getFromJoin().asLiveData()
     fun getTo(): LiveData<String> = preferences.getToJoin().asLiveData()
-    fun clear() = viewModelScope.launch(Dispatchers.IO){
-        preferences.clearPreferences()
-    }
 
     fun getFlight() {
         _favDestination.postValue(Resource.Loading())

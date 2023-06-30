@@ -141,5 +141,9 @@
         android:id="@+id/fragmentAkun2"
         android:name="com.geminiboy.finalprojectbinar.ui.akun.FragmentAkun"
         android:label="fragment_akun"
-        tools:layout="@layout/fragment_akun" />
+        tools:layout="@layout/fragment_akun" >
+        <action
+            android:id="@+id/action_fragmentAkun2_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
 </navigation>

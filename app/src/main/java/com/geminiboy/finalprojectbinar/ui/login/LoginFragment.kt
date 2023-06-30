@@ -111,7 +111,7 @@ class LoginFragment : Fragment() {
                     )
                     loginVM.setToken(resource.data!!.token)
                     lifecycleScope.launch { delay(500) }
-                    findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+                    findNavController().navigateUp()
                 }
                 is Resource.Error -> {
                     Toast(requireContext()).showCustomToast(

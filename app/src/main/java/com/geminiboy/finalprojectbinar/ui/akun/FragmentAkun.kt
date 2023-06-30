@@ -5,12 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.geminiboy.finalprojectbinar.R
 import com.geminiboy.finalprojectbinar.databinding.FragmentAkunBinding
 import com.geminiboy.finalprojectbinar.ui.MainActivity
 import com.geminiboy.finalprojectbinar.ui.bottomsheet.login.LoginRequiredSheet
+import com.geminiboy.finalprojectbinar.utils.showCustomToast
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -30,6 +32,20 @@ class FragmentAkun : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         (activity as MainActivity).setBottomNavigationVisibility(View.VISIBLE)
         observeIsLoggedIn()
+        init()
+    }
+
+    private fun init(){
+        binding.apply {
+            tvLogout.setOnClickListener {
+                akunVM.clear()
+                Toast(requireContext()).showCustomToast(
+                    "Logout berhasil",
+                    requireActivity(),
+                    R.layout.toast_alert_green
+                )
+            }
+        }
     }
 
     private fun observeIsLoggedIn(){

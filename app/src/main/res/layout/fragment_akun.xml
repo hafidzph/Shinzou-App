@@ -204,7 +204,7 @@
                     android:src="@drawable/ic_logout" />
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/DetailLogout"
+                    android:id="@+id/tvLogout"
                     android:layout_width="329dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="1dp"
