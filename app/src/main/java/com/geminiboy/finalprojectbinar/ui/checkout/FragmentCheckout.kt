@@ -10,8 +10,10 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.geminiboy.finalprojectbinar.R
 import com.geminiboy.finalprojectbinar.databinding.FragmentCheckoutBinding
+import com.geminiboy.finalprojectbinar.ui.checkout.adapter.ItemCountPassengerAdapter
 import com.geminiboy.finalprojectbinar.utils.Utils
 import com.geminiboy.finalprojectbinar.wrapper.Resource
 import dagger.hilt.android.AndroidEntryPoint
@@ -21,6 +23,7 @@ class FragmentCheckout : Fragment() {
     private var _binding: FragmentCheckoutBinding? = null
     private val binding get() = _binding!!
     private val checkoutVM: CheckoutViewModel by viewModels()
+    private val passengerAdapter = ItemCountPassengerAdapter()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -32,8 +35,13 @@ class FragmentCheckout : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         init()
-        binding.btnBack.setOnClickListener {
-            findNavController().navigateUp()
+        binding.apply {
+            btnBack.setOnClickListener {
+                findNavController().navigateUp()
+            }
+
+            rvPassenger.adapter = passengerAdapter
+            rvPassenger.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         }
     }
 
@@ -62,7 +70,6 @@ class FragmentCheckout : Fragment() {
                             tvDepartureAirport.text = data.departureFlight.originAirport.airportName
                             tvNameAirlinesAndClass.text = "${data.departureFlight.airline.airlineName} - ${data.departureFlight.classX}"
                             tvFlightNumber.text = data.departureFlight.flightNumber
-                            tvInformationBody.text = data.departureFlight.description
                             tvTimeArrive.text = Utils().formatTime(data.departureFlight.arrivalTime)
                             tvDateArrive.text = Utils().formatDate3(data.departureFlight.arrivalDate)
                             tvArriveAirport.text = data.departureFlight.destinationAirport.airportName
@@ -107,11 +114,27 @@ class FragmentCheckout : Fragment() {
                                 tvTotalPrice.text = "IDR ${Utils().formatCurrency(total)}"
                             }
 
-                            btnLanjutPembayaran.setOnClickListener {
-                                val bundle = Bundle().apply {
-                                    putInt("total_price", total)
+                            if(data.paymentMethod != null){
+                                btnBeranda.visibility = View.VISIBLE
+                                btnLanjutPembayaran.visibility = View.GONE
+                                tvInformationBody.visibility = View.GONE
+                                rvPassenger.visibility = View.VISIBLE
+                                passengerAdapter.submitData(data.tickets)
+                                btnBeranda.setOnClickListener {
+                                    findNavController().navigate(R.id.homeFragment)
                                 }
-                                findNavController().navigate(R.id.action_fragmentCheckout_to_paymentFragment, bundle)
+                            }else{
+                                btnBeranda.visibility = View.GONE
+                                btnLanjutPembayaran.visibility = View.VISIBLE
+                                tvInformationBody.visibility = View.VISIBLE
+                                rvPassenger.visibility = View.GONE
+                                tvInformationBody.text = data.departureFlight.description
+                                btnLanjutPembayaran.setOnClickListener {
+                                    val bundle = Bundle().apply {
+                                        putInt("total_price", total)
+                                    }
+                                    findNavController().navigate(R.id.action_fragmentCheckout_to_paymentFragment, bundle)
+                                }
                             }
                         }
                     }

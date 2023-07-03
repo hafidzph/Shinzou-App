@@ -3,6 +3,7 @@ package com.geminiboy.finalprojectbinar.ui.login
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.geminiboy.finalprojectbinar.data.repository.AuthRepository
 import com.geminiboy.finalprojectbinar.model.user.LoginBody
@@ -30,4 +31,6 @@ class LoginViewModel @Inject constructor(private val authRepository: AuthReposit
     fun setToken(token: String) = viewModelScope.launch {
         authRepository.setToken(token)
     }
+
+    fun getToken() = authRepository.getToken().asLiveData()
 }

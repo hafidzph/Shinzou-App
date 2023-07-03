@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.geminiboy.finalprojectbinar.R
 import com.geminiboy.finalprojectbinar.databinding.FragmentBottomSheetPaymentSuccessBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -34,6 +35,10 @@ class BottomSheetPaymentSuccessFragment : BottomSheetDialogFragment() {
         binding.apply {
             icClose.setOnClickListener {
                 dismiss()
+            }
+
+            btnTerbitkanTiket.setOnClickListener {
+                findNavController().navigate(R.id.fragmentCheckout)
             }
         }
     }

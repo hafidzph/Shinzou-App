@@ -111,7 +111,8 @@ class LoginFragment : Fragment() {
                     )
                     loginVM.setToken(resource.data!!.data.token)
                     lifecycleScope.launch { delay(500) }
-                    navigateToDestinationAfterLogin()
+                    findNavController().navigate(R.id.homeFragment)
+                    findNavController().popBackStack(R.id.loginFragment, true)
                 }
                 is Resource.Error -> {
                     Toast(requireContext()).showCustomToast(
@@ -124,29 +125,30 @@ class LoginFragment : Fragment() {
         }
     }
 
-    private fun navigateToDestinationAfterLogin() {
-        val currentDestination = findNavController().currentDestination?.id
-
-        val destinationId = determineDestinationId(currentDestination)
-        if (destinationId != null) {
-            findNavController().popBackStack(destinationId, false)
-        } else {
-            findNavController().popBackStack()
-        }
-    }
-
-    private fun determineDestinationId(currentDestination: Int?): Int? {
-        if (currentDestination == R.id.fragmentAkun2) {
-            return R.id.fragmentAkun2
-        }
-        if (currentDestination == R.id.fragmentDetailPenerbangan) {
-            return R.id.fragmentDetailPenerbangan
-        }
-        if (currentDestination == R.id.fragmentRiwayat2) {
-            return R.id.fragmentRiwayat2
-        }
-        return null
-    }
+//    private fun navigateToDestinationAfterLogin() {
+//        val currentDestination = findNavController().currentDestination?.id
+//
+//        val destinationId = determineDestinationId(currentDestination)
+//        if (destinationId != null) {
+//            findNavController().popBackStack(destinationId, false)
+//        } else {
+//            findNavController().popBackStack()
+//        }
+//    }
+//
+//
+//    private fun determineDestinationId(currentDestination: Int?): Int? {
+//        if (currentDestination == R.id.fragmentAkun2) {
+//            return R.id.fragmentAkun2
+//        }
+//        if (currentDestination == R.id.fragmentDetailPenerbangan) {
+//            return R.id.fragmentDetailPenerbangan
+//        }
+//        if (currentDestination == R.id.fragmentRiwayat2) {
+//            return R.id.fragmentRiwayat2
+//        }
+//        return null
+//    }
 
     override fun onDestroyView() {
         super.onDestroyView()

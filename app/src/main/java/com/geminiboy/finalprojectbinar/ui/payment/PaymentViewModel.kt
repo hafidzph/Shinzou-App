@@ -1,7 +1,6 @@
 package com.geminiboy.finalprojectbinar.ui.payment
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
@@ -14,7 +13,6 @@ import com.geminiboy.finalprojectbinar.model.payment.PaymentBody
 import com.geminiboy.finalprojectbinar.model.payment.PaymentResponse
 import com.geminiboy.finalprojectbinar.wrapper.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import javax.inject.Inject

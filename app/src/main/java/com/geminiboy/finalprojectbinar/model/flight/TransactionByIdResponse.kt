@@ -23,13 +23,13 @@ data class TransactionByIdResponse(
         @SerializedName("id")
         val id: String,
         @SerializedName("payment_method")
-        val paymentMethod: Any,
+        val paymentMethod: String,
         @SerializedName("returnFlight")
         val returnFlight: Any,
         @SerializedName("return_flight_id")
         val returnFlightId: Any,
         @SerializedName("tickets")
-        val tickets: List<Any>,
+        val tickets: List<Ticket>,
         @SerializedName("updatedAt")
         val updatedAt: String,
         @SerializedName("user")
@@ -106,6 +106,47 @@ data class TransactionByIdResponse(
                 val location: String,
                 @SerializedName("location_acronym")
                 val locationAcronym: String
+            )
+        }
+
+        data class Ticket(
+            @SerializedName("createdAt")
+            val createdAt: String,
+            @SerializedName("id")
+            val id: String,
+            @SerializedName("passenger")
+            val passenger: Passenger,
+            @SerializedName("passenger_id")
+            val passengerId: String,
+            @SerializedName("seat")
+            val seat: Seat,
+            @SerializedName("seat_id")
+            val seatId: Int,
+            @SerializedName("transaction_id")
+            val transactionId: String,
+            @SerializedName("updatedAt")
+            val updatedAt: String
+        ) {
+            data class Passenger(
+                @SerializedName("family_name")
+                val familyName: String,
+                @SerializedName("identity_number")
+                val identityNumber: String,
+                @SerializedName("name")
+                val name: String,
+                @SerializedName("phone_number")
+                val phoneNumber: String,
+                @SerializedName("title")
+                val title: String
+            )
+
+            data class Seat(
+                @SerializedName("flight_id")
+                val flightId: String,
+                @SerializedName("id")
+                val id: Int,
+                @SerializedName("seat_number")
+                val seatNumber: String
             )
         }
 

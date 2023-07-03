@@ -37,8 +37,4 @@
         android:fontFamily="@font/poppins_regular"
         app:layout_constraintTop_toBottomOf="@id/tvPenumpang"
         app:layout_constraintStart_toStartOf="parent"/>
-
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
