@@ -10,18 +10,18 @@ Shinzou-Flight.
 
 ## Tech Stack
 
--Retrofit
--Data Store Ppreferences
--DiffUtil Callback
--Dagger Hilt
--Glide
--Gson
--OkHttp
--Unit Test
--Design Pattern MVVM
--Navigation Component
--Mockito
--Lottie
+- Retrofit
+- Data Store Preferences
+- DiffUtil Callback
+- Dagger Hilt
+- Glide
+- Gson
+- OkHttp
+- Unit Test
+- Design Pattern MVVM
+- Navigation Component
+- Mockito
+- Lottie
 
 ## Fitur
 
