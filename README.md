@@ -41,7 +41,7 @@ Berikut adalah beberapa fitur yang tersedia dalam aplikasi:
 
 ## API URL
 
-- [API URL 1](https://shinzou-api.up.railway.app/)
+- [API URL](https://shinzou-api.up.railway.app/)
 
 ## Google Drive
 
