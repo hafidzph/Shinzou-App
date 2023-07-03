@@ -59,6 +59,10 @@ class FragmentDetailPenerbangan : Fragment() {
                         tvTimeArrive.text = Utils().formatTime(data.arrivalTime)
                         tvDateArrive.text = Utils().formatDate3(data.arrivalDate)
                         tvArriveAirport.text = data.destinationAirport.airportName
+                        val price = Utils().formatCurrency(data.price)
+                        tvPriceTicket.text = "IDR $price/pax"
+                        detailVM.setTicketPrice(data.price.toString())
+                        detailVM.setDepartureId(data.id)
                     }
                 }
                 is Resource.Error -> {}

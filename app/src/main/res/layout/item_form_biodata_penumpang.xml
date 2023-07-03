@@ -52,25 +52,20 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:boxStrokeColor = "@color/NEUTRAL02"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
-
-            <AutoCompleteTextView
-                android:id="@+id/titlePassenger"
+            app:boxStrokeColor="@color/NEUTRAL02"
+            android:background="@drawable/background_rounded_neutral_two">
+            <Spinner
+                android:id="@+id/titlePassengerSpinner"
+                style="@style/Widget.AppCompat.Spinner.DropDown"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Mr"
-                android:textSize="16sp"
-                android:fontFamily="@font/poppins_medium"
-                android:padding="2dp"
-                android:inputType="none"
-                app:boxStrokeColor = "@color/NEUTRAL02"
-                android:background="@drawable/background_rounded_neutral_two"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:paddingStart="5dp"
                 tools:ignore="SpeakableTextPresentCheck" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
+
     </LinearLayout>
-<!--    name penumpang-->
     <LinearLayout
         android:id="@+id/layoutNameFieldPassenger"
         android:layout_width="match_parent"
@@ -125,14 +120,14 @@
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"/>
         <com.google.android.material.switchmaterial.SwitchMaterial
-            android:id="@+id/optionClan"
+            android:id="@+id/switchToggle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:checked="true"
-            app:trackTint="#4B1979"
-            app:thumbTint="#FFFFFF"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"/>
+            android:layout_alignParentRight="true"
+            app:thumbTint="@drawable/thumb_state_switch"
+            app:trackTint="@drawable/track_state_switch"
+            android:scaleX="1.2"
+            android:scaleY="1.2"/>
     </RelativeLayout>
 <!--    nama keluarga jika active maka visibile-->
     <LinearLayout
@@ -170,13 +165,14 @@
             android:paddingBottom="8dp"
             android:layout_marginTop="4dp"
             tools:ignore="TouchTargetSizeCheck" />
+
     </LinearLayout>
-<!--    tanggal lahir-->
+
     <LinearLayout
-        android:id="@+id/layoutDateBirth"
+        android:id="@+id/layoutIdentityNumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_below="@id/layoutNameClan"
@@ -184,99 +180,98 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tanggal Lahir"
+            android:text="Nomor Identitas"
             android:fontFamily="@font/poppins_bold"
             android:textSize="14sp"
             android:lineHeight="20dp"
             android:textColor="@color/DARKBLUE05"/>
 
         <EditText
-            android:id="@+id/etDateOfBirthPassenger"
+            android:id="@+id/etIdentity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/background_rounded_neutral_two"
             android:fontFamily="@font/poppins_medium"
-            android:hint="dd/mm/yyyy"
+            android:hint="KTP/Paspor"
             android:textSize="16sp"
             android:textColor="@color/NEUTRAL04"
             android:textColorHint="@color/NEUTRAL03"
-            android:inputType="date"
+            android:inputType="textPersonName"
             android:paddingStart="16dp"
             android:paddingTop="8dp"
             android:paddingEnd="16dp"
             android:paddingBottom="8dp"
             android:layout_marginTop="4dp"
-            android:drawableEnd="@drawable/ic_date"
-            android:drawableTint="@color/NEUTRAL03"
             tools:ignore="TouchTargetSizeCheck" />
     </LinearLayout>
-<!--    Kewarganegaraan-->
+
     <LinearLayout
-        android:id="@+id/layoutCitizenship"
+        android:id="@+id/layoutNomorTelepon"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_below="@id/layoutDateBirth"
+        android:layout_below="@id/layoutIdentityNumber"
         android:orientation="vertical">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Kewarganegaraan"
+            android:text="Nomor Telepon"
             android:fontFamily="@font/poppins_bold"
             android:textSize="14sp"
             android:lineHeight="20dp"
             android:textColor="@color/DARKBLUE05"/>
 
         <EditText
-            android:id="@+id/etCitizenship"
+            android:id="@+id/etNomorTelepon"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
             android:background="@drawable/background_rounded_neutral_two"
             android:fontFamily="@font/poppins_medium"
-            android:hint="kewarganegaraan"
-            android:inputType="text"
+            android:hint="+62"
+            android:textSize="16sp"
+            android:textColor="@color/NEUTRAL04"
+            android:textColorHint="@color/NEUTRAL03"
+            android:inputType="textPersonName"
             android:paddingStart="16dp"
             android:paddingTop="8dp"
             android:paddingEnd="16dp"
             android:paddingBottom="8dp"
-            android:textColor="@color/NEUTRAL04"
-            android:textColorHint="@color/NEUTRAL03"
-            android:textSize="16sp"
+            android:layout_marginTop="4dp"
             tools:ignore="TouchTargetSizeCheck" />
     </LinearLayout>
-<!--    ktp /password-->
+
     <LinearLayout
-        android:id="@+id/layoutIDPassenger"
+        android:id="@+id/layoutNomorKursi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_below="@id/layoutCitizenship"
+        android:layout_marginBottom="20dp"
+        android:layout_below="@id/layoutNomorTelepon"
         android:orientation="vertical">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="KTP/Paspor"
+            android:text="Nomor Kursi"
             android:fontFamily="@font/poppins_bold"
             android:textSize="14sp"
             android:lineHeight="20dp"
             android:textColor="@color/DARKBLUE05"/>
 
         <EditText
-            android:id="@+id/etIDorPassport"
+            android:id="@+id/etNomorKursi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/background_rounded_neutral_two"
             android:fontFamily="@font/poppins_medium"
-            android:hint="ktp / passport number"
+            android:hint="Nomor Kursi"
             android:textSize="16sp"
             android:textColor="@color/NEUTRAL04"
             android:textColorHint="@color/NEUTRAL03"
-            android:inputType="number"
+            android:inputType="textPersonName"
             android:paddingStart="16dp"
             android:paddingTop="8dp"
             android:paddingEnd="16dp"
@@ -284,44 +279,4 @@
             android:layout_marginTop="4dp"
             tools:ignore="TouchTargetSizeCheck" />
     </LinearLayout>
-    <!--    negara penerbit-->
-    <LinearLayout
-        android:id="@+id/layoutIssuingCountry"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="10dp"
-        android:layout_below="@id/layoutIDPassenger"
-        android:orientation="vertical">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Negara Penerbit"
-            android:fontFamily="@font/poppins_bold"
-            android:textSize="14sp"
-            android:lineHeight="20dp"
-            android:textColor="@color/DARKBLUE05"/>
-
-        <EditText
-            android:id="@+id/etIssuingCountry"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/background_rounded_neutral_two"
-            android:fontFamily="@font/poppins_medium"
-            android:hint="negara penerbit"
-            android:textSize="16sp"
-            android:textColor="@color/NEUTRAL04"
-            android:textColorHint="@color/NEUTRAL03"
-            android:inputType="text"
-            android:paddingStart="16dp"
-            android:paddingTop="8dp"
-            android:paddingEnd="16dp"
-            android:paddingBottom="8dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="10dp"
-            tools:ignore="TouchTargetSizeCheck" />
-    </LinearLayout>
-
 </RelativeLayout>

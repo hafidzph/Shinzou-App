@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.geminiboy.finalprojectbinar.databinding.DestinationItemBinding
 import com.geminiboy.finalprojectbinar.model.flight.FlightResponse.Data
+import com.geminiboy.finalprojectbinar.utils.Utils
 import java.text.DecimalFormat
 import java.text.DecimalFormatSymbols
 import java.text.ParseException
@@ -35,8 +36,8 @@ class FavouriteDestinationAdapter: RecyclerView.Adapter<FavouriteDestinationAdap
             binding.apply {
                 tvRoute.text = "${item.originAirport.location} -> ${item.destinationAirport.location}"
                 tvPlane.text = item.airline.airlineName
-//                tvDate.text = formatTimeRange(item.departureTime, item.arrivalTime)
-                tvPrice.text = formatCurrency(item.price)
+                tvDate.text = formatTimeRange(item.departureDate, item.arrivalDate)
+                tvPrice.text = Utils().formatCurrency(item.price)
             }
         }
     }
@@ -49,12 +50,12 @@ class FavouriteDestinationAdapter: RecyclerView.Adapter<FavouriteDestinationAdap
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) = holder.bind(differ.currentList[position])
 
-    private fun formatTimeRange(startTime: String, endTime: String): String {
-        val inputFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale("id", "ID"))
+    private fun formatTimeRange(departureDate: String, arrivalDate: String): String {
+        val inputFormat = SimpleDateFormat("yyyy-MM-dd", Locale("id", "ID"))
 
         return try {
-            val startDate = inputFormat.parse(startTime)!!
-            val endDate = inputFormat.parse(endTime)!!
+            val startDate = inputFormat.parse(departureDate)!!
+            val endDate = inputFormat.parse(arrivalDate)!!
 
             val startDay = SimpleDateFormat("dd", Locale("id", "ID")).format(startDate)
             val endDay = SimpleDateFormat("dd", Locale("id", "ID")).format(endDate)
@@ -67,15 +68,6 @@ class FavouriteDestinationAdapter: RecyclerView.Adapter<FavouriteDestinationAdap
             e.printStackTrace()
             ""
         }
-    }
-
-    fun formatCurrency(amount: Int): String {
-        val decimalFormatSymbols = DecimalFormatSymbols().apply {
-            groupingSeparator = '.'
-        }
-        val decimalFormat = DecimalFormat("#,##0", decimalFormatSymbols)
-
-        return "IDR " + decimalFormat.format(amount)
     }
 
 }

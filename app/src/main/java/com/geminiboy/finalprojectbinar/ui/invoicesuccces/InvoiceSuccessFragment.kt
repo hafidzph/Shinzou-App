@@ -18,7 +18,6 @@ class InvoiceSuccessFragment : Fragment() {
     lateinit var itemRincianHargaAdapter: ItemRincianHargaAdapter
 
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

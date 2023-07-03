@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
+import com.geminiboy.finalprojectbinar.data.local.datastore.SetDestinationPreferences
 import com.geminiboy.finalprojectbinar.data.repository.AuthRepository
 import com.geminiboy.finalprojectbinar.data.repository.FlightRepository
 import com.geminiboy.finalprojectbinar.model.flight.DetailFlightResponse
@@ -15,7 +16,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class DetailPenerbanganViewModel @Inject constructor(private val flightRepository: FlightRepository,
-                                                     private val authRepository: AuthRepository) : ViewModel(){
+                                                     private val authRepository: AuthRepository,
+                                                     val preferences: SetDestinationPreferences) : ViewModel(){
     private val _detailFlight = MutableLiveData<Resource<DetailFlightResponse>>()
     val detailFlight: LiveData<Resource<DetailFlightResponse>> get() = _detailFlight
 
@@ -24,4 +26,7 @@ class DetailPenerbanganViewModel @Inject constructor(private val flightRepositor
     }
 
     fun getToken() = authRepository.getToken().asLiveData()
+
+    fun setDepartureId(departure: String) = viewModelScope.launch { flightRepository.setDepartureId(departure) }
+    fun setTicketPrice(price: String) = viewModelScope.launch { flightRepository.setTicketPrice(price) }
 }

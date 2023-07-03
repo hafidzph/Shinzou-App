@@ -1,11 +1,18 @@
 package com.geminiboy.finalprojectbinar.data.repository
 
+import com.geminiboy.finalprojectbinar.data.local.datastore.FlightPreferences
 import com.geminiboy.finalprojectbinar.data.remote.service.FlightService
 import com.geminiboy.finalprojectbinar.model.airport.AirportResponse
 import com.geminiboy.finalprojectbinar.model.flight.DetailFlightResponse
 import com.geminiboy.finalprojectbinar.model.flight.FlightResponse
-import com.geminiboy.finalprojectbinar.model.flight.SearchFlightOneTrip
+import com.geminiboy.finalprojectbinar.model.flight.SearchFlightResponse
+import com.geminiboy.finalprojectbinar.model.flight.TransactionBody
+import com.geminiboy.finalprojectbinar.model.flight.TransactionByIdResponse
+import com.geminiboy.finalprojectbinar.model.flight.TransactionPostResponse
+import com.geminiboy.finalprojectbinar.model.payment.PaymentBody
+import com.geminiboy.finalprojectbinar.model.payment.PaymentResponse
 import com.geminiboy.finalprojectbinar.wrapper.Resource
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 interface FlightRepository {
@@ -15,11 +22,23 @@ interface FlightRepository {
                                 locationTo: String,
                                 departureDate: String,
                                 passengers: Int,
-                                seatClass: String) : Resource<SearchFlightOneTrip>
+                                seatClass: String) : Resource<SearchFlightResponse>
     suspend fun getFlightById(id: String): Resource<DetailFlightResponse>
+    suspend fun postTransaction(token: String, transactionBody: TransactionBody): Resource<TransactionPostResponse>
+    suspend fun getTransactionById(token: String, id: String): Resource<TransactionByIdResponse>
+    suspend fun addPayment(token: String, booking_code: String, paymentBody: PaymentBody): Resource<PaymentResponse>
+    suspend fun setDepartureAndReturnId(departure: String, _return: String?)
+    suspend fun setDepartureId(departure: String)
+    suspend fun setTicketPrice(price: String)
+    suspend fun setTransactionId(id: String)
+    fun getDeparture(): Flow<String>
+    fun getTransactionId(): Flow<String>
+    fun getReturn(): Flow<String?>
+    fun getTicketPrice(): Flow<String?>
 }
 
-class FlightRepositoryImpl @Inject constructor(private val api: FlightService): FlightRepository{
+class FlightRepositoryImpl @Inject constructor(private val api: FlightService,
+                                               private val preferences: FlightPreferences): FlightRepository{
     override suspend fun getFlight(): Resource<FlightResponse> {
         return try {
             val response = api.getFlight()
@@ -44,9 +63,9 @@ class FlightRepositoryImpl @Inject constructor(private val api: FlightService): 
         departureDate: String,
         passengers: Int,
         seatClass: String
-    ): Resource<SearchFlightOneTrip> {
+    ): Resource<SearchFlightResponse> {
         return try {
-            val response = api.oneTripFlight(locationFrom, locationTo, departureDate, passengers, seatClass)
+            val response = api.searchFlight(locationFrom, locationTo, departureDate, passengers, seatClass)
             Resource.Success(response)
         }catch (e: Exception){
             Resource.Error(e.message!!)
@@ -62,4 +81,69 @@ class FlightRepositoryImpl @Inject constructor(private val api: FlightService): 
         }
     }
 
+    override suspend fun postTransaction(token:String, transactionBody: TransactionBody): Resource<TransactionPostResponse> {
+        return try {
+            val response = api.postTransaction(token, transactionBody)
+            Resource.Success(response)
+        }catch (e: Exception){
+            Resource.Error(e.message!!)
+        }
+    }
+
+    override suspend fun getTransactionById(
+        token: String,
+        id: String
+    ): Resource<TransactionByIdResponse> {
+        return try {
+            val response = api.getTransactionById(token, id)
+            Resource.Success(response)
+        }catch (e: Exception){
+            Resource.Error(e.message!!)
+        }
+    }
+
+    override suspend fun addPayment(
+        token: String,
+        booking_code: String,
+        paymentBody: PaymentBody
+    ): Resource<PaymentResponse> {
+        return try {
+            val response = api.addPayment(token, booking_code, paymentBody)
+            Resource.Success(response)
+        }catch (e: Exception){
+            Resource.Error(e.message!!)
+        }
+    }
+
+    override suspend fun setDepartureAndReturnId(departure: String, _return: String?) {
+        preferences.setDepartureAndReturnId(departure, _return)
+    }
+
+    override suspend fun setDepartureId(departure: String) {
+        preferences.setDepartureId(departure)
+    }
+
+    override suspend fun setTicketPrice(price: String) {
+        preferences.setPrice(price)
+    }
+
+    override suspend fun setTransactionId(id: String) {
+        preferences.setTransactionId(id)
+    }
+
+    override fun getDeparture(): Flow<String> {
+        return preferences.getDepartureId()
+    }
+
+    override fun getTransactionId(): Flow<String> {
+        return preferences.getTransactionId()
+    }
+
+    override fun getReturn(): Flow<String?> {
+        return preferences.getReturnId()
+    }
+
+    override fun getTicketPrice(): Flow<String?> {
+        return preferences.getTicketPrice()
+    }
 }

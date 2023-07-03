@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/splashScreenFragment">
+    app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/registerFragment"
@@ -103,16 +103,7 @@
         android:id="@+id/paymentFragment"
         android:name="com.geminiboy.finalprojectbinar.ui.payment.PaymentFragment"
         android:label="fragment_payment"
-        tools:layout="@layout/fragment_payment" >
-        <action
-            android:id="@+id/action_paymentFragment_to_bottomSheetPaymentSuccessFragment"
-            app:destination="@id/bottomSheetPaymentSuccessFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/bottomSheetPaymentSuccessFragment"
-        android:name="com.geminiboy.finalprojectbinar.ui.bottomsheet.paymentsuccess.BottomSheetPaymentSuccessFragment"
-        android:label="fragment_bottom_sheet_payment_success"
-        tools:layout="@layout/fragment_bottom_sheet_payment_success" />
+        tools:layout="@layout/fragment_payment" />
     <fragment
         android:id="@+id/fragmentRiwayat2"
         android:name="com.geminiboy.finalprojectbinar.ui.riwayat.FragmentRiwayat"
@@ -136,14 +127,32 @@
         android:id="@+id/fragmentBiodataPemesan"
         android:name="com.geminiboy.finalprojectbinar.ui.biodatapemesanan.FragmentBiodataPemesan"
         android:label="fragment_biodata_pemesan"
-        tools:layout="@layout/fragment_biodata_pemesan" />
+        tools:layout="@layout/fragment_biodata_pemesan" >
+        <action
+            android:id="@+id/action_fragmentBiodataPemesan_to_fragmentBiodataPenumpang"
+            app:destination="@id/fragmentBiodataPenumpang" />
+    </fragment>
     <fragment
         android:id="@+id/fragmentAkun2"
         android:name="com.geminiboy.finalprojectbinar.ui.akun.FragmentAkun"
         android:label="fragment_akun"
-        tools:layout="@layout/fragment_akun" >
+        tools:layout="@layout/fragment_akun" />
+    <fragment
+        android:id="@+id/fragmentBiodataPenumpang"
+        android:name="com.geminiboy.finalprojectbinar.ui.biodatapenumpang.FragmentBiodataPenumpang"
+        android:label="fragment_biodata_penumpang"
+        tools:layout="@layout/fragment_biodata_penumpang" >
         <action
-            android:id="@+id/action_fragmentAkun2_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            android:id="@+id/action_fragmentBiodataPenumpang_to_fragmentCheckout"
+            app:destination="@id/fragmentCheckout" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentCheckout"
+        android:name="com.geminiboy.finalprojectbinar.ui.checkout.FragmentCheckout"
+        android:label="fragment_checkout"
+        tools:layout="@layout/fragment_checkout" >
+        <action
+            android:id="@+id/action_fragmentCheckout_to_paymentFragment"
+            app:destination="@id/paymentFragment" />
     </fragment>
 </navigation>

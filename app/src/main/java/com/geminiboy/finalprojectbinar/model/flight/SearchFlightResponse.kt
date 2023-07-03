@@ -3,7 +3,7 @@ package com.geminiboy.finalprojectbinar.model.flight
 
 import com.google.gson.annotations.SerializedName
 
-data class SearchFlightOneTrip(
+data class SearchFlightResponse(
     @SerializedName("data")
     val `data`: List<Data>,
     @SerializedName("status")

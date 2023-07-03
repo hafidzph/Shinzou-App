@@ -7,10 +7,8 @@ import androidx.lifecycle.viewModelScope
 import com.geminiboy.finalprojectbinar.data.repository.AuthRepository
 import com.geminiboy.finalprojectbinar.model.otp.OtpBody
 import com.geminiboy.finalprojectbinar.model.otp.OtpResponse
-import com.geminiboy.finalprojectbinar.model.user.LoginResponse
 import com.geminiboy.finalprojectbinar.wrapper.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

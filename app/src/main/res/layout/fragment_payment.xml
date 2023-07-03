@@ -12,7 +12,6 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="@color/white"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <com.google.android.material.appbar.MaterialToolbar
@@ -20,11 +19,36 @@
             style="@style/Widget.MaterialComponents.Toolbar.Primary"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:layout_anchor="@+id/constraintLayout"
-            app:layout_anchorGravity="center"
             android:background="@color/DARKBLUE05"
-            app:navigationIcon="@drawable/baseline_arrow_back_24"
-            app:title="Proses Pembayaran"/>
+            app:layout_anchor="@+id/constraintLayout">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/btnBack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/baseline_arrow_back_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvTitleAppbar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Proses Pembayaran"
+                    android:paddingTop="4dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:layout_marginStart="10dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/btnBack" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.appbar.MaterialToolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
     <ScrollView
@@ -53,7 +77,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/outline_payment">
-            
+
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tvPassengers"
                 android:layout_width="wrap_content"
@@ -71,7 +95,7 @@
                 android:id="@+id/tvTypePassengersCount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="2 Adults, 1 Baby"
+                android:text=""
                 android:textSize="14sp"
                 android:textColor="@color/DARKBLUE05"
                 android:fontFamily="@font/poppins_bold"
@@ -85,132 +109,158 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_loc"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="18dp"
                 app:layout_constraintTop_toBottomOf="@id/tvTypePassengersCount"
                 app:layout_constraintStart_toStartOf="parent"/>
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tvDeparture"
+            <LinearLayout
+                android:id="@+id/containerDeparture"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Jakarta"
-                android:textSize="14sp"
-                android:textColor="@color/NEUTRAL05"
-                android:fontFamily="@font/poppins_bold"
-                android:layout_marginTop="16dp"
-                android:layout_marginStart="12dp"
-                app:layout_constraintTop_toBottomOf="@id/tvTypePassengersCount"
-                app:layout_constraintStart_toEndOf="@id/ivLocation"/>
+                android:layout_marginStart="5dp"
+                app:layout_constraintStart_toEndOf="@+id/ivLocation"
+                app:layout_constraintTop_toBottomOf="@+id/tvPassengers"
+                app:layout_constraintBottom_toTopOf="@+id/outlinedHorizontalDua"
+                android:orientation="vertical">
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvDeparture"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Jakarta"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:maxWidth="90dp"
+                    android:textSize="14sp"
+                    android:textColor="@color/NEUTRAL05"
+                    android:fontFamily="@font/poppins_bold"
+                    android:layout_marginTop="16dp"/>
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tvTanggal"
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvTanggal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="5 Maret 2023"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:maxWidth="80dp"
+                    android:textSize="12sp"
+                    android:textColor="@color/NEUTRAL05"
+                    android:fontFamily="@font/poppins_medium"
+                    android:layout_marginTop="2dp"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvJam"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="19.10"
+                    android:textSize="12sp"
+                    android:textColor="@color/NEUTRAL05"
+                    android:fontFamily="@font/poppins_medium"
+                    android:layout_marginTop="2dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/containerEstimasi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="5 Maret 2023"
-                android:textSize="12sp"
-                android:textColor="@color/NEUTRAL05"
-                android:fontFamily="@font/poppins_medium"
-                android:layout_marginTop="2dp"
-                android:layout_marginStart="12dp"
-                app:layout_constraintTop_toBottomOf="@id/tvDeparture"
-                app:layout_constraintStart_toEndOf="@id/ivLocation"/>
+                android:orientation="vertical"
+                android:gravity="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvPassengers">
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvEstimasi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="4h 0m"
+                    android:textSize="12sp"
+                    android:textColor="@color/NEUTRAL05"
+                    android:fontFamily="@font/poppins_medium"
+                    android:layout_marginTop="25dp"/>
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tvJam"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="19.10"
-                android:textSize="12sp"
-                android:textColor="@color/NEUTRAL05"
-                android:fontFamily="@font/poppins_medium"
-                android:layout_marginTop="2dp"
-                android:layout_marginStart="12dp"
-                app:layout_constraintTop_toBottomOf="@id/tvTanggal"
-                app:layout_constraintStart_toEndOf="@id/ivLocation"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="3dp"
+                    android:orientation="horizontal">
+                    <View
+                        android:id="@+id/outlinedHorizontal"
+                        android:layout_width="36dp"
+                        android:layout_height="1dp"
+                        android:background="@color/NEUTRAL05"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginStart="26dp"/>
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tvEstimasi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="4h 0m"
-                android:textSize="12sp"
-                android:textColor="@color/NEUTRAL05"
-                android:fontFamily="@font/poppins_medium"
-                android:layout_marginTop="25dp"
-                android:layout_marginStart="47dp"
-                app:layout_constraintTop_toBottomOf="@id/tvTypePassengersCount"
-                app:layout_constraintStart_toEndOf="@id/tvDeparture"/>
-
-            <View
-                android:id="@+id/outlinedHorizontal"
-                android:layout_width="36dp"
-                android:layout_height="1dp"
-                android:background="@color/NEUTRAL05"
-                android:layout_marginTop="2dp"
-                android:layout_marginStart="26dp"
-                app:layout_constraintTop_toBottomOf="@id/tvEstimasi"
-                app:layout_constraintStart_toEndOf="@id/tvTanggal"/>
-
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/icRight"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:src="@drawable/ic_right_black"
-                android:backgroundTint="@color/NEUTRAL05"
-                android:layout_marginStart="-7dp"
-                android:layout_marginTop="-5.5dp"
-                app:layout_constraintTop_toBottomOf="@id/tvEstimasi"
-                app:layout_constraintStart_toEndOf="@id/outlinedHorizontal"/>
-
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/icRight"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_marginStart="-7dp"
+                        android:layout_marginTop="-5.5dp"
+                        android:layout_marginEnd="12dp"
+                        android:backgroundTint="@color/NEUTRAL05"
+                        android:src="@drawable/ic_right_black"
+                        />
+                </LinearLayout>
+            </LinearLayout>
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/ivLocationDua"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_loc"
                 android:layout_marginStart="17dp"
                 android:layout_marginTop="18dp"
-                app:layout_constraintTop_toBottomOf="@id/tvTypePassengersCount"
-                app:layout_constraintStart_toEndOf="@id/tvEstimasi"/>
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tvDepartureDua"
+                android:src="@drawable/ic_loc"
+                app:layout_constraintStart_toEndOf="@+id/containerEstimasi"
+                app:layout_constraintEnd_toStartOf="@id/containerReturn"
+                app:layout_constraintTop_toBottomOf="@id/tvTypePassengersCount" />
+            <LinearLayout
+                android:id="@+id/containerReturn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Melbourne"
-                android:textSize="14sp"
-                android:textColor="@color/NEUTRAL05"
-                android:fontFamily="@font/poppins_bold"
-                android:layout_marginTop="16dp"
-                android:layout_marginStart="12dp"
-                app:layout_constraintTop_toBottomOf="@id/tvTypePassengersCount"
-                app:layout_constraintStart_toEndOf="@id/ivLocationDua"/>
+                android:layout_marginStart="5dp"
+                android:orientation="vertical"
+                android:layout_marginEnd="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/ivLocationDua"
+                app:layout_constraintTop_toBottomOf="@id/tvTypePassengersCount">
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tvTanggalDua"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="5 Maret 2023"
-                android:textSize="12sp"
-                android:textColor="@color/NEUTRAL05"
-                android:fontFamily="@font/poppins_medium"
-                android:layout_marginTop="2dp"
-                android:layout_marginStart="12dp"
-                app:layout_constraintTop_toBottomOf="@id/tvDepartureDua"
-                app:layout_constraintStart_toEndOf="@id/ivLocationDua"/>
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvDepartureDua"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Palembang"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:maxWidth="90dp"
+                    android:textSize="14sp"
+                    android:textColor="@color/NEUTRAL05"
+                    android:fontFamily="@font/poppins_bold"
+                    android:layout_marginTop="16dp"/>
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tvJamDua"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="21.10"
-                android:textSize="12sp"
-                android:textColor="@color/NEUTRAL05"
-                android:fontFamily="@font/poppins_medium"
-                android:layout_marginTop="2dp"
-                android:layout_marginStart="12dp"
-                app:layout_constraintTop_toBottomOf="@id/tvTanggalDua"
-                app:layout_constraintStart_toEndOf="@id/ivLocationDua"/>
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvTanggalDua"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="5 Maret 2023"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:maxWidth="80dp"
+                    android:textSize="12sp"
+                    android:textColor="@color/NEUTRAL05"
+                    android:fontFamily="@font/poppins_medium"
+                    android:layout_marginTop="2dp"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvJamDua"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="21.10"
+                    android:textSize="12sp"
+                    android:textColor="@color/NEUTRAL05"
+                    android:fontFamily="@font/poppins_medium"
+                    android:layout_marginTop="2dp"/>
+            </LinearLayout>
 
             <View
                 android:id="@+id/outlinedHorizontalDua"
@@ -220,7 +270,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
-                app:layout_constraintTop_toBottomOf="@id/tvJam"
+                app:layout_constraintTop_toBottomOf="@id/containerDeparture"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -267,12 +317,15 @@
                 android:id="@+id/typeClass"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Economy"
+                android:text="Premium Economy"
+                android:ellipsize="end"
+                android:lines="2"
+                android:maxWidth="60dp"
                 android:textSize="12sp"
                 android:textColor="@color/NEUTRAL05"
                 android:fontFamily="@font/poppins_medium"
                 android:layout_marginTop="2dp"
-                android:layout_marginStart="34dp"
+                android:layout_marginStart="38dp"
                 app:layout_constraintTop_toBottomOf="@id/tvBookingCode"
                 app:layout_constraintStart_toEndOf="@id/noBookingCode"/>
 

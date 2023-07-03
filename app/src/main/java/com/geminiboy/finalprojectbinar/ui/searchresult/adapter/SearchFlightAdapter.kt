@@ -11,13 +11,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.geminiboy.finalprojectbinar.R
 import com.geminiboy.finalprojectbinar.databinding.ItemResultTicketBinding
-import com.geminiboy.finalprojectbinar.model.flight.SearchFlightOneTrip.Data
+import com.geminiboy.finalprojectbinar.model.flight.SearchFlightResponse.Data
 import com.geminiboy.finalprojectbinar.utils.Utils
-import java.text.DecimalFormat
-import java.text.DecimalFormatSymbols
-import java.text.SimpleDateFormat
-import java.util.Calendar
-import java.util.Locale
 
 class SearchFlightAdapter : RecyclerView.Adapter<SearchFlightAdapter.ViewHolder>() {
     private var diffCallback = object : DiffUtil.ItemCallback<Data>(){

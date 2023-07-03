@@ -62,7 +62,7 @@ class Utils{
         }
         val decimalFormat = DecimalFormat("#,##0", decimalFormatSymbols)
 
-        return "IDR " + decimalFormat.format(amount)
+        return decimalFormat.format(amount)
     }
 
     fun formatDate3(dateString: String): String {

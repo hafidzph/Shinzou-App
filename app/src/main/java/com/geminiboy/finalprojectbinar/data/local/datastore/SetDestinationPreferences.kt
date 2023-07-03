@@ -29,6 +29,12 @@ class SetDestinationPreferences @Inject constructor(private val dataStore: DataS
         babyPassenger + childrenPassenger + adultPassenger
     }
 
+    fun getPassengerAdultChild(): Flow<Int> = dataStore.data.map { preferences ->
+        val childrenPassenger = preferences[childrenPassengerKey]?.toIntOrNull() ?: 0
+        val adultPassenger = preferences[adultPassengerKey]?.toIntOrNull() ?: 0
+        childrenPassenger + adultPassenger
+    }
+
     fun getFromJoin(): Flow<String> = dataStore.data.map {
         "${getFrom().first()} (${getFromCityCode().first()})"
     }

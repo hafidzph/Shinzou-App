@@ -109,9 +109,9 @@ class LoginFragment : Fragment() {
                         requireActivity(),
                         R.layout.toast_alert_green
                     )
-                    loginVM.setToken(resource.data!!.token)
+                    loginVM.setToken(resource.data!!.data.token)
                     lifecycleScope.launch { delay(500) }
-                    findNavController().navigateUp()
+                    navigateToDestinationAfterLogin()
                 }
                 is Resource.Error -> {
                     Toast(requireContext()).showCustomToast(
@@ -122,6 +122,30 @@ class LoginFragment : Fragment() {
                 }
             }
         }
+    }
+
+    private fun navigateToDestinationAfterLogin() {
+        val currentDestination = findNavController().currentDestination?.id
+
+        val destinationId = determineDestinationId(currentDestination)
+        if (destinationId != null) {
+            findNavController().popBackStack(destinationId, false)
+        } else {
+            findNavController().popBackStack()
+        }
+    }
+
+    private fun determineDestinationId(currentDestination: Int?): Int? {
+        if (currentDestination == R.id.fragmentAkun2) {
+            return R.id.fragmentAkun2
+        }
+        if (currentDestination == R.id.fragmentDetailPenerbangan) {
+            return R.id.fragmentDetailPenerbangan
+        }
+        if (currentDestination == R.id.fragmentRiwayat2) {
+            return R.id.fragmentRiwayat2
+        }
+        return null
     }
 
     override fun onDestroyView() {
