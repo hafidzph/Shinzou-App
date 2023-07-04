@@ -37,7 +37,7 @@ Berikut adalah beberapa fitur yang tersedia dalam aplikasi:
 - Fitur 8: Dapat melihat riwayat pesanan tiket yang sudah dipesan.
 - Fitur 9: Update profile user.
 - Fitur 10: Verifikasi OTP send by email.
-- Fitur 11: Search flight berdasarkan tanggal yang tersedia pada button recycler view setelah user mencari penerbangan.
+- Fitur 11: Search flight berdasarkan tanggal, jumlah penumpang, dan seat class yang tersedia pada button recycler view setelah user mencari penerbangan.
 
 ## API URL
 
