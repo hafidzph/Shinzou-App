@@ -23,14 +23,21 @@ class PaymentViewModel @Inject constructor(private val authRepository: AuthRepos
                                            private val setDestinationPreferences: SetDestinationPreferences) : ViewModel() {
     private val _getTransaction = MutableLiveData<Resource<TransactionByIdResponse>>()
     val getTransaction: LiveData<Resource<TransactionByIdResponse>> get() = _getTransaction
+
+    private val _getTransactionRoundTrip = MutableLiveData<Resource<TransactionByIdResponse>>()
+    val getTransactionRoundTrip: LiveData<Resource<TransactionByIdResponse>> get() = _getTransactionRoundTrip
+
     private val _addPayment = MutableLiveData<Resource<PaymentResponse>>()
     val addPayment: LiveData<Resource<PaymentResponse>> get() = _addPayment
+
     private val passengerCount = MutableLiveData<Triple<Int, Int, Int>>()
 
     fun getPassengerCount(): LiveData<Triple<Int, Int, Int>> {
         return passengerCount
     }
-
+    fun getPriceDeparture() = flightRepository.getPriceDeparture().asLiveData()
+    fun getPriceReturn() = flightRepository.getPriceReturn().asLiveData()
+    fun getPassengerAdultChildren() = setDestinationPreferences.getPassengerAdultChild().asLiveData()
     fun updatePassengerCount() = viewModelScope.launch {
         val adultCount = setDestinationPreferences.getAdultPassenger().first().toInt()
         val childCount = setDestinationPreferences.getChildrenPassenger().first().toInt()
@@ -47,6 +54,16 @@ class PaymentViewModel @Inject constructor(private val authRepository: AuthRepos
             viewModelScope.launch {
                 val response = flightRepository.getTransactionById(authorization, id)
                 _getTransaction.postValue(response)
+            }
+        }
+    }
+
+    fun getTransactionByIdRoundTrip(id: String) {
+        getToken().observeForever{
+            val authorization = "Bearer $it"
+            viewModelScope.launch {
+                val response = flightRepository.getTransactionById(authorization, id)
+                _getTransactionRoundTrip.postValue(response)
             }
         }
     }

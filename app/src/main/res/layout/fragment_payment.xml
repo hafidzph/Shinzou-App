@@ -67,293 +67,583 @@
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cvPayment"
         android:layout_width="340dp"
-        android:layout_height="220dp"
+        android:layout_height="0dp"
         android:layout_marginTop="40dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/outline_payment">
+            android:layout_height="match_parent">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/containerDepartureFlight"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/outline_payment">
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tvPassengers"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Passengers :"
-                android:textSize="14sp"
-                android:textColor="@color/NEUTRAL05"
-                android:fontFamily="@font/poppins_regular"
-                android:layout_marginTop="12dp"
-                android:layout_marginStart="16dp"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"/>
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tvTypePassengersCount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:textSize="14sp"
-                android:textColor="@color/DARKBLUE05"
-                android:fontFamily="@font/poppins_bold"
-                android:layout_marginTop="12dp"
-                android:layout_marginStart="5dp"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toEndOf="@id/tvPassengers"/>
-
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/ivLocation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_loc"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="18dp"
-                app:layout_constraintTop_toBottomOf="@id/tvTypePassengersCount"
-                app:layout_constraintStart_toStartOf="parent"/>
-
-            <LinearLayout
-                android:id="@+id/containerDeparture"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                app:layout_constraintStart_toEndOf="@+id/ivLocation"
-                app:layout_constraintTop_toBottomOf="@+id/tvPassengers"
-                app:layout_constraintBottom_toTopOf="@+id/outlinedHorizontalDua"
-                android:orientation="vertical">
                 <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/tvDeparture"
+                    android:id="@+id/tvPassengers"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Jakarta"
-                    android:ellipsize="end"
-                    android:lines="1"
-                    android:maxWidth="90dp"
+                    android:text="Passengers :"
                     android:textSize="14sp"
                     android:textColor="@color/NEUTRAL05"
+                    android:fontFamily="@font/poppins_regular"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginStart="16dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvTypePassengersCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="14sp"
+                    android:textColor="@color/DARKBLUE05"
                     android:fontFamily="@font/poppins_bold"
-                    android:layout_marginTop="16dp"/>
+                    android:layout_marginTop="12dp"
+                    android:layout_marginStart="5dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/tvPassengers"/>
 
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/tvTanggal"
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/ivLocation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="5 Maret 2023"
-                    android:ellipsize="end"
-                    android:lines="1"
-                    android:maxWidth="80dp"
-                    android:textSize="12sp"
-                    android:textColor="@color/NEUTRAL05"
-                    android:fontFamily="@font/poppins_medium"
-                    android:layout_marginTop="2dp"/>
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/tvJam"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="19.10"
-                    android:textSize="12sp"
-                    android:textColor="@color/NEUTRAL05"
-                    android:fontFamily="@font/poppins_medium"
-                    android:layout_marginTop="2dp"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/containerEstimasi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvPassengers">
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/tvEstimasi"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="4h 0m"
-                    android:textSize="12sp"
-                    android:textColor="@color/NEUTRAL05"
-                    android:fontFamily="@font/poppins_medium"
-                    android:layout_marginTop="25dp"/>
+                    android:src="@drawable/ic_loc"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="18dp"
+                    app:layout_constraintTop_toBottomOf="@id/tvTypePassengersCount"
+                    app:layout_constraintStart_toStartOf="parent"/>
 
                 <LinearLayout
+                    android:id="@+id/containerDeparture"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingTop="3dp"
-                    android:orientation="horizontal">
-                    <View
-                        android:id="@+id/outlinedHorizontal"
-                        android:layout_width="36dp"
-                        android:layout_height="1dp"
-                        android:background="@color/NEUTRAL05"
-                        android:layout_marginTop="2dp"
-                        android:layout_marginStart="26dp"/>
+                    android:layout_marginStart="5dp"
+                    app:layout_constraintStart_toEndOf="@+id/ivLocation"
+                    app:layout_constraintTop_toBottomOf="@+id/tvPassengers"
+                    app:layout_constraintBottom_toTopOf="@+id/outlinedHorizontalDua"
+                    android:orientation="vertical">
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tvDeparture"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Jakarta"
+                        android:ellipsize="end"
+                        android:lines="1"
+                        android:maxWidth="90dp"
+                        android:textSize="14sp"
+                        android:textColor="@color/NEUTRAL05"
+                        android:fontFamily="@font/poppins_bold"
+                        android:layout_marginTop="16dp"/>
 
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/icRight"
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
-                        android:layout_marginStart="-7dp"
-                        android:layout_marginTop="-5.5dp"
-                        android:layout_marginEnd="12dp"
-                        android:backgroundTint="@color/NEUTRAL05"
-                        android:src="@drawable/ic_right_black"
-                        />
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tvTanggal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="5 Maret 2023"
+                        android:ellipsize="end"
+                        android:lines="1"
+                        android:maxWidth="80dp"
+                        android:textSize="12sp"
+                        android:textColor="@color/NEUTRAL05"
+                        android:fontFamily="@font/poppins_medium"
+                        android:layout_marginTop="2dp"/>
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tvJam"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="19.10"
+                        android:textSize="12sp"
+                        android:textColor="@color/NEUTRAL05"
+                        android:fontFamily="@font/poppins_medium"
+                        android:layout_marginTop="2dp"/>
                 </LinearLayout>
-            </LinearLayout>
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/ivLocationDua"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="17dp"
-                android:layout_marginTop="18dp"
-                android:src="@drawable/ic_loc"
-                app:layout_constraintStart_toEndOf="@+id/containerEstimasi"
-                app:layout_constraintEnd_toStartOf="@id/containerReturn"
-                app:layout_constraintTop_toBottomOf="@id/tvTypePassengersCount" />
-            <LinearLayout
-                android:id="@+id/containerReturn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:orientation="vertical"
-                android:layout_marginEnd="15dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/ivLocationDua"
-                app:layout_constraintTop_toBottomOf="@id/tvTypePassengersCount">
+
+                <LinearLayout
+                    android:id="@+id/containerEstimasi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvPassengers">
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tvEstimasi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="4h 0m"
+                        android:textSize="12sp"
+                        android:textColor="@color/NEUTRAL05"
+                        android:fontFamily="@font/poppins_medium"
+                        android:layout_marginTop="25dp"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="3dp"
+                        android:orientation="horizontal">
+                        <View
+                            android:id="@+id/outlinedHorizontal"
+                            android:layout_width="36dp"
+                            android:layout_height="1dp"
+                            android:background="@color/NEUTRAL05"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginStart="26dp"/>
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:id="@+id/icRight"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_marginStart="-7dp"
+                            android:layout_marginTop="-5.5dp"
+                            android:layout_marginEnd="12dp"
+                            android:backgroundTint="@color/NEUTRAL05"
+                            android:src="@drawable/ic_right_black"
+                            />
+                    </LinearLayout>
+                </LinearLayout>
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/ivLocationDua"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="17dp"
+                    android:layout_marginTop="18dp"
+                    android:src="@drawable/ic_loc"
+                    app:layout_constraintStart_toEndOf="@+id/containerEstimasi"
+                    app:layout_constraintEnd_toStartOf="@id/containerReturn"
+                    app:layout_constraintTop_toBottomOf="@id/tvTypePassengersCount" />
+                <LinearLayout
+                    android:id="@+id/containerReturn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:orientation="vertical"
+                    android:layout_marginEnd="15dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/ivLocationDua"
+                    app:layout_constraintTop_toBottomOf="@id/tvTypePassengersCount">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tvDepartureDua"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Palembang"
+                        android:ellipsize="end"
+                        android:lines="1"
+                        android:maxWidth="90dp"
+                        android:textSize="14sp"
+                        android:textColor="@color/NEUTRAL05"
+                        android:fontFamily="@font/poppins_bold"
+                        android:layout_marginTop="16dp"/>
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tvTanggalDua"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="5 Maret 2023"
+                        android:ellipsize="end"
+                        android:lines="1"
+                        android:maxWidth="80dp"
+                        android:textSize="12sp"
+                        android:textColor="@color/NEUTRAL05"
+                        android:fontFamily="@font/poppins_medium"
+                        android:layout_marginTop="2dp"/>
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tvJamDua"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="21.10"
+                        android:textSize="12sp"
+                        android:textColor="@color/NEUTRAL05"
+                        android:fontFamily="@font/poppins_medium"
+                        android:layout_marginTop="2dp"/>
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/outlinedHorizontalDua"
+                    android:layout_width="308dp"
+                    android:layout_height="1dp"
+                    android:background="@color/NEUTRAL03"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    app:layout_constraintTop_toBottomOf="@id/containerDeparture"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/tvDepartureDua"
+                    android:id="@+id/tvBookingCode"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Palembang"
-                    android:ellipsize="end"
-                    android:lines="1"
-                    android:maxWidth="90dp"
+                    android:text="Booking Code:"
                     android:textSize="14sp"
                     android:textColor="@color/NEUTRAL05"
                     android:fontFamily="@font/poppins_bold"
-                    android:layout_marginTop="16dp"/>
+                    android:layout_marginTop="16dp"
+                    android:layout_marginStart="16dp"
+                    app:layout_constraintTop_toBottomOf="@id/outlinedHorizontalDua"
+                    app:layout_constraintStart_toStartOf="parent"/>
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/tvTanggalDua"
+                    android:id="@+id/noBookingCode"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="5 Maret 2023"
-                    android:ellipsize="end"
-                    android:lines="1"
-                    android:maxWidth="80dp"
                     android:textSize="12sp"
                     android:textColor="@color/NEUTRAL05"
                     android:fontFamily="@font/poppins_medium"
-                    android:layout_marginTop="2dp"/>
+                    android:layout_marginTop="2dp"
+                    android:layout_marginStart="16dp"
+                    app:layout_constraintTop_toBottomOf="@id/tvBookingCode"
+                    app:layout_constraintStart_toStartOf="parent"/>
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/tvJamDua"
+                    android:id="@+id/tvClass"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="21.10"
+                    android:text="Class"
+                    android:textSize="14sp"
+                    android:textColor="@color/NEUTRAL05"
+                    android:fontFamily="@font/poppins_bold"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginStart="8dp"
+                    app:layout_constraintTop_toBottomOf="@id/outlinedHorizontalDua"
+                    app:layout_constraintStart_toEndOf="@id/tvBookingCode"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/typeClass"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Premium Economy"
+                    android:ellipsize="end"
+                    android:lines="2"
+                    android:maxWidth="60dp"
                     android:textSize="12sp"
                     android:textColor="@color/NEUTRAL05"
                     android:fontFamily="@font/poppins_medium"
-                    android:layout_marginTop="2dp"/>
-            </LinearLayout>
+                    android:layout_marginTop="2dp"
+                    android:layout_marginStart="38dp"
+                    app:layout_constraintTop_toBottomOf="@id/tvBookingCode"
+                    app:layout_constraintStart_toEndOf="@id/noBookingCode"/>
 
-            <View
-                android:id="@+id/outlinedHorizontalDua"
-                android:layout_width="308dp"
-                android:layout_height="1dp"
-                android:background="@color/NEUTRAL03"
-                android:layout_marginTop="16dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                app:layout_constraintTop_toBottomOf="@id/containerDeparture"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvTotal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total"
+                    android:textSize="14sp"
+                    android:textColor="@color/NEUTRAL05"
+                    android:fontFamily="@font/poppins_bold"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintTop_toBottomOf="@id/outlinedHorizontalDua"
+                    app:layout_constraintEnd_toEndOf="parent"/>
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tvBookingCode"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Booking Code:"
-                android:textSize="14sp"
-                android:textColor="@color/NEUTRAL05"
-                android:fontFamily="@font/poppins_bold"
-                android:layout_marginTop="16dp"
-                android:layout_marginStart="16dp"
-                app:layout_constraintTop_toBottomOf="@id/outlinedHorizontalDua"
-                app:layout_constraintStart_toStartOf="parent"/>
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvHarga"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="IDR 9.850.000"
+                    android:textSize="16sp"
+                    android:textColor="@color/DARKBLUE05"
+                    android:fontFamily="@font/poppins_medium"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    app:layout_constraintTop_toBottomOf="@id/tvTotal"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/noBookingCode"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="5 Maret 2023"
-                android:textSize="12sp"
-                android:textColor="@color/NEUTRAL05"
-                android:fontFamily="@font/poppins_medium"
-                android:layout_marginTop="2dp"
-                android:layout_marginStart="16dp"
-                app:layout_constraintTop_toBottomOf="@id/tvBookingCode"
-                app:layout_constraintStart_toStartOf="parent"/>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/containerReturnFlight"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="15dp"
+                app:layout_constraintTop_toBottomOf="@+id/containerDepartureFlight"
+                android:background="@drawable/outline_payment">
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tvClass"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Class"
-                android:textSize="14sp"
-                android:textColor="@color/NEUTRAL05"
-                android:fontFamily="@font/poppins_bold"
-                android:layout_marginTop="16dp"
-                android:layout_marginStart="8dp"
-                app:layout_constraintTop_toBottomOf="@id/outlinedHorizontalDua"
-                app:layout_constraintStart_toEndOf="@id/tvBookingCode"/>
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvPassengersReturn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Passengers :"
+                    android:textSize="14sp"
+                    android:textColor="@color/NEUTRAL05"
+                    android:fontFamily="@font/poppins_regular"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginStart="16dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"/>
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/typeClass"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Premium Economy"
-                android:ellipsize="end"
-                android:lines="2"
-                android:maxWidth="60dp"
-                android:textSize="12sp"
-                android:textColor="@color/NEUTRAL05"
-                android:fontFamily="@font/poppins_medium"
-                android:layout_marginTop="2dp"
-                android:layout_marginStart="38dp"
-                app:layout_constraintTop_toBottomOf="@id/tvBookingCode"
-                app:layout_constraintStart_toEndOf="@id/noBookingCode"/>
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvTypePassengersCountReturn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="14sp"
+                    android:textColor="@color/DARKBLUE05"
+                    android:fontFamily="@font/poppins_bold"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginStart="5dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/tvPassengersReturn"/>
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tvTotal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Total"
-                android:textSize="14sp"
-                android:textColor="@color/NEUTRAL05"
-                android:fontFamily="@font/poppins_bold"
-                android:layout_marginEnd="16dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintTop_toBottomOf="@id/outlinedHorizontalDua"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/ivLocationReturn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_loc"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="18dp"
+                    app:layout_constraintTop_toBottomOf="@id/tvTypePassengersCountReturn"
+                    app:layout_constraintStart_toStartOf="parent"/>
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tvHarga"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="IDR 9.850.000"
-                android:textSize="16sp"
-                android:textColor="@color/DARKBLUE05"
-                android:fontFamily="@font/poppins_medium"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
-                app:layout_constraintTop_toBottomOf="@id/tvTotal"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                <LinearLayout
+                    android:id="@+id/containerReturn3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    app:layout_constraintStart_toEndOf="@+id/ivLocationReturn"
+                    app:layout_constraintTop_toBottomOf="@+id/tvPassengersReturn"
+                    app:layout_constraintBottom_toTopOf="@+id/outlinedHorizontalDuaReturn"
+                    android:orientation="vertical">
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tvReturn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Jakarta"
+                        android:ellipsize="end"
+                        android:lines="1"
+                        android:maxWidth="90dp"
+                        android:textSize="14sp"
+                        android:textColor="@color/NEUTRAL05"
+                        android:fontFamily="@font/poppins_bold"
+                        android:layout_marginTop="16dp"/>
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tvTanggalReturn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="5 Maret 2023"
+                        android:ellipsize="end"
+                        android:lines="1"
+                        android:maxWidth="80dp"
+                        android:textSize="12sp"
+                        android:textColor="@color/NEUTRAL05"
+                        android:fontFamily="@font/poppins_medium"
+                        android:layout_marginTop="2dp"/>
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tvJamReturn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="19.10"
+                        android:textSize="12sp"
+                        android:textColor="@color/NEUTRAL05"
+                        android:fontFamily="@font/poppins_medium"
+                        android:layout_marginTop="2dp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/containerEstimasiReturn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvPassengersReturn">
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tvEstimasiReturn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="4h 0m"
+                        android:textSize="12sp"
+                        android:textColor="@color/NEUTRAL05"
+                        android:fontFamily="@font/poppins_medium"
+                        android:layout_marginTop="25dp"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="3dp"
+                        android:orientation="horizontal">
+                        <View
+                            android:id="@+id/outlinedHorizontalReturn"
+                            android:layout_width="36dp"
+                            android:layout_height="1dp"
+                            android:background="@color/NEUTRAL05"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginStart="26dp"/>
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:id="@+id/icRightReturn"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_marginStart="-7dp"
+                            android:layout_marginTop="-5.5dp"
+                            android:layout_marginEnd="12dp"
+                            android:backgroundTint="@color/NEUTRAL05"
+                            android:src="@drawable/ic_right_black"
+                            />
+                    </LinearLayout>
+                </LinearLayout>
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/ivLocationDuaReturn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="17dp"
+                    android:layout_marginTop="18dp"
+                    android:src="@drawable/ic_loc"
+                    app:layout_constraintStart_toEndOf="@+id/containerEstimasiReturn"
+                    app:layout_constraintEnd_toStartOf="@id/containerReturn2"
+                    app:layout_constraintTop_toBottomOf="@id/tvTypePassengersCountReturn" />
+                <LinearLayout
+                    android:id="@+id/containerReturn2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:orientation="vertical"
+                    android:layout_marginEnd="15dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/ivLocationDuaReturn"
+                    app:layout_constraintTop_toBottomOf="@id/tvTypePassengersCountReturn">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tvDepartureDuaReturn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Palembang"
+                        android:ellipsize="end"
+                        android:lines="1"
+                        android:maxWidth="90dp"
+                        android:textSize="14sp"
+                        android:textColor="@color/NEUTRAL05"
+                        android:fontFamily="@font/poppins_bold"
+                        android:layout_marginTop="16dp"/>
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tvTanggalDuaReturn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="5 Maret 2023"
+                        android:ellipsize="end"
+                        android:lines="1"
+                        android:maxWidth="80dp"
+                        android:textSize="12sp"
+                        android:textColor="@color/NEUTRAL05"
+                        android:fontFamily="@font/poppins_medium"
+                        android:layout_marginTop="2dp"/>
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tvJamDuaReturn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="21.10"
+                        android:textSize="12sp"
+                        android:textColor="@color/NEUTRAL05"
+                        android:fontFamily="@font/poppins_medium"
+                        android:layout_marginTop="2dp"/>
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/outlinedHorizontalDuaReturn"
+                    android:layout_width="308dp"
+                    android:layout_height="1dp"
+                    android:background="@color/NEUTRAL03"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    app:layout_constraintTop_toBottomOf="@id/containerReturn3"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvBookingCodeReturn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Booking Code:"
+                    android:textSize="14sp"
+                    android:textColor="@color/NEUTRAL05"
+                    android:fontFamily="@font/poppins_bold"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginStart="16dp"
+                    app:layout_constraintTop_toBottomOf="@id/outlinedHorizontalDuaReturn"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/noBookingCodeReturn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="5 Maret 2023"
+                    android:textSize="12sp"
+                    android:textColor="@color/NEUTRAL05"
+                    android:fontFamily="@font/poppins_medium"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginStart="16dp"
+                    app:layout_constraintTop_toBottomOf="@id/tvBookingCodeReturn"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvClassReturn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Class"
+                    android:textSize="14sp"
+                    android:textColor="@color/NEUTRAL05"
+                    android:fontFamily="@font/poppins_bold"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginStart="8dp"
+                    app:layout_constraintTop_toBottomOf="@id/outlinedHorizontalDuaReturn"
+                    app:layout_constraintStart_toEndOf="@id/tvBookingCodeReturn"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/typeClassReturn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Premium Economy"
+                    android:ellipsize="end"
+                    android:lines="2"
+                    android:maxWidth="60dp"
+                    android:textSize="12sp"
+                    android:textColor="@color/NEUTRAL05"
+                    android:fontFamily="@font/poppins_medium"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginStart="38dp"
+                    app:layout_constraintTop_toBottomOf="@id/tvBookingCodeReturn"
+                    app:layout_constraintStart_toEndOf="@id/noBookingCodeReturn"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvTotalReturn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total"
+                    android:textSize="14sp"
+                    android:textColor="@color/NEUTRAL05"
+                    android:fontFamily="@font/poppins_bold"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintTop_toBottomOf="@id/outlinedHorizontalDuaReturn"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvHargaReturn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="IDR 9.850.000"
+                    android:textSize="16sp"
+                    android:textColor="@color/DARKBLUE05"
+                    android:fontFamily="@font/poppins_medium"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    app:layout_constraintTop_toBottomOf="@id/tvTotalReturn"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 

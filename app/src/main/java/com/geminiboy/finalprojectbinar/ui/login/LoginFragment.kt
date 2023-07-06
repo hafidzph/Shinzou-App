@@ -1,15 +1,14 @@
 package com.geminiboy.finalprojectbinar.ui.login
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
-import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -18,6 +17,9 @@ import com.geminiboy.finalprojectbinar.databinding.FragmentLoginBinding
 import com.geminiboy.finalprojectbinar.databinding.FragmentRegisterBinding
 import com.geminiboy.finalprojectbinar.model.user.LoginBody
 import com.geminiboy.finalprojectbinar.ui.MainActivity
+import com.geminiboy.finalprojectbinar.ui.akun.FragmentAkun
+import com.geminiboy.finalprojectbinar.ui.detailpenerbangan.FragmentDetailPenerbangan
+import com.geminiboy.finalprojectbinar.ui.riwayat.FragmentRiwayat
 import com.geminiboy.finalprojectbinar.utils.showCustomToast
 import com.geminiboy.finalprojectbinar.wrapper.Resource
 import com.google.android.material.textfield.TextInputLayout
@@ -30,7 +32,6 @@ class LoginFragment : Fragment() {
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
     private val loginVM: LoginViewModel by viewModels()
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -110,9 +111,16 @@ class LoginFragment : Fragment() {
                         R.layout.toast_alert_green
                     )
                     loginVM.setToken(resource.data!!.data.token)
-                    lifecycleScope.launch { delay(500) }
-                    findNavController().navigate(R.id.homeFragment)
-                    findNavController().popBackStack(R.id.loginFragment, true)
+                    Log.d("DETAIL STATUS", FragmentDetailPenerbangan.isDetail.toString())
+                    Log.d("PROFILE STATUS", FragmentAkun.isProfile.toString())
+                    Log.d("RIWAYAT STATUS", FragmentRiwayat.isRiwayat.toString())
+                    if (FragmentDetailPenerbangan.isDetail) {
+                        findNavController().navigate(R.id.fragmentDetailPenerbangan)
+                    } else if (FragmentRiwayat.isRiwayat) {
+                        findNavController().navigate(R.id.fragmentRiwayat2)
+                    } else if (FragmentAkun.isProfile) {
+                        findNavController().navigate(R.id.fragmentAkun2)
+                    }
                 }
                 is Resource.Error -> {
                     Toast(requireContext()).showCustomToast(
@@ -124,31 +132,6 @@ class LoginFragment : Fragment() {
             }
         }
     }
-
-//    private fun navigateToDestinationAfterLogin() {
-//        val currentDestination = findNavController().currentDestination?.id
-//
-//        val destinationId = determineDestinationId(currentDestination)
-//        if (destinationId != null) {
-//            findNavController().popBackStack(destinationId, false)
-//        } else {
-//            findNavController().popBackStack()
-//        }
-//    }
-//
-//
-//    private fun determineDestinationId(currentDestination: Int?): Int? {
-//        if (currentDestination == R.id.fragmentAkun2) {
-//            return R.id.fragmentAkun2
-//        }
-//        if (currentDestination == R.id.fragmentDetailPenerbangan) {
-//            return R.id.fragmentDetailPenerbangan
-//        }
-//        if (currentDestination == R.id.fragmentRiwayat2) {
-//            return R.id.fragmentRiwayat2
-//        }
-//        return null
-//    }
 
     override fun onDestroyView() {
         super.onDestroyView()

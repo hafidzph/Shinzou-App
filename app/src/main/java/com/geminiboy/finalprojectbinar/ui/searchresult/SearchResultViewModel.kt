@@ -19,15 +19,33 @@ class SearchResultViewModel @Inject constructor(private val preferences: SetDest
                                                 private val flightRepository: FlightRepository): ViewModel() {
     private val _search = MutableLiveData<Resource<SearchFlightResponse>>()
     val search: LiveData<Resource<SearchFlightResponse>> get() = _search
-    fun getDate(): LiveData<String> = preferences.getDateDeparture().asLiveData()
+    fun getDateDeparture(): LiveData<String> = preferences.getDateDeparture().asLiveData()
+    fun getDateReturn(): LiveData<String> = preferences.getDateReturn().asLiveData()
     fun getDestinationCode(): LiveData<String> = preferences.getCodeCityJoin().asLiveData()
+    fun getDestinationCodeReturn(): LiveData<String> = preferences.getCodeCityJoinReturn().asLiveData()
     fun getPassengerJoinSeat(): LiveData<String> = preferences.getPassengerJoinSeat().asLiveData()
-    fun getSearch(date: String) {
+    fun setDepartureId(id: String) = viewModelScope.launch { flightRepository.setDepartureId(id) }
+    fun setReturnId(id: String) = viewModelScope.launch { flightRepository.setReturnId(id) }
+    fun setDeparturePrice(price: Int) = viewModelScope.launch { flightRepository.setDeparturePrice(price) }
+    fun setReturnPrice(price: Int) = viewModelScope.launch { flightRepository.setReturnPrice(price) }
+    fun getSearchDeparture(date: String) {
         _search.postValue(Resource.Loading())
         viewModelScope.launch {
             _search.postValue(flightRepository.getSearchFlight(
                 preferences.getFrom().first(),
                 preferences.getTo().first(),
+                date,
+                preferences.getPassenger().first(),
+                preferences.getSeat().first()))
+        }
+    }
+
+    fun getSearchReturn(date: String) {
+        _search.postValue(Resource.Loading())
+        viewModelScope.launch {
+            _search.postValue(flightRepository.getSearchFlight(
+                preferences.getTo().first(),
+                preferences.getFrom().first(),
                 date,
                 preferences.getPassenger().first(),
                 preferences.getSeat().first()))

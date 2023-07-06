@@ -8,11 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.geminiboy.finalprojectbinar.R
 import com.geminiboy.finalprojectbinar.databinding.FragmentSearchResultBinding
+import com.geminiboy.finalprojectbinar.databinding.FragmentSearchResultRoundTripBinding
 import com.geminiboy.finalprojectbinar.model.date.DateDeparture
 import com.geminiboy.finalprojectbinar.ui.MainActivity
 import com.geminiboy.finalprojectbinar.ui.home.HomeFragment
@@ -22,15 +22,14 @@ import com.geminiboy.finalprojectbinar.utils.Utils
 import com.geminiboy.finalprojectbinar.utils.showCustomToast
 import com.geminiboy.finalprojectbinar.wrapper.Resource
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
 import java.util.Locale
 
 @AndroidEntryPoint
-class SearchResultFragment : Fragment() {
-    private var _binding: FragmentSearchResultBinding? = null
+class SearchResultRoundTripFragment : Fragment() {
+    private var _binding: FragmentSearchResultRoundTripBinding? = null
     private val binding get() = _binding!!
     private val searchVM: SearchResultViewModel by viewModels()
     private val dateAdapter = DateDepartureAdapter()
@@ -41,7 +40,7 @@ class SearchResultFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentSearchResultBinding.inflate(inflater, container, false)
+        _binding = FragmentSearchResultRoundTripBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -54,41 +53,36 @@ class SearchResultFragment : Fragment() {
         setBinding()
         observeTicket()
         getAnotherResponseTicket()
-        setDateDeparture()
+        setDateReturn()
     }
-
     private fun setBinding(){
         binding.apply {
             rvDateBar.adapter = dateAdapter
             rvDateBar.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
 
             btnBack.setOnClickListener {
-                findNavController().navigate(R.id.action_searchResultFragment_to_homeFragment)
+                findNavController().navigate(R.id.action_searchResultRoundTripFragment_to_searchResultFragment)
             }
         }
     }
 
-    private fun setDateDeparture(){
+    private fun setDateReturn(){
         flightAdapter.onItemClick = {
-            searchVM.setDepartureId(it.id)
-            searchVM.setDeparturePrice(it.price)
-            if(HomeFragment.isRoundTrip){
-                findNavController().navigate(R.id.action_searchResultFragment_to_searchResultRoundTripFragment)
-            }else{
-                findNavController().navigate(R.id.action_searchResultFragment_to_fragmentDetailPenerbangan)
-            }
+            searchVM.setReturnId(it.id)
+            searchVM.setReturnPrice(it.price)
+            findNavController().navigate(R.id.action_searchResultRoundTripFragment_to_fragmentDetailPenerbangan)
         }
     }
 
     private fun getAnotherResponseTicket(){
         dateAdapter.onItemClick = {
-            searchVM.getSearchDeparture(Utils().formatDate2(it.dateDeparture))
+            searchVM.getSearchReturn(Utils().formatDate2(it.dateDeparture))
         }
     }
 
     private fun observeTicket() {
-        searchVM.getDateDeparture().observe(viewLifecycleOwner){
-            searchVM.getSearchDeparture(Utils().formatDate(it.substringAfter(", ")))
+        searchVM.getDateReturn().observe(viewLifecycleOwner){
+            searchVM.getSearchReturn(Utils().formatDate(it.substringAfter(", ")))
         }
         searchVM.search.observe(viewLifecycleOwner) {
             when (it) {
@@ -129,7 +123,7 @@ class SearchResultFragment : Fragment() {
     }
 
     private fun observeDate(){
-        searchVM.getDateDeparture().observe(viewLifecycleOwner) {
+        searchVM.getDateReturn().observe(viewLifecycleOwner) {
             val dateFormat = SimpleDateFormat("dd MMMM yyyy", Locale("id", "ID"))
             val calendar = Calendar.getInstance()
             calendar.time = dateFormat.parse(it.substringAfter(", ")) as Date
@@ -148,7 +142,7 @@ class SearchResultFragment : Fragment() {
 
     private fun setTextAppBar(){
         binding.apply {
-            searchVM.getDestinationCode().observe(viewLifecycleOwner) {
+            searchVM.getDestinationCodeReturn().observe(viewLifecycleOwner) {
                 tvDeparture.text = it
             }
 

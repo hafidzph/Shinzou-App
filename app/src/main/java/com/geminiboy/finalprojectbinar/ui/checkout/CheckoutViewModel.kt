@@ -21,6 +21,9 @@ class CheckoutViewModel @Inject constructor(private val flightRepository: Flight
     private val _getTransaction = MutableLiveData<Resource<TransactionByIdResponse>>()
     val getTransaction: LiveData<Resource<TransactionByIdResponse>> get() = _getTransaction
 
+    private val _getTransactionRoundTrip = MutableLiveData<Resource<TransactionByIdResponse>>()
+    val getTransactionRoundTrip: LiveData<Resource<TransactionByIdResponse>> get() = _getTransactionRoundTrip
+
     fun getToken() = authRepository.getToken().asLiveData()
     fun getAdultCount() = setDestinationPreferences.getAdultPassenger().asLiveData()
     fun getChildCount() = setDestinationPreferences.getChildrenPassenger().asLiveData()
@@ -28,12 +31,23 @@ class CheckoutViewModel @Inject constructor(private val flightRepository: Flight
     fun getPassenger() = setDestinationPreferences.getPassenger().asLiveData()
     fun getTransactionId() = flightRepository.getTransactionId().asLiveData()
     fun getPassengerAdultAndChild() = setDestinationPreferences.getPassengerAdultChild().asLiveData()
+    fun getTotalPriceRoundTrip() = flightRepository.getTotalPriceRoundTrip().asLiveData()
     fun getTransactionById(id: String) {
         getToken().observeForever{
             val authorization = "Bearer $it"
             viewModelScope.launch {
                 val response = flightRepository.getTransactionById(authorization, id)
                 _getTransaction.postValue(response)
+            }
+        }
+    }
+
+    fun getTransactionByIdRoundTrip(id: String) {
+        getToken().observeForever{
+            val authorization = "Bearer $it"
+            viewModelScope.launch {
+                val response = flightRepository.getTransactionById(authorization, id)
+                _getTransactionRoundTrip.postValue(response)
             }
         }
     }

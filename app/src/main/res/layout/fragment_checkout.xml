@@ -60,6 +60,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp">
+            <RelativeLayout
+                android:id="@+id/containerDeparture"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
             <LinearLayout
                 android:id="@+id/layoutFlightDestination"
                 android:layout_width="wrap_content"
@@ -306,6 +310,261 @@
                         android:layout_alignParentEnd="true"/>
                 </RelativeLayout>
             </RelativeLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/containerReturn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/containerDeparture">
+            <LinearLayout
+                android:id="@+id/layoutFlightDestinationReturn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="10dp">
+                <TextView
+                    android:id="@+id/tvFlightDestinationReturn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Jakarta -> Melbourne"
+                    android:fontFamily="@font/poppins_bold"
+                    android:textSize="16sp"
+                    android:lineHeight="24dp"
+                    android:textColor="@color/DARKBLUE05"/>
+
+                <TextView
+                    android:id="@+id/tvFlightTimeReturn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:lineHeight="24dp"
+                    android:text="(4h 0m)"
+                    android:textColor="#222222"
+                    android:textSize="16sp" />
+            </LinearLayout>
+            <RelativeLayout
+                android:id="@+id/layoutInfoScheduleReturn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/background_border_primary_purple_one"
+                android:layout_below="@id/layoutFlightDestinationReturn">
+                <!--            jadwal pemberangkatan-->
+                <RelativeLayout
+                    android:id="@+id/layoutReturnSchedule"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="16dp"
+                    >
+                    <!--                tanggal dan jam keberangkatan-->
+                    <LinearLayout
+                        android:id="@+id/layoutTimeReturn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:id="@+id/tvTimeReturn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="07:00"
+                            android:fontFamily="@font/poppins_bold"
+                            android:textSize="16sp"
+                            android:lineHeight="24dp"
+                            android:textColor="@color/NEUTRAL05"/>
+                        <TextView
+                            android:id="@+id/tvDateReturn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="3 Maret 2023"
+                            android:fontFamily="@font/poppins_medium"
+                            android:textSize="14sp"
+                            android:lineHeight="24dp"
+                            android:textColor="@color/NEUTRAL05"/>
+                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/tvReturnAirport"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Soekarno Hatta - Terminal 1A Domestik"
+                        android:textSize="14sp"
+                        android:lineHeight="20dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:textColor="@color/NEUTRAL05"
+                        android:layout_marginTop="2dp"
+                        android:layout_below="@id/layoutTimeReturn"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Keberangkatan"
+                        android:textSize="12sp"
+                        android:lineHeight="18dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:textColor="@color/DARKBLUE03"
+                        android:layout_marginTop="2dp"
+                        android:textAlignment="textEnd"
+                        android:layout_toEndOf="@id/layoutTimeReturn"
+                        android:layout_alignParentEnd="true"/>
+                </RelativeLayout>
+                <View
+                    android:id="@+id/grid1Return"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/NEUTRAL02"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_below="@id/layoutReturnSchedule"/>
+                <!--            informasi airline/maskapai -->
+                <RelativeLayout
+                    android:id="@+id/layoutInfoAirlineReturn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_below="@id/grid1Return">
+                    <ImageView
+                        android:id="@+id/imgAirlineReturn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_airline"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"/>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_toEndOf="@id/imgAirlineReturn"
+                        android:layout_marginStart="8dp"
+                        >
+                        <TextView
+                            android:id="@+id/tvNameAirlinesAndClassReturn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Jet Air-Economy"
+                            android:textSize="14sp"
+                            android:lineHeight="20dp"
+                            android:fontFamily="@font/poppins_bold"
+                            android:textColor="@color/NEUTRAL05"/>
+                        <TextView
+                            android:id="@+id/tvFlightNumberReturn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="JT - 203"
+                            android:textSize="14sp"
+                            android:lineHeight="20dp"
+                            android:fontFamily="@font/poppins_bold"
+                            android:textColor="@color/NEUTRAL05"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Informasi: "
+                            android:textSize="14sp"
+                            android:lineHeight="20dp"
+                            android:fontFamily="@font/poppins_bold"
+                            android:textColor="@color/NEUTRAL05"
+                            android:layout_marginTop="16dp"/>
+                        <TextView
+                            android:id="@+id/tvInformationBodyReturn"
+                            android:layout_width="wrap_content"
+                            android:visibility="gone"
+                            android:layout_height="wrap_content"
+                            android:text="Baggage 20 kg\nCabin baggage 7 kg\nIn Flight Entertainment"
+                            android:textSize="14sp"
+                            android:lineHeight="20dp"
+                            android:fontFamily="@font/poppins_regular"/>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rvPassengerReturn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            tools:itemCount="3"
+                            tools:listitem="@layout/item_countpassengersroundtrip"
+                            app:layout_constraintTop_toBottomOf="@id/tvInformasi"
+                            app:layout_constraintStart_toStartOf="parent"/>                    </LinearLayout>
+                </RelativeLayout>
+                <View
+                    android:id="@+id/grid2Return"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/NEUTRAL02"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_below="@id/layoutInfoAirlineReturn"/>
+                <!--            info kedatangan-->
+                <RelativeLayout
+                    android:id="@+id/layoutArriveScheduleReturn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="16dp"
+                    android:layout_below="@id/grid2Return"
+                    >
+                    <!--                tanggal dan jam keberangkatan-->
+                    <LinearLayout
+                        android:id="@+id/layoutTimeArriveReturn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:id="@+id/tvTimeArriveReturn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="11:00"
+                            android:fontFamily="@font/poppins_bold"
+                            android:textSize="16sp"
+                            android:lineHeight="24dp"
+                            android:textColor="@color/NEUTRAL05"/>
+                        <TextView
+                            android:id="@+id/tvDateArriveReturn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="3 Maret 2023"
+                            android:fontFamily="@font/poppins_medium"
+                            android:textSize="14sp"
+                            android:lineHeight="24dp"
+                            android:textColor="@color/NEUTRAL05"/>
+                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/tvArriveAirportReturn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Melbourne International Airport"
+                        android:textSize="14sp"
+                        android:lineHeight="20dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:textColor="@color/NEUTRAL05"
+                        android:layout_marginTop="2dp"
+                        android:layout_below="@id/layoutTimeArriveReturn"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Kedatangan"
+                        android:textSize="12sp"
+                        android:lineHeight="18dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:textColor="@color/DARKBLUE03"
+                        android:layout_marginTop="2dp"
+                        android:textAlignment="textEnd"
+                        android:layout_toEndOf="@id/layoutTimeArriveReturn"
+                        android:layout_alignParentEnd="true"/>
+                </RelativeLayout>
+            </RelativeLayout>
+            </RelativeLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -314,7 +573,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="40dp"
-                android:layout_below="@id/layoutInfoSchedule">
+                android:layout_below="@id/containerReturn">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

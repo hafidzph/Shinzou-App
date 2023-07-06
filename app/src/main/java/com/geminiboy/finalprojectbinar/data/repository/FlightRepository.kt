@@ -27,14 +27,19 @@ interface FlightRepository {
     suspend fun postTransaction(token: String, transactionBody: TransactionBody): Resource<TransactionPostResponse>
     suspend fun getTransactionById(token: String, id: String): Resource<TransactionByIdResponse>
     suspend fun addPayment(token: String, booking_code: String, paymentBody: PaymentBody): Resource<PaymentResponse>
-    suspend fun setDepartureAndReturnId(departure: String, _return: String?)
     suspend fun setDepartureId(departure: String)
+    suspend fun setReturnId(_return: String)
     suspend fun setTicketPrice(price: String)
+    suspend fun setDeparturePrice(price: Int)
+    suspend fun setReturnPrice(price: Int)
     suspend fun setTransactionId(id: String)
     fun getDeparture(): Flow<String>
     fun getTransactionId(): Flow<String>
-    fun getReturn(): Flow<String?>
-    fun getTicketPrice(): Flow<String?>
+    fun getReturn(): Flow<String>
+    fun getTicketPrice(): Flow<String>
+    fun getTotalPriceRoundTrip(): Flow<Int>
+    fun getPriceDeparture(): Flow<Int>
+    fun getPriceReturn(): Flow<Int>
 }
 
 class FlightRepositoryImpl @Inject constructor(private val api: FlightService,
@@ -115,16 +120,24 @@ class FlightRepositoryImpl @Inject constructor(private val api: FlightService,
         }
     }
 
-    override suspend fun setDepartureAndReturnId(departure: String, _return: String?) {
-        preferences.setDepartureAndReturnId(departure, _return)
-    }
-
     override suspend fun setDepartureId(departure: String) {
         preferences.setDepartureId(departure)
     }
 
+    override suspend fun setReturnId(_return: String) {
+        preferences.setReturnId(_return)
+    }
+
     override suspend fun setTicketPrice(price: String) {
         preferences.setPrice(price)
+    }
+
+    override suspend fun setDeparturePrice(price: Int) {
+        preferences.setPriceDeparture(price)
+    }
+
+    override suspend fun setReturnPrice(price: Int) {
+        preferences.setPriceReturn(price)
     }
 
     override suspend fun setTransactionId(id: String) {
@@ -139,11 +152,24 @@ class FlightRepositoryImpl @Inject constructor(private val api: FlightService,
         return preferences.getTransactionId()
     }
 
-    override fun getReturn(): Flow<String?> {
+    override fun getReturn(): Flow<String> {
         return preferences.getReturnId()
     }
 
-    override fun getTicketPrice(): Flow<String?> {
+    override fun getTicketPrice(): Flow<String> {
         return preferences.getTicketPrice()
     }
+
+    override fun getTotalPriceRoundTrip(): Flow<Int> {
+        return preferences.getTotalPriceRoundTrip()
+    }
+
+    override fun getPriceDeparture(): Flow<Int> {
+        return preferences.getPriceDeparture()
+    }
+
+    override fun getPriceReturn(): Flow<Int> {
+        return preferences.getPriceReturn()
+    }
+
 }

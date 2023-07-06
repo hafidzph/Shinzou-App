@@ -47,6 +47,10 @@ class SetDestinationPreferences @Inject constructor(private val dataStore: DataS
         "${getFromCityCode().first()} > ${getToCityCode().first()}"
     }
 
+    fun getCodeCityJoinReturn(): Flow<String> = dataStore.data.map {
+        "${getToCityCode().first()} > ${getFromCityCode().first()}"
+    }
+
     fun getPassengerJoinSeat(): Flow<String> = dataStore.data.map {
         "- ${getPassenger().first()} Penumpang - ${getSeat().first()}"
     }

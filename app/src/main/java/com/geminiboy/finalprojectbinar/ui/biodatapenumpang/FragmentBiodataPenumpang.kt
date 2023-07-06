@@ -15,6 +15,7 @@ import com.geminiboy.finalprojectbinar.R
 import com.geminiboy.finalprojectbinar.databinding.FragmentBiodataPenumpangBinding
 import com.geminiboy.finalprojectbinar.model.flight.TransactionBody
 import com.geminiboy.finalprojectbinar.ui.biodatapenumpang.adapter.BiodataPenumpangAdapter
+import com.geminiboy.finalprojectbinar.ui.home.HomeFragment
 import com.geminiboy.finalprojectbinar.wrapper.Resource
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.combine
@@ -43,11 +44,15 @@ class FragmentBiodataPenumpang : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initValueAdapter()
         init()
-        postTransaction()
+        if(HomeFragment.isRoundTrip){
+            postTransactionRoundTrip()
+        }else{
+            postTransactionDeparture()
+        }
         observeTransaction()
     }
 
-    private fun postTransaction(){
+    private fun postTransactionDeparture(){
         binding.apply {
             btnSimpan.setOnClickListener {
                 biodataVM.getDeparture().observe(viewLifecycleOwner) {id ->
@@ -60,6 +65,27 @@ class FragmentBiodataPenumpang : Fragment() {
                                 it!!.toInt()
                             )
                         )
+                    }
+                }
+            }
+        }
+    }
+
+    private fun postTransactionRoundTrip(){
+        binding.apply {
+            btnSimpan.setOnClickListener {
+                biodataVM.getDeparture().observe(viewLifecycleOwner) {id ->
+                    biodataVM.getReturn().observe(viewLifecycleOwner) { returnId ->
+                        biodataVM.getPrice().observe(viewLifecycleOwner) {
+                            biodataVM.postTransaction(
+                                TransactionBody(
+                                    id,
+                                    returnId,
+                                    bioAdapter.getPassengers(),
+                                    it!!.toInt()
+                                )
+                            )
+                        }
                     }
                 }
             }

@@ -11,7 +11,6 @@ import androidx.navigation.fragment.findNavController
 import com.geminiboy.finalprojectbinar.R
 import com.geminiboy.finalprojectbinar.databinding.FragmentAkunBinding
 import com.geminiboy.finalprojectbinar.ui.MainActivity
-import com.geminiboy.finalprojectbinar.ui.bottomsheet.login.LoginRequiredSheet
 import com.geminiboy.finalprojectbinar.utils.showCustomToast
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -20,6 +19,11 @@ class FragmentAkun : Fragment() {
     private var _binding: FragmentAkunBinding? = null
     private val binding get() = _binding!!
     private val akunVM: AkunViewModel by viewModels()
+
+    companion object{
+        var isProfile = false
+        var hasNavigatedToLogin = false
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -33,6 +37,8 @@ class FragmentAkun : Fragment() {
         (activity as MainActivity).setBottomNavigationVisibility(View.VISIBLE)
         observeIsLoggedIn()
         init()
+        isProfile = true
+        hasNavigatedToLogin = false
     }
 
     private fun init(){
@@ -60,15 +66,23 @@ class FragmentAkun : Fragment() {
                     layoutUserLogged.visibility = View.GONE
                     layoutNonLogin.visibility = View.VISIBLE
                     btnLogin.setOnClickListener {
-                        findNavController().navigate(R.id.loginFragment)
+                        navigateToLoginFragment()
                     }
                 }
             }
         }
     }
 
+    private fun navigateToLoginFragment() {
+        hasNavigatedToLogin = true
+        findNavController().navigate(R.id.loginFragment)
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+        if (!hasNavigatedToLogin) {
+            isProfile = false
+        }
     }
 }

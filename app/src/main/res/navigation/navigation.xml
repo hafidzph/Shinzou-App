@@ -98,6 +98,9 @@
         <action
             android:id="@+id/action_searchResultFragment_to_fragmentDetailPenerbangan"
             app:destination="@id/fragmentDetailPenerbangan" />
+        <action
+            android:id="@+id/action_searchResultFragment_to_searchResultRoundTripFragment"
+            app:destination="@id/searchResultRoundTripFragment" />
     </fragment>
     <fragment
         android:id="@+id/paymentFragment"
@@ -154,5 +157,17 @@
         <action
             android:id="@+id/action_fragmentCheckout_to_paymentFragment"
             app:destination="@id/paymentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchResultRoundTripFragment"
+        android:name="com.geminiboy.finalprojectbinar.ui.searchresult.SearchResultRoundTripFragment"
+        android:label="fragment_search_result_round_trip"
+        tools:layout="@layout/fragment_search_result_round_trip" >
+        <action
+            android:id="@+id/action_searchResultRoundTripFragment_to_fragmentDetailPenerbangan"
+            app:destination="@id/fragmentDetailPenerbangan" />
+        <action
+            android:id="@+id/action_searchResultRoundTripFragment_to_searchResultFragment"
+            app:destination="@id/searchResultFragment" />
     </fragment>
 </navigation>

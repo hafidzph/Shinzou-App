@@ -13,6 +13,11 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 class LoginRequiredSheet : BottomSheetDialogFragment(){
     private var _binding: FragmentLoginRequiredSheetBinding? = null
     private val binding get() = _binding!!
+
+    companion object{
+        var hasNavigatedToLogin = false
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -33,10 +38,15 @@ class LoginRequiredSheet : BottomSheetDialogFragment(){
             }
 
             btnToLogin.setOnClickListener {
-                findNavController().navigate(R.id.loginFragment)
+                navigateToLoginFragment()
                 dismiss()
             }
         }
+    }
+
+    private fun navigateToLoginFragment() {
+        hasNavigatedToLogin = true
+        findNavController().navigate(R.id.loginFragment)
     }
 
     override fun onDestroyView() {

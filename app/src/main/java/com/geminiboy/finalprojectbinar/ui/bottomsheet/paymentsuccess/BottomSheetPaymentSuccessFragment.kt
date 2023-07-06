@@ -39,6 +39,7 @@ class BottomSheetPaymentSuccessFragment : BottomSheetDialogFragment() {
 
             btnTerbitkanTiket.setOnClickListener {
                 findNavController().navigate(R.id.fragmentCheckout)
+                dismiss()
             }
         }
     }

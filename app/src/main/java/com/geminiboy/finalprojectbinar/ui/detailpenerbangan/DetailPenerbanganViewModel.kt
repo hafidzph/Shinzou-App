@@ -18,15 +18,25 @@ import javax.inject.Inject
 class DetailPenerbanganViewModel @Inject constructor(private val flightRepository: FlightRepository,
                                                      private val authRepository: AuthRepository,
                                                      val preferences: SetDestinationPreferences) : ViewModel(){
-    private val _detailFlight = MutableLiveData<Resource<DetailFlightResponse>>()
-    val detailFlight: LiveData<Resource<DetailFlightResponse>> get() = _detailFlight
+    private val _detailFlightDeparture = MutableLiveData<Resource<DetailFlightResponse>>()
+    val detailFlightDeparture: LiveData<Resource<DetailFlightResponse>> get() = _detailFlightDeparture
 
-    fun getFlightById(id: String) = viewModelScope.launch {
-        _detailFlight.postValue(flightRepository.getFlightById(id))
+    private val _detailFlightReturn = MutableLiveData<Resource<DetailFlightResponse>>()
+    val detailFlightReturn: LiveData<Resource<DetailFlightResponse>> get() = _detailFlightReturn
+
+    fun getTotalPriceRoundTrip() = flightRepository.getTotalPriceRoundTrip().asLiveData()
+
+    fun getFlightByIdDeparture(id: String) = viewModelScope.launch {
+        _detailFlightDeparture.postValue(flightRepository.getFlightById(id))
     }
 
+    fun getFlightByIdReturn(id: String) = viewModelScope.launch {
+        _detailFlightReturn.postValue(flightRepository.getFlightById(id))
+    }
+
+    fun getDepartureId(): LiveData<String> = flightRepository.getDeparture().asLiveData()
+    fun getReturnId(): LiveData<String> = flightRepository.getReturn().asLiveData()
     fun getToken() = authRepository.getToken().asLiveData()
 
-    fun setDepartureId(departure: String) = viewModelScope.launch { flightRepository.setDepartureId(departure) }
     fun setTicketPrice(price: String) = viewModelScope.launch { flightRepository.setTicketPrice(price) }
 }

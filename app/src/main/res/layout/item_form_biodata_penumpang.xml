@@ -212,6 +212,7 @@
         android:layout_marginTop="12dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="12dp"
         android:layout_below="@id/layoutIdentityNumber"
         android:orientation="vertical">
         <TextView
@@ -239,6 +240,7 @@
             android:paddingEnd="16dp"
             android:paddingBottom="8dp"
             android:layout_marginTop="4dp"
+
             tools:ignore="TouchTargetSizeCheck" />
     </LinearLayout>
 
@@ -249,6 +251,7 @@
         android:layout_marginTop="12dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
+        android:visibility="gone"
         android:layout_marginBottom="20dp"
         android:layout_below="@id/layoutNomorTelepon"
         android:orientation="vertical">

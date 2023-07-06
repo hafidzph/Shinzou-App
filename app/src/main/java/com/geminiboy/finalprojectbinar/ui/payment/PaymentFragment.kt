@@ -18,6 +18,7 @@ import com.geminiboy.finalprojectbinar.R
 import com.geminiboy.finalprojectbinar.databinding.FragmentPaymentBinding
 import com.geminiboy.finalprojectbinar.model.payment.PaymentBody
 import com.geminiboy.finalprojectbinar.ui.bottomsheet.paymentsuccess.BottomSheetPaymentSuccessFragment
+import com.geminiboy.finalprojectbinar.ui.home.HomeFragment
 import com.geminiboy.finalprojectbinar.utils.Utils
 import com.geminiboy.finalprojectbinar.utils.showCustomToast
 import com.geminiboy.finalprojectbinar.wrapper.Resource
@@ -84,8 +85,14 @@ class PaymentFragment : Fragment() {
             }
         }
         setPassenger()
-        val getTotal = arguments?.getInt("total_price")!!
-        observeTransaction(getTotal)
+        if(HomeFragment.isRoundTrip){
+            binding.containerReturnFlight.visibility = View.VISIBLE
+            observeTransactionRoundTrip()
+        }else{
+            binding.containerReturnFlight.visibility = View.GONE
+            val getTotal = arguments?.getInt("total_price")!!
+            observeTransaction(getTotal)
+        }
     }
 
     private fun addPayment(paymentBody: PaymentBody){
@@ -138,6 +145,55 @@ class PaymentFragment : Fragment() {
         }
     }
 
+    @SuppressLint("SetTextI18n")
+    private fun observeTransactionRoundTrip(){
+        paymentVM.apply {
+            getTransactionId().observe(viewLifecycleOwner){
+                getTransactionByIdRoundTrip(it)
+            }
+
+            getTransactionRoundTrip.observe(viewLifecycleOwner){
+                when(it){
+                    is Resource.Loading -> {}
+                    is Resource.Success -> {
+                        binding.apply {
+                            val data = it.data!!.data
+                            tvDeparture.text = data.departureFlight.originAirport.location
+                            tvTanggal.text = Utils().formatDate3(data.departureFlight.departureDate)
+                            tvJam.text = Utils().formatTime(data.departureFlight.departureTime)
+                            tvDepartureDua.text = data.departureFlight.destinationAirport.location
+                            tvTanggalDua.text = Utils().formatDate3(data.departureFlight.arrivalDate)
+                            tvJamDua.text = Utils().formatTime(data.departureFlight.arrivalTime)
+                            noBookingCode.text = data.bookingCode
+                            typeClass.text = data.departureFlight.classX
+                            getPriceDeparture().observe(viewLifecycleOwner){ price ->
+                                getPassengerAdultChildren().observe(viewLifecycleOwner){ passenger ->
+                                    tvHarga.text = "IDR ${Utils().formatCurrency(price * passenger)}"
+                                }
+                            }
+
+                            tvReturn.text = data.returnFlight.originAirport.location
+                            tvTanggalReturn.text = Utils().formatDate3(data.returnFlight.departureDate)
+                            tvJamReturn.text = Utils().formatTime(data.returnFlight.departureTime)
+                            tvDepartureDuaReturn.text = data.returnFlight.destinationAirport.location
+                            tvTanggalDuaReturn.text = Utils().formatDate3(data.returnFlight.arrivalDate)
+                            tvJamDuaReturn.text = Utils().formatTime(data.returnFlight.arrivalTime)
+                            noBookingCodeReturn.text = data.bookingCode
+                            typeClassReturn.text = data.returnFlight.classX
+                            getPriceReturn().observe(viewLifecycleOwner){ price ->
+                                getPassengerAdultChildren().observe(viewLifecycleOwner){ passenger ->
+                                    tvHargaReturn.text = "IDR ${Utils().formatCurrency(price * passenger)}"
+                                }
+                            }
+                            booking_code = data.bookingCode
+                        }
+                    }
+                    is Resource.Error -> {}
+                }
+            }
+        }
+    }
+
     private fun setPassenger(){
         paymentVM.updatePassengerCount()
         paymentVM.getPassengerCount().observe(viewLifecycleOwner){(adult, child, baby) ->
@@ -159,6 +215,7 @@ class PaymentFragment : Fragment() {
                 }
             }
             binding.tvTypePassengersCount.text = passengerText
+            binding.tvTypePassengersCountReturn.text = passengerText
         }
 
     }

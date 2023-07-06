@@ -27,6 +27,7 @@ class BiodataPenumpangViewModel @Inject constructor(private val preferences: Set
     fun getChildren() = preferences.getChildrenPassenger().asLiveData()
     fun getAdult() = preferences.getAdultPassenger().asLiveData()
     fun getDeparture() = flightRepository.getDeparture().asLiveData()
+    fun getReturn() = flightRepository.getReturn().asLiveData()
     fun getPrice() = flightRepository.getTicketPrice().asLiveData()
     fun getToken() = authRepository.getToken().asLiveData()
     fun setTransactionId(id: String) = viewModelScope.launch { flightRepository.setTransactionId(id) }
@@ -38,6 +39,5 @@ class BiodataPenumpangViewModel @Inject constructor(private val preferences: Set
                 _addTransaction.postValue(response)
             }
         }
-
     }
 }

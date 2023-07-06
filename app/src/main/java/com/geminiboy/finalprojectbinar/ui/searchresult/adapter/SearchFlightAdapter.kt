@@ -27,7 +27,7 @@ class SearchFlightAdapter : RecyclerView.Adapter<SearchFlightAdapter.ViewHolder>
     private val differ = AsyncListDiffer(this, diffCallback)
 
     fun submitData(value: List<Data>) = differ.submitList(value)
-
+    var onItemClick: ((Data) -> Unit)? = null
     inner class ViewHolder(private val binding: ItemResultTicketBinding): RecyclerView.ViewHolder(binding.root){
         @SuppressLint("SetTextI18n")
         fun bind(item: Data,){
@@ -42,10 +42,7 @@ class SearchFlightAdapter : RecyclerView.Adapter<SearchFlightAdapter.ViewHolder>
                 tvEstimasi.text = Utils().formatDuration(Utils().formatTime(item.departureTime), Utils().formatTime(item.arrivalTime))
 
                 containerTicket.setOnClickListener {
-                    val bundle = Bundle().apply {
-                        putString("id", item.id)
-                    }
-                    it.findNavController().navigate(R.id.action_searchResultFragment_to_fragmentDetailPenerbangan, bundle)
+                    onItemClick?.invoke(item)
                 }
             }
         }

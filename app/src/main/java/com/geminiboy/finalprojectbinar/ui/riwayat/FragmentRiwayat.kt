@@ -10,7 +10,7 @@ import androidx.navigation.fragment.findNavController
 import com.geminiboy.finalprojectbinar.R
 import com.geminiboy.finalprojectbinar.databinding.FragmentRiwayatBinding
 import com.geminiboy.finalprojectbinar.ui.MainActivity
-import com.geminiboy.finalprojectbinar.ui.bottomsheet.login.LoginRequiredSheet
+import com.geminiboy.finalprojectbinar.ui.detailpenerbangan.FragmentDetailPenerbangan
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -18,6 +18,12 @@ class FragmentRiwayat : Fragment() {
     private var _binding: FragmentRiwayatBinding? = null
     private val binding get() = _binding!!
     private val riwayatVM: RiwayatViewModel by viewModels()
+
+    companion object{
+        var isRiwayat = false
+        var hasNavigatedToLogin = false
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -30,6 +36,8 @@ class FragmentRiwayat : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         (activity as MainActivity).setBottomNavigationVisibility(View.VISIBLE)
         observeIsLoggedIn()
+        isRiwayat = true
+        hasNavigatedToLogin = false
     }
 
     private fun observeIsLoggedIn(){
@@ -44,15 +52,23 @@ class FragmentRiwayat : Fragment() {
                     linearLayoutAfterData.visibility = View.GONE
                     layoutNonLogin.visibility = View.VISIBLE
                     btnMasukRiwayat.setOnClickListener {
-                        findNavController().navigate(R.id.loginFragment)
+                        navigateToLoginFragment()
                     }
                 }
             }
         }
     }
 
+    private fun navigateToLoginFragment() {
+        hasNavigatedToLogin = true
+        findNavController().navigate(R.id.loginFragment)
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+        if (!hasNavigatedToLogin) {
+            isRiwayat = false
+        }
     }
 }

@@ -7,17 +7,17 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.geminiboy.finalprojectbinar.databinding.ItemCountpassengersBinding
+import com.geminiboy.finalprojectbinar.databinding.ItemCountpassengersroundtripBinding
 import com.geminiboy.finalprojectbinar.model.flight.TransactionByIdResponse.Data.Ticket
 
-class ItemCountPassengerAdapter: RecyclerView.Adapter<ItemCountPassengerAdapter.ItemViewHolder>(){
+class ItemCountPassengerRoundTripAdapter: RecyclerView.Adapter<ItemCountPassengerRoundTripAdapter.ItemViewHolder>(){
     private var diffCallback = object : DiffUtil.ItemCallback<Ticket>(){
         override fun areItemsTheSame(oldItem: Ticket, newItem: Ticket): Boolean {
-            return oldItem.id == newItem.id
+            return oldItem == newItem
         }
 
         override fun areContentsTheSame(oldItem: Ticket, newItem: Ticket): Boolean {
-            return oldItem == newItem
+            return oldItem.hashCode() == newItem.hashCode()
         }
     }
 
@@ -29,7 +29,8 @@ class ItemCountPassengerAdapter: RecyclerView.Adapter<ItemCountPassengerAdapter.
         val filteredList = tickets.filter { it.seat.flightId.equals(flightId, ignoreCase = true) }
         differ.submitList(filteredList)
     }
-    class ItemViewHolder(private val binding: ItemCountpassengersBinding): RecyclerView.ViewHolder(binding.root) {
+
+    class ItemViewHolder(private val binding: ItemCountpassengersroundtripBinding): RecyclerView.ViewHolder(binding.root) {
         @SuppressLint("SetTextI18n")
         fun bind(item : Ticket, position: Int, id: String){
             binding.tvPenumpang.text = "Penumpang ${position + 1}"
@@ -41,7 +42,7 @@ class ItemCountPassengerAdapter: RecyclerView.Adapter<ItemCountPassengerAdapter.
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val binding = ItemCountpassengersBinding.inflate(inflater,parent,false)
+        val binding = ItemCountpassengersroundtripBinding.inflate(inflater,parent,false)
         return ItemViewHolder(binding)
     }
 

@@ -2,6 +2,7 @@ package com.geminiboy.finalprojectbinar.ui.detailpenerbangan
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,15 +12,22 @@ import androidx.navigation.fragment.findNavController
 import com.geminiboy.finalprojectbinar.R
 import com.geminiboy.finalprojectbinar.databinding.FragmentDetailPenerbanganBinding
 import com.geminiboy.finalprojectbinar.ui.bottomsheet.login.LoginRequiredSheet
+import com.geminiboy.finalprojectbinar.ui.home.HomeFragment
 import com.geminiboy.finalprojectbinar.utils.Utils
 import com.geminiboy.finalprojectbinar.wrapper.Resource
 import dagger.hilt.android.AndroidEntryPoint
+import kotlin.properties.Delegates
 
 @AndroidEntryPoint
 class FragmentDetailPenerbangan : Fragment() {
     private var _binding: FragmentDetailPenerbanganBinding? = null
     private val binding get() = _binding!!
     private val detailVM: DetailPenerbanganViewModel by viewModels()
+
+    companion object{
+        var isDetail = false
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -28,20 +36,55 @@ class FragmentDetailPenerbangan : Fragment() {
         return binding.root
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val getId = arguments?.getString("id")!!
-        init(getId)
         observeIsLoggedIn()
-        binding.btnBack.setOnClickListener {
-            findNavController().navigateUp()
+        observeDepartureId()
+        isDetail = true
+        LoginRequiredSheet.hasNavigatedToLogin = false
+        binding.apply {
+            btnBack.setOnClickListener {
+                findNavController().navigateUp()
+            }
+
+            if(HomeFragment.isRoundTrip){
+                containerReturn.visibility = View.VISIBLE
+                observeReturnId()
+                observeTotalPriceRoundTrip()
+            }else{
+                containerReturn.visibility = View.GONE
+            }
         }
     }
 
     @SuppressLint("SetTextI18n")
-    private fun init(id: String){
-        detailVM.getFlightById(id)
-        detailVM.detailFlight.observe(viewLifecycleOwner){
+    private fun observeTotalPriceRoundTrip(){
+        detailVM.getTotalPriceRoundTrip().observe(viewLifecycleOwner){
+            val price = Utils().formatCurrency(it)
+            binding.tvPriceTicket.text = "IDR $price/pax"
+            detailVM.setTicketPrice(it.toString())
+        }
+    }
+
+    private fun observeDepartureId(){
+        detailVM.getDepartureId().observe(viewLifecycleOwner){
+            Log.d("DEPARTURE ID", it)
+            initDeparture(it)
+        }
+    }
+
+    private fun observeReturnId(){
+        detailVM.getReturnId().observe(viewLifecycleOwner){
+            Log.d("RETURN ID", it)
+            initReturn(it)
+        }
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun initDeparture(id: String){
+        detailVM.getFlightByIdDeparture(id)
+        detailVM.detailFlightDeparture.observe(viewLifecycleOwner){
             when(it){
                 is Resource.Loading -> {}
                 is Resource.Success -> {
@@ -59,10 +102,39 @@ class FragmentDetailPenerbangan : Fragment() {
                         tvTimeArrive.text = Utils().formatTime(data.arrivalTime)
                         tvDateArrive.text = Utils().formatDate3(data.arrivalDate)
                         tvArriveAirport.text = data.destinationAirport.airportName
-                        val price = Utils().formatCurrency(data.price)
-                        tvPriceTicket.text = "IDR $price/pax"
-                        detailVM.setTicketPrice(data.price.toString())
-                        detailVM.setDepartureId(data.id)
+                        if(!HomeFragment.isRoundTrip){
+                            val price = Utils().formatCurrency(data.price)
+                            tvPriceTicket.text = "IDR $price/pax"
+                            detailVM.setTicketPrice(data.price.toString())
+                        }
+                    }
+                }
+                is Resource.Error -> {}
+            }
+        }
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun initReturn(id: String){
+        detailVM.getFlightByIdReturn(id)
+        detailVM.detailFlightReturn.observe(viewLifecycleOwner){
+            when(it){
+                is Resource.Loading -> {}
+                is Resource.Success -> {
+                    val data = it.data!!.data
+                    binding.apply {
+                        tvFlightDestinationReturn.text = "${data.originAirport.location} -> ${data.destinationAirport.location}"
+                        tvFlightTimeReturn.text = "(${Utils().formatDuration(Utils().formatTime(data.departureTime), 
+                            Utils().formatTime(data.arrivalTime))})"
+                        tvTimeReturn.text = Utils().formatTime(data.departureTime)
+                        tvDateReturn.text = Utils().formatDate3(data.departureDate)
+                        tvAirportReturn.text = data.originAirport.airportName
+                        tvNameAirlineAndClassReturn.text = "${data.airline.airlineName} - ${data.classX}"
+                        tvFlightNumberReturn.text = data.flightNumber
+                        tvInformationBodyReturn.text = data.description
+                        tvTimeArriveReturn.text = Utils().formatTime(data.arrivalTime)
+                        tvDateArriveReturn.text = Utils().formatDate3(data.arrivalDate)
+                        tvArriveAirportReturn.text = data.destinationAirport.airportName
                     }
                 }
                 is Resource.Error -> {}
@@ -88,5 +160,8 @@ class FragmentDetailPenerbangan : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+        if (!LoginRequiredSheet.hasNavigatedToLogin) {
+            isDetail = false
+        }
     }
 }
