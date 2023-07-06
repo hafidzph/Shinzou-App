@@ -32,7 +32,7 @@ class ItemCountPassengerRoundTripAdapter: RecyclerView.Adapter<ItemCountPassenge
 
     class ItemViewHolder(private val binding: ItemCountpassengersroundtripBinding): RecyclerView.ViewHolder(binding.root) {
         @SuppressLint("SetTextI18n")
-        fun bind(item : Ticket, position: Int, id: String){
+        fun bind(item : Ticket, position: Int){
             binding.tvPenumpang.text = "Penumpang ${position + 1}"
             binding.setPenumpang.text =
                 "${item.passenger.title} ${item.passenger.name}"
@@ -48,5 +48,5 @@ class ItemCountPassengerRoundTripAdapter: RecyclerView.Adapter<ItemCountPassenge
 
     override fun getItemCount(): Int = differ.currentList.size
 
-    override fun onBindViewHolder(holder: ItemViewHolder, position: Int) = holder.bind(differ.currentList[position], position, flightId)
+    override fun onBindViewHolder(holder: ItemViewHolder, position: Int) = holder.bind(differ.currentList[position], position)
 }

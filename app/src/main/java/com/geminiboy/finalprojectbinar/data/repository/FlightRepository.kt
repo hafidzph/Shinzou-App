@@ -9,6 +9,7 @@ import com.geminiboy.finalprojectbinar.model.flight.SearchFlightResponse
 import com.geminiboy.finalprojectbinar.model.flight.TransactionBody
 import com.geminiboy.finalprojectbinar.model.flight.TransactionByIdResponse
 import com.geminiboy.finalprojectbinar.model.flight.TransactionPostResponse
+import com.geminiboy.finalprojectbinar.model.historytransaction.TransactionResponse
 import com.geminiboy.finalprojectbinar.model.payment.PaymentBody
 import com.geminiboy.finalprojectbinar.model.payment.PaymentResponse
 import com.geminiboy.finalprojectbinar.wrapper.Resource
@@ -26,6 +27,7 @@ interface FlightRepository {
     suspend fun getFlightById(id: String): Resource<DetailFlightResponse>
     suspend fun postTransaction(token: String, transactionBody: TransactionBody): Resource<TransactionPostResponse>
     suspend fun getTransactionById(token: String, id: String): Resource<TransactionByIdResponse>
+    suspend fun getTransaction(token: String): Resource<TransactionResponse>
     suspend fun addPayment(token: String, booking_code: String, paymentBody: PaymentBody): Resource<PaymentResponse>
     suspend fun setDepartureId(departure: String)
     suspend fun setReturnId(_return: String)
@@ -101,6 +103,15 @@ class FlightRepositoryImpl @Inject constructor(private val api: FlightService,
     ): Resource<TransactionByIdResponse> {
         return try {
             val response = api.getTransactionById(token, id)
+            Resource.Success(response)
+        }catch (e: Exception){
+            Resource.Error(e.message!!)
+        }
+    }
+
+    override suspend fun getTransaction(token: String): Resource<TransactionResponse> {
+        return try {
+            val response = api.getTransaction(token)
             Resource.Success(response)
         }catch (e: Exception){
             Resource.Error(e.message!!)

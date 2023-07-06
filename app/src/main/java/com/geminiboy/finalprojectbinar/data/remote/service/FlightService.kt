@@ -7,6 +7,7 @@ import com.geminiboy.finalprojectbinar.model.flight.SearchFlightResponse
 import com.geminiboy.finalprojectbinar.model.flight.TransactionBody
 import com.geminiboy.finalprojectbinar.model.flight.TransactionByIdResponse
 import com.geminiboy.finalprojectbinar.model.flight.TransactionPostResponse
+import com.geminiboy.finalprojectbinar.model.historytransaction.TransactionResponse
 import com.geminiboy.finalprojectbinar.model.payment.PaymentBody
 import com.geminiboy.finalprojectbinar.model.payment.PaymentResponse
 import retrofit2.http.Body
@@ -26,6 +27,9 @@ interface FlightService {
 
     @GET("airport")
     suspend fun getAirport(): AirportResponse
+
+    @GET("transaction")
+    suspend fun getTransaction(@Header("Authorization") authorization: String): TransactionResponse
 
     @GET("search-flight")
     suspend fun searchFlight(

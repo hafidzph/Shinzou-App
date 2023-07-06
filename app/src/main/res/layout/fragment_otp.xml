@@ -72,7 +72,10 @@
                 android:textColor="@color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:maxWidth="220dp"
+                android:maxWidth="200dp"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:text="ererherherherhreherherererherhererherher"
                 android:gravity="center"
                 android:textStyle="bold"
                 android:fontFamily="@font/poppins_regular"
@@ -175,17 +178,40 @@
         android:layout_below="@id/linearOtp"
         android:fontFamily="@font/poppins_regular"
         android:textColor="@color/black"
-        android:text="@string/kirim_ulang_otp_dalam_60_detik"
+        android:text="Kirim Ulang OTP dalam"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/kirimUlang"
+            android:textSize="14sp"
+            android:layout_marginTop="24dp"
+            android:layout_below="@id/linearOtp"
+            android:fontFamily="@font/poppins_bold"
+            android:textColor="@color/Red"
+            android:text="Kirim Ulang"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvDetik"
+            android:text="60 Detik"
+            android:textSize="14sp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/poppins_regular"
+            android:textColor="@color/black"
+            android:layout_toEndOf="@+id/kirimUlangKode"
+            android:layout_below="@+id/linearOtp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/mintaKodeVertif"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/kirimUlangKode"
             android:layout_centerInParent="true"
-            android:layout_marginTop="41dp"
             android:fontFamily="@font/poppins_bold"
             android:text="@string/minta_kode_baru_via_email"
             android:textColor="@color/DARKBLUE05"

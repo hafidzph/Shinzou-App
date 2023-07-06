@@ -111,10 +111,14 @@
         android:id="@+id/fragmentRiwayat2"
         android:name="com.geminiboy.finalprojectbinar.ui.riwayat.FragmentRiwayat"
         android:label="fragment_riwayat"
-        tools:layout="@layout/fragment_riwayat" />
+        tools:layout="@layout/fragment_riwayat" >
+        <action
+            android:id="@+id/action_fragmentRiwayat2_to_fragmentCheckout"
+            app:destination="@id/fragmentCheckout" />
+    </fragment>
     <fragment
         android:id="@+id/fragmentNotifikasi"
-        android:name="com.geminiboy.finalprojectbinar.ui.FragmentNotifikasi"
+        android:name="com.geminiboy.finalprojectbinar.ui.notification.FragmentNotifikasi"
         android:label="fragment_notifikasi"
         tools:layout="@layout/fragment_notifikasi" />
     <fragment
@@ -139,7 +143,11 @@
         android:id="@+id/fragmentAkun2"
         android:name="com.geminiboy.finalprojectbinar.ui.akun.FragmentAkun"
         android:label="fragment_akun"
-        tools:layout="@layout/fragment_akun" />
+        tools:layout="@layout/fragment_akun" >
+        <action
+            android:id="@+id/action_fragmentAkun2_to_fragmentUbahDataProfile"
+            app:destination="@id/fragmentUbahDataProfile" />
+    </fragment>
     <fragment
         android:id="@+id/fragmentBiodataPenumpang"
         android:name="com.geminiboy.finalprojectbinar.ui.biodatapenumpang.FragmentBiodataPenumpang"
@@ -169,5 +177,14 @@
         <action
             android:id="@+id/action_searchResultRoundTripFragment_to_searchResultFragment"
             app:destination="@id/searchResultFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentUbahDataProfile"
+        android:name="com.geminiboy.finalprojectbinar.ui.akun.FragmentUbahDataProfile"
+        android:label="fragment_ubah_data_profile"
+        tools:layout="@layout/fragment_ubah_data_profile" >
+        <action
+            android:id="@+id/action_fragmentUbahDataProfile_to_fragmentAkun2"
+            app:destination="@id/fragmentAkun2" />
     </fragment>
 </navigation>

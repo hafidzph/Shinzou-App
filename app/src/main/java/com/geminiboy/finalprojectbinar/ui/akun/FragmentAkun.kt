@@ -51,6 +51,10 @@ class FragmentAkun : Fragment() {
                     R.layout.toast_alert_green
                 )
             }
+
+            updateProfile.setOnClickListener {
+                findNavController().navigate(R.id.action_fragmentAkun2_to_fragmentUbahDataProfile)
+            }
         }
     }
 

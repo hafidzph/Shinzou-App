@@ -1,6 +1,8 @@
 package com.geminiboy.finalprojectbinar.ui.otp
 
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.util.Log
 import android.view.KeyEvent
 import androidx.fragment.app.Fragment
@@ -27,6 +29,8 @@ class OtpFragment : Fragment() {
     private var _binding: FragmentOtpBinding? = null
     private val binding get() = _binding!!
     private val otpVM: OtpViewModel by viewModels()
+    private var countDownTimer: CountDownTimer? = null
+    private var countdownDuration: Long = 60000
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,8 +45,38 @@ class OtpFragment : Fragment() {
         (activity as MainActivity).setBottomNavigationVisibility(View.GONE)
         setAutomaticMoveEditText()
         observeOtp()
+        observeResendOtp()
         val getEmail = arguments?.getString("email")
-        binding.tvEmail.text = getEmail
+        val getId = arguments?.getString("id")!!
+        binding.apply {
+            mintaKodeVertif.setOnClickListener {
+                otpVM.resendOTP(getId)
+            }
+
+            kirimUlang.setOnClickListener {
+                otpVM.resendOTP(getId)
+            }
+            tvEmail.text = getEmail
+
+            back.setOnClickListener {
+                findNavController().navigateUp()
+            }
+            val countDownTimer = object : CountDownTimer(60000, 1000) {
+                @SuppressLint("SetTextI18n")
+                override fun onTick(millisUntilFinished: Long) {
+                    val secondsRemaining = millisUntilFinished / 1000
+                    tvDetik.text = "$secondsRemaining Detik"
+                }
+
+                override fun onFinish() {
+                    kirimUlangKode.visibility = View.GONE
+                    tvDetik.visibility = View.GONE
+                    kirimUlang.visibility = View.VISIBLE
+                }
+            }
+
+            countDownTimer.start()
+        }
     }
 
     private fun setAutomaticMoveEditText(){
@@ -100,6 +134,28 @@ class OtpFragment : Fragment() {
                 is Resource.Error -> {
                     Toast(requireContext()).showCustomToast(
                         "Maaf, Kode OTP Salah.",
+                        requireActivity(),
+                        R.layout.toast_alert_red
+                    )
+                }
+            }
+        }
+    }
+
+    private fun observeResendOtp(){
+        otpVM.resendOtp.observe(viewLifecycleOwner){
+            when(it){
+                is Resource.Loading -> {}
+                is Resource.Success -> {
+                    Toast(requireContext()).showCustomToast(
+                        "Kode OTP telah dikirim.",
+                        requireActivity(),
+                        R.layout.toast_alert_green
+                    )
+                }
+                is Resource.Error -> {
+                    Toast(requireContext()).showCustomToast(
+                        "Kode OTP gagal dikirim.",
                         requireActivity(),
                         R.layout.toast_alert_red
                     )

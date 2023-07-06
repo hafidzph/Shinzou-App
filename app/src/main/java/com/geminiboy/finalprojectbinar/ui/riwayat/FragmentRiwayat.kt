@@ -7,10 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.geminiboy.finalprojectbinar.R
 import com.geminiboy.finalprojectbinar.databinding.FragmentRiwayatBinding
 import com.geminiboy.finalprojectbinar.ui.MainActivity
 import com.geminiboy.finalprojectbinar.ui.detailpenerbangan.FragmentDetailPenerbangan
+import com.geminiboy.finalprojectbinar.ui.riwayat.adapter.RiwayatAdapter
+import com.geminiboy.finalprojectbinar.wrapper.Resource
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -18,6 +21,7 @@ class FragmentRiwayat : Fragment() {
     private var _binding: FragmentRiwayatBinding? = null
     private val binding get() = _binding!!
     private val riwayatVM: RiwayatViewModel by viewModels()
+    private val riwayatAdapter = RiwayatAdapter()
 
     companion object{
         var isRiwayat = false
@@ -38,6 +42,44 @@ class FragmentRiwayat : Fragment() {
         observeIsLoggedIn()
         isRiwayat = true
         hasNavigatedToLogin = false
+        observeRiwayat()
+        initAdapter()
+    }
+
+    private fun initAdapter(){
+        binding.apply {
+            rvRiwayatAfterData.adapter = riwayatAdapter
+            rvRiwayatAfterData.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+        }
+    }
+
+    private fun observeRiwayat(){
+        riwayatVM.getRiwayat()
+        riwayatVM.riwayat.observe(viewLifecycleOwner){
+            when(it) {
+                is Resource.Loading -> {}
+                is Resource.Success -> {
+                    val data = it.data
+                    if(data?.data!!.isEmpty()){
+                        binding.apply {
+                            imgEmpty.visibility = View.VISIBLE
+                            imgTxtEmpty.visibility = View.VISIBLE
+                            rvRiwayatAfterData.visibility = View.GONE
+                        }
+                    }else{
+                        binding.apply {
+                            imgEmpty.visibility = View.GONE
+                            imgTxtEmpty.visibility = View.GONE
+                            rvRiwayatAfterData.visibility = View.VISIBLE
+                        }
+                        for(item in data.data){
+                            riwayatAdapter.setFilteredRiwayat(data.data, item.userId)
+                        }
+                    }
+                }
+                is Resource.Error -> {}
+            }
+        }
     }
 
     private fun observeIsLoggedIn(){

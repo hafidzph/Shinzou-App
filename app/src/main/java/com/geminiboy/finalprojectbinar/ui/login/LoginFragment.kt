@@ -111,6 +111,10 @@ class LoginFragment : Fragment() {
                         R.layout.toast_alert_green
                     )
                     loginVM.setToken(resource.data!!.data.token)
+                    loginVM.setIdUser(resource.data.data.id)
+                    loginVM.setNameUser(resource.data.data.name)
+                    loginVM.setPhoneUser(resource.data.data.phoneNumber)
+                    loginVM.setEmailUser(resource.data.data.email)
                     Log.d("DETAIL STATUS", FragmentDetailPenerbangan.isDetail.toString())
                     Log.d("PROFILE STATUS", FragmentAkun.isProfile.toString())
                     Log.d("RIWAYAT STATUS", FragmentRiwayat.isRiwayat.toString())

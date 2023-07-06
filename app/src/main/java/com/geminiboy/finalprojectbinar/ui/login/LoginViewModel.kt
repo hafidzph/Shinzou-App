@@ -32,5 +32,21 @@ class LoginViewModel @Inject constructor(private val authRepository: AuthReposit
         authRepository.setToken(token)
     }
 
+    fun setIdUser(id: String) = viewModelScope.launch {
+        authRepository.setIdUser(id)
+    }
+
+    fun setNameUser(name: String) = viewModelScope.launch {
+        authRepository.setNameUser(name)
+    }
+
+    fun setPhoneUser(phone: String) = viewModelScope.launch {
+        authRepository.setPhoneUser(phone)
+    }
+
+    fun setEmailUser(email: String) = viewModelScope.launch {
+        authRepository.setEmailUser(email)
+    }
+
     fun getToken() = authRepository.getToken().asLiveData()
 }

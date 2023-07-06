@@ -16,7 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:visibility="visible">
+        >
 
         <TextView
             android:id="@+id/TitleRiwayatPesanan"
@@ -77,7 +77,7 @@
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:visibility="gone">
+        >
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -119,13 +119,31 @@
             android:layout_marginEnd="20dp"
             android:src="@drawable/ic_filter" />
 
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imgEmpty"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="70dp"
+            android:src="@drawable/empty_riwayat"/>
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imgTxtEmpty"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/text_riwayatkosong"/>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_riwayatAfterData"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="12dp"
-            android:visibility="visible"/>
+            android:visibility="gone"/>
 
     </LinearLayout>
 

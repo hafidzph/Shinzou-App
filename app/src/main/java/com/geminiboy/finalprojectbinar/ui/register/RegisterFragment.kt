@@ -177,6 +177,7 @@ class RegisterFragment : Fragment() {
                     )
                     val bundle = Bundle().apply {
                         putString("email", binding.masukanEmail.text.toString())
+                        putString("id", resource.data?.data?.id)
                     }
                     lifecycleScope.launch { delay(500) }
                     findNavController().navigate(R.id.action_registerFragment_to_otpFragment, bundle)

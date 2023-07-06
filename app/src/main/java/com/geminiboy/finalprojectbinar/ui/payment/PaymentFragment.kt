@@ -73,11 +73,10 @@ class PaymentFragment : Fragment() {
 
             btnBayarGopay.setOnClickListener {
                 addPayment(PaymentBody("Gopay"))
-                BottomSheetPaymentSuccessFragment().show(requireActivity().supportFragmentManager,BottomSheetPaymentSuccessFragment.bottomTag)
             }
+
             btnBayarCreditCard.setOnClickListener {
                 addPayment(PaymentBody("Credit Card"))
-                BottomSheetPaymentSuccessFragment().show(requireActivity().supportFragmentManager,BottomSheetPaymentSuccessFragment.bottomTag)
             }
 
             btnBack.setOnClickListener {
@@ -127,9 +126,14 @@ class PaymentFragment : Fragment() {
                     is Resource.Success -> {
                         binding.apply {
                             val data = it.data!!.data
+
                             tvDeparture.text = data.departureFlight.originAirport.location
                             tvTanggal.text = Utils().formatDate3(data.departureFlight.departureDate)
                             tvJam.text = Utils().formatTime(data.departureFlight.departureTime)
+                            tvEstimasi.text =  Utils().formatDuration(
+                                Utils().formatTime(data.departureFlight.departureTime),
+                                Utils().formatTime(data.departureFlight.arrivalTime)
+                            )
                             tvDepartureDua.text = data.departureFlight.destinationAirport.location
                             tvTanggalDua.text = Utils().formatDate3(data.departureFlight.arrivalDate)
                             tvJamDua.text = Utils().formatTime(data.departureFlight.arrivalTime)
@@ -161,6 +165,10 @@ class PaymentFragment : Fragment() {
                             tvDeparture.text = data.departureFlight.originAirport.location
                             tvTanggal.text = Utils().formatDate3(data.departureFlight.departureDate)
                             tvJam.text = Utils().formatTime(data.departureFlight.departureTime)
+                            tvEstimasi.text =  Utils().formatDuration(
+                                Utils().formatTime(data.departureFlight.departureTime),
+                                Utils().formatTime(data.departureFlight.arrivalTime)
+                            )
                             tvDepartureDua.text = data.departureFlight.destinationAirport.location
                             tvTanggalDua.text = Utils().formatDate3(data.departureFlight.arrivalDate)
                             tvJamDua.text = Utils().formatTime(data.departureFlight.arrivalTime)
@@ -175,6 +183,10 @@ class PaymentFragment : Fragment() {
                             tvReturn.text = data.returnFlight.originAirport.location
                             tvTanggalReturn.text = Utils().formatDate3(data.returnFlight.departureDate)
                             tvJamReturn.text = Utils().formatTime(data.returnFlight.departureTime)
+                            tvEstimasiReturn.text =  Utils().formatDuration(
+                                Utils().formatTime(data.returnFlight.departureTime),
+                                Utils().formatTime(data.returnFlight.arrivalTime)
+                            )
                             tvDepartureDuaReturn.text = data.returnFlight.destinationAirport.location
                             tvTanggalDuaReturn.text = Utils().formatDate3(data.returnFlight.arrivalDate)
                             tvJamDuaReturn.text = Utils().formatTime(data.returnFlight.arrivalTime)
