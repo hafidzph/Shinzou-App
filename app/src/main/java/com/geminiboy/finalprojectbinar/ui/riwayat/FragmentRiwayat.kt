@@ -25,7 +25,9 @@ class FragmentRiwayat : Fragment() {
 
     companion object{
         var isRiwayat = false
+        var isRiwayatCheckout = false
         var hasNavigatedToLogin = false
+        var hasNavigatedToCheckOut = false
     }
 
     override fun onCreateView(
@@ -41,9 +43,20 @@ class FragmentRiwayat : Fragment() {
         (activity as MainActivity).setBottomNavigationVisibility(View.VISIBLE)
         observeIsLoggedIn()
         isRiwayat = true
+        isRiwayatCheckout = true
         hasNavigatedToLogin = false
+        hasNavigatedToCheckOut = false
         observeRiwayat()
         initAdapter()
+        setOnClick()
+    }
+
+    private fun setOnClick(){
+        riwayatAdapter.onItemClick = {
+            hasNavigatedToCheckOut = true
+            riwayatVM.setTransactionId(it.id)
+            findNavController().navigate(R.id.action_fragmentRiwayat2_to_fragmentCheckout)
+        }
     }
 
     private fun initAdapter(){
@@ -71,9 +84,9 @@ class FragmentRiwayat : Fragment() {
                             imgEmpty.visibility = View.GONE
                             imgTxtEmpty.visibility = View.GONE
                             rvRiwayatAfterData.visibility = View.VISIBLE
-                        }
-                        for(item in data.data){
-                            riwayatAdapter.setFilteredRiwayat(data.data, item.userId)
+                            for(item in data.data){
+                                riwayatAdapter.setFilteredRiwayat(data.data, item.userId)
+                            }
                         }
                     }
                 }
@@ -111,6 +124,10 @@ class FragmentRiwayat : Fragment() {
         _binding = null
         if (!hasNavigatedToLogin) {
             isRiwayat = false
+        }
+
+        if (!hasNavigatedToCheckOut) {
+            isRiwayatCheckout = false
         }
     }
 }

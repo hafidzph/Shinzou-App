@@ -20,7 +20,7 @@ class RiwayatViewModel @Inject constructor(private val authRepository: AuthRepos
     private val _riwayat= MutableLiveData<Resource<TransactionResponse>>()
     val riwayat: LiveData<Resource<TransactionResponse>> get() = _riwayat
     fun getToken() = authRepository.getToken().asLiveData()
-
+    fun setTransactionId(id: String) = viewModelScope.launch { flightRepository.setTransactionId(id) }
     fun getRiwayat() {
         getToken().observeForever{
             if(it != null) {

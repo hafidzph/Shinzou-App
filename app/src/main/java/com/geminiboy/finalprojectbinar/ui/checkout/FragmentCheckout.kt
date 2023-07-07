@@ -13,9 +13,11 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.geminiboy.finalprojectbinar.R
 import com.geminiboy.finalprojectbinar.databinding.FragmentCheckoutBinding
+import com.geminiboy.finalprojectbinar.ui.MainActivity
 import com.geminiboy.finalprojectbinar.ui.checkout.adapter.ItemCountPassengerAdapter
 import com.geminiboy.finalprojectbinar.ui.checkout.adapter.ItemCountPassengerRoundTripAdapter
 import com.geminiboy.finalprojectbinar.ui.home.HomeFragment
+import com.geminiboy.finalprojectbinar.ui.riwayat.FragmentRiwayat
 import com.geminiboy.finalprojectbinar.utils.Utils
 import com.geminiboy.finalprojectbinar.wrapper.Resource
 import dagger.hilt.android.AndroidEntryPoint
@@ -38,6 +40,7 @@ class FragmentCheckout : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (activity as MainActivity).setBottomNavigationVisibility(View.GONE)
         binding.apply {
             btnBack.setOnClickListener {
                 findNavController().navigateUp()
@@ -137,7 +140,11 @@ class FragmentCheckout : Fragment() {
                                 rvPassenger.visibility = View.VISIBLE
                                 passengerAdapter.setFilteredTickets(data.tickets, data.departureFlightId)
                                 btnBeranda.setOnClickListener {
-                                    findNavController().navigate(R.id.homeFragment)
+                                    if (FragmentRiwayat.isRiwayatCheckout) {
+                                        findNavController().navigate(R.id.fragmentRiwayat2)
+                                    }else {
+                                        findNavController().navigate(R.id.homeFragment)
+                                    }
                                 }
                             }else{
                                 btnBeranda.visibility = View.GONE
