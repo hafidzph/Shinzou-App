@@ -37,6 +37,14 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    lint {
+        disable 'TypographyQuotes'
+        enable 'RtlHardcoded','RtlCompat', 'RtlEnabled'
+        checkAllWarnings true
+        abortOnError true
+        lintConfig file("lint.xml")
+    }
 }
 
 dependencies {

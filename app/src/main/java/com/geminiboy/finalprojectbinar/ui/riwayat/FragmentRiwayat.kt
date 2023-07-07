@@ -48,15 +48,6 @@ class FragmentRiwayat : Fragment() {
         hasNavigatedToCheckOut = false
         observeRiwayat()
         initAdapter()
-        setOnClick()
-    }
-
-    private fun setOnClick(){
-        riwayatAdapter.onItemClick = {
-            hasNavigatedToCheckOut = true
-            riwayatVM.setTransactionId(it.id)
-            findNavController().navigate(R.id.action_fragmentRiwayat2_to_fragmentCheckout)
-        }
     }
 
     private fun initAdapter(){

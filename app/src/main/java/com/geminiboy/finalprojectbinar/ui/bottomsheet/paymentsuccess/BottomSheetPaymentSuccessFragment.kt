@@ -17,9 +17,6 @@ import dagger.hilt.android.AndroidEntryPoint
 class BottomSheetPaymentSuccessFragment : BottomSheetDialogFragment() {
     lateinit var binding:FragmentBottomSheetPaymentSuccessBinding
 
-    companion object{
-        val bottomTag : String = "paymentSuccess"
-    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

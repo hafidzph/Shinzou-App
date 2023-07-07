@@ -16,8 +16,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class DetailPenerbanganViewModel @Inject constructor(private val flightRepository: FlightRepository,
-                                                     private val authRepository: AuthRepository,
-                                                     val preferences: SetDestinationPreferences) : ViewModel(){
+                                                     private val authRepository: AuthRepository) : ViewModel(){
     private val _detailFlightDeparture = MutableLiveData<Resource<DetailFlightResponse>>()
     val detailFlightDeparture: LiveData<Resource<DetailFlightResponse>> get() = _detailFlightDeparture
 
