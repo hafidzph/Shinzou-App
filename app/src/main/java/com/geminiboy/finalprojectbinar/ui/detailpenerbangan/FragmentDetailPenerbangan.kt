@@ -44,16 +44,18 @@ class FragmentDetailPenerbangan : Fragment() {
         isDetail = true
         LoginRequiredSheet.hasNavigatedToLogin = false
         binding.apply {
-            btnBack.setOnClickListener {
-                findNavController().navigateUp()
-            }
-
             if(HomeFragment.isRoundTrip){
                 containerReturn.visibility = View.VISIBLE
                 observeReturnId()
                 observeTotalPriceRoundTrip()
+                btnBack.setOnClickListener {
+                    findNavController().navigate(R.id.action_fragmentDetailPenerbangan_to_searchResultRoundTripFragment)
+                }
             }else{
                 containerReturn.visibility = View.GONE
+                btnBack.setOnClickListener {
+                    findNavController().navigate(R.id.action_fragmentDetailPenerbangan_to_searchResultFragment)
+                }
             }
         }
     }

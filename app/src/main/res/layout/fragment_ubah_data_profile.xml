@@ -190,6 +190,7 @@
                 android:paddingTop="8dp"
                 android:paddingEnd="16dp"
                 android:paddingBottom="8dp"
+                android:enabled="false"
                 android:layout_marginTop="4dp"
                 tools:ignore="TouchTargetSizeCheck" />
         </LinearLayout>

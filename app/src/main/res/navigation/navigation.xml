@@ -129,6 +129,12 @@
         <action
             android:id="@+id/action_fragmentDetailPenerbangan_to_fragmentBiodataPemesan"
             app:destination="@id/fragmentBiodataPemesan" />
+        <action
+            android:id="@+id/action_fragmentDetailPenerbangan_to_searchResultRoundTripFragment"
+            app:destination="@id/searchResultRoundTripFragment" />
+        <action
+            android:id="@+id/action_fragmentDetailPenerbangan_to_searchResultFragment"
+            app:destination="@id/searchResultFragment" />
     </fragment>
     <fragment
         android:id="@+id/fragmentBiodataPemesan"
