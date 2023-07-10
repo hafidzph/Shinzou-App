@@ -1,12 +1,6 @@
 # Judul Aplikasi
 
-Shinzou-Flight.
-
-## Anggota Kelompok
-
-- Hafidz Putra Herlyansyah
-- Riki Abdilah
-- Maulid Fajrul Ishlah
+Shinzou.
 
 ## Tech Stack
 
